@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Sprites/RangerLeftArmSheet.png" type="Texture" id=2]
 [ext_resource path="res://Player/Sprites/RangerRightArmSheet.png" type="Texture" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://Player/Components/FloatingHand.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=2]
 resource_name = "IdleLeft"
@@ -209,6 +210,10 @@ height = 7.8423
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 4 )
+__right_hand = NodePath("RightHandRotPoint/RightHand")
+__left_hand = NodePath("LeftHandRotPoint/LeftHand")
+__right_hand_rot_point = NodePath("RightHandRotPoint")
+__left_hand_rot_point = NodePath("LeftHandRotPoint")
 __body_anim = NodePath("AnimSprites/BodySprite/BodyAP")
 __right_arm_anim = NodePath("AnimSprites/RightArmSprite/RightArmAP")
 __left_arm_anim = NodePath("AnimSprites/LeftArmSprite/LeftArmAP")
@@ -255,5 +260,19 @@ anims/RunLeft = SubResource( 12 )
 anims/RunRight = SubResource( 13 )
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -1.52588e-05, 21.2132 )
 shape = SubResource( 1 )
+
+[node name="RightHandRotPoint" type="Position2D" parent="."]
+position = Vector2( 0, 20 )
+
+[node name="RightHand" parent="RightHandRotPoint" instance=ExtResource( 5 )]
+position = Vector2( 10, 0 )
+
+[node name="LeftHandRotPoint" type="Position2D" parent="."]
+position = Vector2( 0, 20 )
+
+[node name="LeftHand" parent="LeftHandRotPoint" instance=ExtResource( 5 )]
+position = Vector2( -15, 0 )
+side = 0

@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "FloatingHand",
+"language": "GDScript",
+"path": "res://Player/Components/FloatingHand.gd"
+} ]
+_global_script_class_icons={
+"FloatingHand": ""
+}
+
 [application]
 
 config/name="DeshanimQuest"
