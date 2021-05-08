@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Player/Components/FloatingHand.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "IdleLeft"
 length = 0.1
 tracks/0/type = "value"
@@ -20,11 +20,28 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "IdleRight"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "IdleRight"
-length = 0.1
+resource_name = "RunLeft"
+length = 0.6
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -32,14 +49,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 6, 7, 8, 9, 10, 11 ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "RunLeft"
+resource_name = "RunRight"
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -52,13 +69,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "RunRight"
-length = 0.6
-loop = true
+resource_name = "IdleLeft"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -66,14 +82,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 6 ]
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "IdleLeft"
+resource_name = "IdleRight"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -85,26 +101,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "IdleRight"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=8]
 resource_name = "RunLeft"
 length = 0.6
 loop = true
@@ -121,7 +121,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "RunRight"
 length = 0.6
 loop = true
@@ -138,7 +138,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "IdleLeft"
 length = 0.001
 tracks/0/type = "value"
@@ -154,7 +154,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "IdleRight"
 length = 0.001
 tracks/0/type = "value"
@@ -170,7 +170,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "RunLeft"
 length = 0.6
 loop = true
@@ -187,7 +187,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10, 11 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "RunRight"
 length = 0.6
 loop = true
@@ -204,7 +204,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 6.87935
 height = 7.8423
 
@@ -232,10 +232,10 @@ hframes = 12
 
 [node name="BodyAP" type="AnimationPlayer" parent="AnimSprites/BodySprite"]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 2 )
-anims/IdleRight = SubResource( 3 )
-anims/RunLeft = SubResource( 4 )
-anims/RunRight = SubResource( 5 )
+anims/IdleLeft = SubResource( 1 )
+anims/IdleRight = SubResource( 2 )
+anims/RunLeft = SubResource( 3 )
+anims/RunRight = SubResource( 4 )
 
 [node name="RightArmSprite" type="Sprite" parent="AnimSprites"]
 texture = ExtResource( 3 )
@@ -243,10 +243,10 @@ hframes = 12
 
 [node name="RightArmAP" type="AnimationPlayer" parent="AnimSprites/RightArmSprite"]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 6 )
-anims/IdleRight = SubResource( 7 )
-anims/RunLeft = SubResource( 8 )
-anims/RunRight = SubResource( 9 )
+anims/IdleLeft = SubResource( 5 )
+anims/IdleRight = SubResource( 6 )
+anims/RunLeft = SubResource( 7 )
+anims/RunRight = SubResource( 8 )
 
 [node name="LeftArmSprite" type="Sprite" parent="AnimSprites"]
 texture = ExtResource( 2 )
@@ -254,21 +254,22 @@ hframes = 12
 
 [node name="LeftArmAP" type="AnimationPlayer" parent="AnimSprites/LeftArmSprite"]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 10 )
-anims/IdleRight = SubResource( 11 )
-anims/RunLeft = SubResource( 12 )
-anims/RunRight = SubResource( 13 )
+anims/IdleLeft = SubResource( 9 )
+anims/IdleRight = SubResource( 10 )
+anims/RunLeft = SubResource( 11 )
+anims/RunRight = SubResource( 12 )
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -1.52588e-05, 21.2132 )
-shape = SubResource( 1 )
+shape = SubResource( 13 )
 
 [node name="RightHandRotPoint" type="Position2D" parent="."]
 position = Vector2( 0, 20 )
 
 [node name="RightHand" parent="RightHandRotPoint" instance=ExtResource( 5 )]
 position = Vector2( 10, 0 )
+scale = Vector2( 1.3, 1.3 )
 
 [node name="LeftHandRotPoint" type="Position2D" parent="."]
 position = Vector2( 0, 20 )

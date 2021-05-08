@@ -112,8 +112,8 @@ func __hide_taken_hands():
 			__left_hand.hide()
 
 func __set_hands_distance():
-	__right_hand_rot_point.look_at(get_viewport().get_mouse_position())
-	__left_hand_rot_point.look_at(get_viewport().get_mouse_position())
+	__right_hand_rot_point.look_at(get_global_mouse_position())
+	__left_hand_rot_point.look_at(get_global_mouse_position())
 	
 
 
