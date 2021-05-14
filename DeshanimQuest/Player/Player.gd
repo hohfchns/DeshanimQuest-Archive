@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-var __input_vector = Vector2(0, 0)
-var __last_input_vector = Vector2(1, 0)
-
-var __velocity = Vector2(0, 0)
 export var __max_speed = Vector2(200, 200)
 export var __acceleration_amt = 1500
 export var __friction_amt = 1200
@@ -13,9 +9,13 @@ export(NodePath) onready var __right_hand_rot_point = get_node(__right_hand_rot_
 
 export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPlayer
 
-
 var __can_attack: bool = true
 var __can_move: bool = true
+
+var __input_vector = Vector2(0, 0)
+var __last_input_vector = Vector2(1, 0)
+
+var __velocity = Vector2(0, 0)
 
 
 func _ready():
@@ -23,7 +23,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	
 	
 	__calc_input_vector()
 	
