@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DebugControls="*res://Debug/DebugControls.tscn"
+GameManager="*res://Managers/GameManager.tscn"
 
 [importer_defaults]
 

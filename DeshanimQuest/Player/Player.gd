@@ -20,7 +20,7 @@ var __last_input_vector = Vector2(1, 0)
 var __velocity = Vector2(0, 0)
 
 func _ready():
-	pass
+	__connect_signal_functions()
 
 
 func _physics_process(delta):
@@ -36,6 +36,10 @@ func _physics_process(delta):
 	__get_player_input()
 	
 	__last_input_vector = __input_vector if __input_vector else __last_input_vector 
+
+
+func __connect_signal_functions():
+	connect("tree_entered", self, "_on_tree_entered")
 
 
 func __calc_input_vector():
@@ -92,6 +96,7 @@ func __get_player_input():
 		__play_current_item_anim("Alt")
 
 
-
+func _on_tree_entered():
+	GameManager.generate_player_ref()
 
 
