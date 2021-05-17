@@ -21,6 +21,10 @@ func _process(delta):
 
 
 func animate():
+	damage_text.rect_position = Vector2(-56, -12)
+	
+	__dmg_txt_opacity = 1.0
+	
 	self.visible = true
 	
 	position_tween.interpolate_property(damage_text, \
@@ -44,9 +48,10 @@ func set_text_number(value: int):
 	damage_text.bbcode_text = "[center]" + str(value) + "[/center]"
 
 
+func start(damage_value: int):
+	set_text_number(damage_value)
+	animate()
+
+
 func _on_tween_completed():
 	self.visible = false
-	
-	damage_text.position = Vector2(0, 0)
-	
-	__dmg_txt_opacity = 1.0

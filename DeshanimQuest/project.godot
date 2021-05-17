@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "FloatingHand",
 "language": "GDScript",
 "path": "res://Player/Components/FloatingHand.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Components/Collisions/Hitbox/Hitbox.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://Components/Collisions/Hurtbox/Hurtbox.gd"
 } ]
 _global_script_class_icons={
-"FloatingHand": ""
+"FloatingHand": "",
+"Hitbox": "",
+"Hurtbox": ""
 }
 
 [application]
@@ -31,7 +43,7 @@ GameManager="*res://Managers/GameManager.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BitmapFontCutterPlus/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -97,6 +109,13 @@ alt_use_item={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="PlayerHurtbox"
+2d_physics/layer_4="EnemyHurtbox"
 
 [physics]
 
