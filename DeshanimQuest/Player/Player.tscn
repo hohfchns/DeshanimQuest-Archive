@@ -86,7 +86,7 @@ __body_anim = NodePath("BodySprite/BodyAP")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.7, 0.7 )
+zoom = Vector2( 0.45, 0.45 )
 smoothing_enabled = true
 smoothing_speed = 15.0
 
