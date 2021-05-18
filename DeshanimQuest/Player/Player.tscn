@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
-[ext_resource path="res://Items/Nodes/Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Nodes/Glock/Glock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Components/Prototype/WeaponSwapper/WeaponSwapper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -81,6 +82,8 @@ __hand_axis = NodePath("HandAxis")
 __hand_rot_point = NodePath("HandAxis/HandRotPoint")
 __body_anim = NodePath("BodySprite/BodyAP")
 
+[node name="WeaponSwapper" parent="." instance=ExtResource( 3 )]
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.45, 0.45 )
@@ -92,8 +95,8 @@ position = Vector2( 0, 20 )
 
 [node name="HandRotPoint" type="Node2D" parent="HandAxis"]
 
-[node name="Sword" parent="HandAxis/HandRotPoint" instance=ExtResource( 2 )]
-position = Vector2( 13.0815, -5.48008 )
+[node name="Glock" parent="HandAxis/HandRotPoint" instance=ExtResource( 2 )]
+position = Vector2( 20, 0 )
 
 [node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -110,3 +113,5 @@ anims/RunRight = SubResource( 4 )
 visible = false
 position = Vector2( -1.52588e-05, 21.2132 )
 shape = SubResource( 5 )
+
+[connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]

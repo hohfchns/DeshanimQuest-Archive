@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 export var __max_speed = Vector2(200, 200)
@@ -9,6 +10,8 @@ export(NodePath) onready var __hand_axis = get_node(__hand_axis) as Node2D
 export(NodePath) onready var __hand_rot_point = get_node(__hand_rot_point) as Node2D
 onready var __current_item = __hand_rot_point.get_child(0)
 
+export(float) var __hand_distance: float = 20.0
+
 export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPlayer
 
 var __can_attack: bool = true
@@ -18,6 +21,7 @@ var __input_vector = Vector2(0, 0)
 var __last_input_vector = Vector2(1, 0)
 
 var __velocity = Vector2(0, 0)
+
 
 func _ready():
 	__connect_signal_functions()
@@ -31,7 +35,7 @@ func _physics_process(delta):
 	
 	__animate_sprites()
 	
-	__set_hand_distance_and_rot()
+	__set_hand_rot()
 	
 	__get_player_input()
 	
@@ -73,7 +77,7 @@ func __animate_sprites():
 			__body_anim.play("IdleLeft")
 
 
-func __set_hand_distance_and_rot():
+func __set_hand_rot():
 	
 	if get_global_mouse_position() > self.get_global_position():
 		__hand_axis.scale.x = 1
@@ -88,15 +92,27 @@ func __play_current_item_anim(var anim_name: String):
 	var ap = __current_item.get_node("AnimationPlayer") as AnimationPlayer
 	ap.play(anim_name)
 
+func __use_current_item(action):
+	__current_item.use(action)
+
 
 func __get_player_input():
 	if Input.is_action_just_pressed("use_item"):
-		__play_current_item_anim("Main")
+		__use_current_item("main")
 	elif Input.is_action_just_pressed("alt_use_item"):
-		__play_current_item_anim("Alt")
+		__use_current_item("alt")
+
+
+func set_current_item(item_ref):
+	__hand_rot_point.add_child(item_ref)
+	__current_item = __hand_rot_point.get_child(1)
+	__hand_rot_point.get_child(0).queue_free()
+	
+	__current_item.position.x = __hand_distance
 
 
 func _on_tree_entered():
 	GameManager.generate_player_ref()
 
-
+func _on_Player_tree_entered():
+	GameManager.generate_player_ref()

@@ -9,8 +9,5 @@ func _ready():
 
 
 func _on_hurtbox_area_entered(area: Hitbox):
-	print("entered")
-	
-	
 	damage_number_indicator.start(area.damage)
 
