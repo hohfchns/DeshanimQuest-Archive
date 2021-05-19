@@ -37,7 +37,7 @@ func _physics_process(delta):
 	
 	__set_hand_rot()
 	
-	__get_player_input()
+	__get_player_use_input()
 	
 	__last_input_vector = __input_vector if __input_vector else __last_input_vector 
 
@@ -66,12 +66,12 @@ func __animate_sprites():
 	var rot = __hand_axis.rotation_degrees
 	
 	if moving:
-		if __current_item.global_position > self.global_position:
+		if get_global_mouse_position() > self.global_position:
 			__body_anim.play("RunRight")
 		else:
 			__body_anim.play("RunLeft")
 	elif not moving:
-		if __current_item.global_position > self.global_position:
+		if get_global_mouse_position() > self.global_position:
 			__body_anim.play("IdleRight")
 		else:
 			__body_anim.play("IdleLeft")
@@ -96,7 +96,9 @@ func __use_current_item(action):
 	__current_item.use(action)
 
 
-func __get_player_input():
+func __get_player_use_input():
+	if not __current_item:
+		return
 	if Input.is_action_just_pressed("use_item"):
 		__use_current_item("main")
 	elif Input.is_action_just_pressed("alt_use_item"):
@@ -105,8 +107,11 @@ func __get_player_input():
 
 func set_current_item(item_ref):
 	__hand_rot_point.add_child(item_ref)
-	__current_item = __hand_rot_point.get_child(1)
-	__hand_rot_point.get_child(0).queue_free()
+	if __hand_rot_point.get_children().size() > 1:
+		__current_item = __hand_rot_point.get_child(1)
+		__hand_rot_point.get_child(0).queue_free()
+	else:
+		__current_item = __hand_rot_point.get_child(0)
 	
 	__current_item.position.x = __hand_distance
 
