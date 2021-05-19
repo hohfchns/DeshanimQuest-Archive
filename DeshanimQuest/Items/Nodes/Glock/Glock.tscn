@@ -186,6 +186,7 @@ tracks/6/keys = {
 }
 
 [node name="Glock" type="Node2D"]
+z_index = 1
 script = ExtResource( 5 )
 anim = NodePath("AnimationPlayer")
 shoot_timer = NodePath("ShootTimer")
