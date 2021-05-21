@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/GrassLevel/GrassesTilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Misc/TargetDummy/TargetDummy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=6]
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -28,5 +29,10 @@ tile_data = PoolIntArray( 4325490, 0, 2, 4391031, 0, 1, 4391032, 0, 1, 4391067, 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 1143.51, 718.325 )
 
+[node name="Entities" type="YSort" parent="YSort"]
+
 [node name="TargetDummy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1192, 736 )
+
+[node name="Slime" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1328, 744 )
