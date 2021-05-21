@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "DamageNumberIndicator",
+"language": "GDScript",
+"path": "res://Components/VFX/DamageIndicator/DamageNumberIndicator.gd"
+}, {
+"base": "Node",
+"class": "EnemyStats",
+"language": "GDScript",
+"path": "res://Entities/Stats/EnemyStats.gd"
+}, {
 "base": "Sprite",
 "class": "FloatingHand",
 "language": "GDScript",
@@ -30,6 +40,8 @@ _global_script_classes=[ {
 "path": "res://Player/Player.gd"
 } ]
 _global_script_class_icons={
+"DamageNumberIndicator": "",
+"EnemyStats": "",
 "FloatingHand": "",
 "Hitbox": "",
 "Hurtbox": "",

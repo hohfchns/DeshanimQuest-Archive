@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-damage_text = NodePath("DamageText")
+__damage_text = NodePath("DamageText")
 position_tween = NodePath("PositionTween")
 opacity_tween = NodePath("OpacityTween")
 
