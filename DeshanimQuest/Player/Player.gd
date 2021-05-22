@@ -24,6 +24,8 @@ var __velocity = Vector2(0, 0)
 
 
 func _ready():
+	randomize()
+	
 	__connect_signal_functions()
 
 

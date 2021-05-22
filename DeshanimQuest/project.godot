@@ -38,6 +38,21 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
+}, {
+"base": "Area2D",
+"class": "PlayerDetectionZone",
+"language": "GDScript",
+"path": "res://Components/Enemies/PlayerDetectionZone/PlayerDetectionZone.gd"
+}, {
+"base": "Area2D",
+"class": "SoftCollision",
+"language": "GDScript",
+"path": "res://Components/Collisions/SoftCollision/SoftCollision.gd"
+}, {
+"base": "Node2D",
+"class": "WanderController",
+"language": "GDScript",
+"path": "res://Components/Enemies/WanderController/WanderController.gd"
 } ]
 _global_script_class_icons={
 "DamageNumberIndicator": "",
@@ -45,7 +60,10 @@ _global_script_class_icons={
 "FloatingHand": "",
 "Hitbox": "",
 "Hurtbox": "",
-"Player": ""
+"Player": "",
+"PlayerDetectionZone": "",
+"SoftCollision": "",
+"WanderController": ""
 }
 
 [application]
@@ -58,10 +76,11 @@ config/icon="res://icon.png"
 
 DebugControls="*res://Debug/DebugControls.tscn"
 GameManager="*res://Managers/GameManager.tscn"
+DebugSettings="*res://Debug/DebugSettings.tscn"
 
 [display]
 
-window/size/fullscreen=true
+window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -156,6 +175,7 @@ toggle_fullscreen={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="PlayerHurtbox"
 2d_physics/layer_4="EnemyHurtbox"
+2d_physics/layer_5="SoftCollision"
 
 [physics]
 

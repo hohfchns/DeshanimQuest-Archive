@@ -1,6 +1,10 @@
 extends KinematicBody2D
 
 
+enum States { IDLE, WANDER, CHASE }
+
+var __state = States.IDLE
+
 var __move_direction = Vector2(0, 0)
 
 export(float) var __move_delay = 0.3
@@ -13,17 +17,25 @@ export(Vector2) var __max_speed = Vector2(75, 75)
 export(float) var __acceleration_amt = 500.0
 export(float) var __friction_amt = 200.0
 
+export(float) var __wander_target_range = 4
+
 export(float) var __knockback_multiplier = 0.8
 
 var __velocity = Vector2(0, 0)
 
 export(NodePath) onready var __stats = get_node(__stats) as EnemyStats
 
-export(NodePath) onready var __damage_number_indicator = get_node(__damage_number_indicator) as DamageNumberIndicator
+export(NodePath) onready var __wander_controller = get_node(__wander_controller) as WanderController
+
+export(NodePath) onready var __soft_collision = get_node(__soft_collision) as SoftCollision
+
+export(NodePath) onready var __player_detection_zone = get_node(__player_detection_zone) as PlayerDetectionZone
+
+export(NodePath) onready var __hurtbox = get_node(__hurtbox) as Hurtbox
 
 export(NodePath) onready var __animation_player = get_node(__animation_player) as AnimationPlayer
 
-export(NodePath) onready var __hurtbox = get_node(__hurtbox) as Hurtbox
+export(NodePath) onready var __damage_number_indicator = get_node(__damage_number_indicator) as DamageNumberIndicator
 
 export(NodePath) onready var __slide_timer = get_node(__slide_timer) as Timer
 export(NodePath) onready var __move_delay_timer = get_node(__move_delay_timer) as Timer
@@ -31,13 +43,45 @@ export(NodePath) onready var __move_delay_timer = get_node(__move_delay_timer) a
 
 func _ready():
 	__connect_signals()
+	
+	__state = __pick_random_state([States.IDLE, States.WANDER])
 
 
 func _physics_process(delta):
 	
-	var move_direction = Vector2(1, 0)
+#	var move_direction = Vector2(1, 0)
 	
-	__attempt_move(move_direction, delta)
+	match __state:
+		States.IDLE:
+			__apply_friction(delta)
+			__seek_player()
+			
+			if not __wander_controller.get_time_left():
+				__update_wander()
+		
+		States.WANDER:
+			__seek_player()
+			
+			if __wander_controller.get_time_left() == 0:
+				__update_wander()
+			var direction = self.global_position.direction_to(__wander_controller.target_position)
+			__attempt_move(direction, delta)
+			
+			if self.global_position.distance_to(__wander_controller.target_position) <= __wander_target_range:
+				__update_wander()
+		
+		States.CHASE:
+			var player = __player_detection_zone.player
+			
+			
+			if player != null:
+				var direction = self.global_position.direction_to(player.global_position)
+				__attempt_move(direction, delta)
+			else:
+				__state = States.IDLE
+	
+	if __soft_collision.is_colliding():
+		__velocity += __soft_collision.get_push_vector() * delta * 200
 
 
 func __apply_friction(delta: float):
@@ -70,6 +114,21 @@ func __attempt_move(move_direction: Vector2, delta: float):
 		__apply_friction(delta)
 	
 	move_and_slide(__velocity)
+
+
+func __seek_player():
+	if __player_detection_zone.can_see_player():
+		__state = States.CHASE
+
+
+func __pick_random_state(state_list: Array):
+	state_list.shuffle()
+	return state_list.pop_front()
+
+
+func __update_wander():
+	__state = __pick_random_state([States.IDLE, States.WANDER])
+	__wander_controller.__start_wander_timer(rand_range(1, 3))
 
 
 func __connect_signals():

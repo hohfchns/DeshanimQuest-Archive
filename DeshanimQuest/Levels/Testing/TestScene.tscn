@@ -27,7 +27,7 @@ tile_data = PoolIntArray( 4325490, 0, 2, 4391031, 0, 1, 4391032, 0, 1, 4391067, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1143.51, 718.325 )
+position = Vector2( 1040, 720 )
 
 [node name="Entities" type="YSort" parent="YSort"]
 
@@ -36,3 +36,6 @@ position = Vector2( 1192, 736 )
 
 [node name="Slime" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1328, 744 )
+
+[node name="Slime2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 1336, 768 )
