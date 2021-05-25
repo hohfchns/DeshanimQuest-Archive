@@ -5,14 +5,17 @@ export var __max_speed = Vector2(200, 200)
 export var __acceleration_amt = 1500
 export var __friction_amt = 1200
 
-#export(NodePath) var __right_hand_path; onready var __right_hand = get_node(__right_hand_path) as FloatingHand
+export(float) var __hand_distance: float = 20.0
+
 export(NodePath) onready var __hand_axis = get_node(__hand_axis) as Node2D
 export(NodePath) onready var __hand_rot_point = get_node(__hand_rot_point) as Node2D
 onready var __current_item = __hand_rot_point.get_child(0)
 
-export(float) var __hand_distance: float = 20.0
+export(NodePath) onready var __hurtbox = get_node(__hurtbox) as Hurtbox
 
 export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPlayer
+
+export(NodePath) onready var __effects_anim = get_node(__effects_anim) as AnimationPlayer
 
 var __can_attack: bool = true
 var __can_move: bool = true
@@ -46,6 +49,7 @@ func _physics_process(delta):
 
 func __connect_signal_functions():
 	connect("tree_entered", self, "_on_tree_entered")
+	__hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 
 
 func __calc_input_vector():
@@ -116,6 +120,16 @@ func set_current_item(item_ref):
 		__current_item = __hand_rot_point.get_child(0)
 	
 	__current_item.position.x = __hand_distance
+
+
+func _on_hurtbox_entered(area):
+	pass
+
+func _on_hurtbox_invincibility_started():
+	__effects_anim.play("HitBlinkStart")
+
+func _on_hurtbox_invincibility_ended():
+	__effects_anim.play("HitBlinkStop")
 
 
 func _on_tree_entered():
