@@ -77,6 +77,9 @@ height = 7.8423
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 4 )
+__max_speed = Vector2( 175, 175 )
+__acceleration_amt = 1250
+__friction_amt = 900
 __hand_axis = NodePath("HandAxis")
 __hand_rot_point = NodePath("HandAxis/HandRotPoint")
 __body_anim = NodePath("BodySprite/BodyAP")
