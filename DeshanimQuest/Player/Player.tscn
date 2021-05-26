@@ -5,7 +5,7 @@
 [ext_resource path="res://Components/Prototype/WeaponSwapper/WeaponSwapper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform bool active = true;
@@ -20,11 +20,11 @@ void fragment(){
 	COLOR = new_color;
 }"
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/active = false
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -52,22 +52,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.6
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -83,20 +67,35 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
+"values": [ 6, 7, 8, 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 6.87935
 height = 7.8423
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 7.37502
+height = 17.5
 
-[sub_resource type="Animation" id=7]
-resource_name = "HitBlinkStart"
+[sub_resource type="Animation" id=9]
 length = 0.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
 tracks/0/interp = 1
@@ -110,8 +109,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "HitBlinkStop"
+[sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
@@ -132,8 +130,10 @@ script = ExtResource( 4 )
 __max_speed = Vector2( 175, 175 )
 __acceleration_amt = 1250
 __friction_amt = 900
+__invincibility_duration = 0.5
 __hand_axis = NodePath("HandAxis")
 __hand_rot_point = NodePath("HandAxis/HandRotPoint")
+__hurtbox = NodePath("Hurtbox")
 __body_anim = NodePath("BodySprite/BodyAP")
 __effects_anim = NodePath("EffectsAP")
 
@@ -151,32 +151,34 @@ position = Vector2( 0, 20 )
 [node name="HandRotPoint" type="Node2D" parent="HandAxis"]
 
 [node name="BodySprite" type="Sprite" parent="."]
-material = SubResource( 1 )
+material = SubResource( 2 )
 texture = ExtResource( 1 )
 hframes = 12
 
 [node name="BodyAP" type="AnimationPlayer" parent="BodySprite"]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 2 )
-anims/IdleRight = SubResource( 3 )
-anims/RunLeft = SubResource( 4 )
-anims/RunRight = SubResource( 5 )
+anims/IdleLeft = SubResource( 3 )
+anims/IdleRight = SubResource( 4 )
+anims/RunLeft = SubResource( 5 )
+anims/RunRight = SubResource( 6 )
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -1.52588e-05, 21.2132 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
+visible = false
+collision_layer = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -1.52588e-05, 13.625 )
-shape = SubResource( 10 )
+position = Vector2( -1.52588e-05, 15.375 )
+shape = SubResource( 8 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
 autoplay = "HitBlinkStop"
-anims/HitBlinkStart = SubResource( 7 )
-anims/HitBlinkStop = SubResource( 9 )
+anims/HitBlinkStart = SubResource( 9 )
+anims/HitBlinkStop = SubResource( 10 )
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 

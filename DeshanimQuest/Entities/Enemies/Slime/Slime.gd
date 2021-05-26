@@ -21,6 +21,8 @@ export(float) var __wander_target_range = 4
 
 export(float) var __knockback_multiplier = 0.8
 
+export(float) var __flash_time = 0.1
+
 var __velocity = Vector2(0, 0)
 
 export(NodePath) onready var __stats = get_node(__stats) as EnemyStats
@@ -34,11 +36,14 @@ export(NodePath) onready var __player_detection_zone = get_node(__player_detecti
 export(NodePath) onready var __hurtbox = get_node(__hurtbox) as Hurtbox
 
 export(NodePath) onready var __animation_player = get_node(__animation_player) as AnimationPlayer
+export(NodePath) onready var __effects_animation_player = get_node(__effects_animation_player) as AnimationPlayer
 
 export(NodePath) onready var __damage_number_indicator = get_node(__damage_number_indicator) as DamageNumberIndicator
 
 export(NodePath) onready var __slide_timer = get_node(__slide_timer) as Timer
 export(NodePath) onready var __move_delay_timer = get_node(__move_delay_timer) as Timer
+
+export(NodePath) onready var __flash_timer = get_node(__flash_timer) as Timer
 
 
 func _ready():
@@ -135,9 +140,16 @@ func __connect_signals():
 	__slide_timer.connect("timeout", self, "_on_slide_timer_timeout")
 	__move_delay_timer.connect("timeout", self, "_on_move_delay_timer_timeout")
 	
+	__flash_timer.connect("timeout", self, "_on_flash_timeout")
+	
 	__hurtbox.connect("area_entered", self, "_on_hurtbox_area_entered")
 	
 	__stats.connect("no_health", self, "_on_stats_no_health")
+
+
+func __start_hit_effect(duration):
+	__effects_animation_player.play("FlashStart")
+	__flash_timer.start(__flash_time)
 
 
 func _on_slide_timer_timeout():
@@ -152,6 +164,10 @@ func _on_move_delay_timer_timeout():
 	__can_move = true
 
 
+func _on_flash_timeout():
+	__effects_animation_player.play("FlashStop")
+
+
 func _on_hurtbox_area_entered(area: Hitbox):
 	var knockback_to_take = __knockback_multiplier\
 	* area.knockback_amt\
@@ -161,6 +177,8 @@ func _on_hurtbox_area_entered(area: Hitbox):
 	__stats.subtract_health(area.damage)
 	
 	__damage_number_indicator.start(area.damage)
+	
+	__start_hit_effect(__flash_time)
 
 func _on_stats_no_health():
 	queue_free()

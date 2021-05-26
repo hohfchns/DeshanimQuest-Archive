@@ -1,11 +1,15 @@
 class_name Player
 extends KinematicBody2D
 
+var __stats = PlayerStats
+
 export var __max_speed = Vector2(200, 200)
 export var __acceleration_amt = 1500
 export var __friction_amt = 1200
 
-export(float) var __hand_distance: float = 20.0
+export(float) var __hand_distance = 20.0
+
+export(float) var __invincibility_duration = 1.0
 
 export(NodePath) onready var __hand_axis = get_node(__hand_axis) as Node2D
 export(NodePath) onready var __hand_rot_point = get_node(__hand_rot_point) as Node2D
@@ -48,8 +52,11 @@ func _physics_process(delta):
 
 
 func __connect_signal_functions():
+	__stats.connect("no_health", self, "_on_stats_no_health")
 	connect("tree_entered", self, "_on_tree_entered")
 	__hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
+	__hurtbox.connect("invincibility_started", self, "_on_hurtbox_invincibility_started")
+	__hurtbox.connect("invincibility_ended", self, "_on_hurtbox_invincibility_ended")
 
 
 func __calc_input_vector():
@@ -122,8 +129,13 @@ func set_current_item(item_ref):
 	__current_item.position.x = __hand_distance
 
 
+func _on_stats_no_health():
+	queue_free()
+
+
 func _on_hurtbox_entered(area):
-	pass
+	__hurtbox.start_invincibility(__invincibility_duration)
+	__stats.subtract_health(area.damage)
 
 func _on_hurtbox_invincibility_started():
 	__effects_anim.play("HitBlinkStart")

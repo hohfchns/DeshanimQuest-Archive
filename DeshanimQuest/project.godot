@@ -77,6 +77,7 @@ config/icon="res://icon.png"
 DebugControls="*res://Debug/DebugControls.tscn"
 GameManager="*res://Managers/GameManager.tscn"
 DebugSettings="*res://Debug/DebugSettings.tscn"
+PlayerStats="*res://Player/PlayerStats.tscn"
 
 [display]
 

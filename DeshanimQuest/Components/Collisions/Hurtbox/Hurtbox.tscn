@@ -6,5 +6,8 @@
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 1 )
+__invincibility_timer = NodePath("invincibilityTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="invincibilityTimer" type="Timer" parent="."]
