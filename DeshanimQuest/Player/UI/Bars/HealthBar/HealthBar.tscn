@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/UI/Bars/HealthBar/HealthBarBar.png" type="Texture" id=1]
+[ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.gd" type="Script" id=2]
+[ext_resource path="res://Player/UI/Bars/HealthBar/HealthBarFill.png" type="Texture" id=3]
+
+[node name="HealthBar" type="TextureProgress"]
+margin_right = 192.0
+margin_bottom = 24.0
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

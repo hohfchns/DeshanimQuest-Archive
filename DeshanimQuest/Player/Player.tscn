@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Components/Collisions/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Components/Prototype/WeaponSwapper/WeaponSwapper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -136,10 +137,12 @@ __hand_rot_point = NodePath("HandAxis/HandRotPoint")
 __hurtbox = NodePath("Hurtbox")
 __body_anim = NodePath("BodySprite/BodyAP")
 __effects_anim = NodePath("EffectsAP")
+__health_bar = NodePath("CanvasLayer/HealthBar")
 
 [node name="WeaponSwapper" parent="." instance=ExtResource( 3 )]
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+visible = false
 current = true
 zoom = Vector2( 0.7, 0.7 )
 smoothing_enabled = true
@@ -179,6 +182,17 @@ shape = SubResource( 8 )
 autoplay = "HitBlinkStop"
 anims/HitBlinkStart = SubResource( 9 )
 anims/HitBlinkStop = SubResource( 10 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
+anchor_left = 0.023
+anchor_top = 0.04
+anchor_right = 0.023
+anchor_bottom = 0.04
+margin_left = 0.447998
+margin_top = -1.90735e-06
+margin_right = 192.448
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 

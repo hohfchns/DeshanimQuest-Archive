@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Player/Components/FloatingHand.gd"
 }, {
+"base": "TextureProgress",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://Player/UI/Bars/HealthBar/HealthBar.gd"
+}, {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
@@ -58,6 +63,7 @@ _global_script_class_icons={
 "DamageNumberIndicator": "",
 "EnemyStats": "",
 "FloatingHand": "",
+"HealthBar": "",
 "Hitbox": "",
 "Hurtbox": "",
 "Player": "",
