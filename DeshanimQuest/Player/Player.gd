@@ -123,11 +123,11 @@ func __get_player_use_input():
 
 func set_current_item(item_ref):
 	__hand_rot_point.add_child(item_ref)
-	if __hand_rot_point.get_children().size() > 1:
-		__current_item = __hand_rot_point.get_child(1)
-		__hand_rot_point.get_child(0).queue_free()
+	if __hand_rot_point.get_children().size() > 2:
+		__current_item = __hand_rot_point.get_child(2)
+		__hand_rot_point.get_child(1).queue_free()
 	else:
-		__current_item = __hand_rot_point.get_child(0)
+		__current_item = __hand_rot_point.get_child(1)
 	
 	__current_item.position.x = __hand_distance
 
