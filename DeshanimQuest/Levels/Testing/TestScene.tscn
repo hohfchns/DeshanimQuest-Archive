@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Levels/GrassLevel/CliffTilemap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/UI/Death/DeathText.gd" type="Script" id=11]
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -68,6 +70,9 @@ margin_left = 32.0
 margin_top = 32.0
 margin_right = 224.0
 margin_bottom = 56.0
+
+[node name="DeathText" parent="CanvasLayer" instance=ExtResource( 10 )]
+script = ExtResource( 11 )
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]
