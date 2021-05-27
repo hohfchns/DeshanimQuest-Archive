@@ -21,7 +21,7 @@ export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPla
 
 export(NodePath) onready var __effects_anim = get_node(__effects_anim) as AnimationPlayer
 
-export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
+#export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
 
 var __can_attack: bool = true
 var __can_move: bool = true
@@ -36,9 +36,6 @@ func _ready():
 	randomize()
 	
 	__connect_signal_functions()
-	
-	__health_bar.max_value = __stats.get_max_health()
-	__health_bar.value = __stats.get_health()
 
 
 func _physics_process(delta):
@@ -136,8 +133,7 @@ func set_current_item(item_ref):
 
 
 func _on_stats_health_changed():
-	__health_bar.max_value = __stats.get_max_health()
-	__health_bar.value = __stats.get_health()
+	pass
 
 
 func _on_stats_no_health():
