@@ -78,10 +78,16 @@ func _physics_process(delta):
 		States.CHASE:
 			var player = __player_detection_zone.player
 			
-			
-			if player != null:
-				var direction = self.global_position.direction_to(player.global_position)
-				__attempt_move(direction, delta)
+			if player:
+				var space_state = get_world_2d().direct_space_state
+				var result = space_state.intersect_ray(self.global_position, player.get_global_position(),\
+				 [self], 1)
+				
+				if result:
+					__apply_friction(delta)
+				else:
+					var direction = self.global_position.direction_to(player.global_position)
+					__attempt_move(direction, delta)
 			else:
 				__state = States.IDLE
 	
