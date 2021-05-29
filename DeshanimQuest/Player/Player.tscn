@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Components/Collisions/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
@@ -94,6 +94,9 @@ height = 7.8423
 radius = 7.37502
 height = 17.5
 
+[sub_resource type="CircleShape2D" id=11]
+radius = 36.0767
+
 [sub_resource type="Animation" id=9]
 length = 0.2
 tracks/0/type = "value"
@@ -135,6 +138,7 @@ __invincibility_duration = 0.5
 __hand_axis = NodePath("HandAxis")
 __hand_rot_point = NodePath("HandAxis/HandRotPoint")
 __hurtbox = NodePath("Hurtbox")
+__interaction_area = NodePath("InteractionArea")
 __body_anim = NodePath("BodySprite/BodyAP")
 __effects_anim = NodePath("EffectsAP")
 
@@ -171,6 +175,17 @@ collision_layer = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1.52588e-05, 15.375 )
 shape = SubResource( 8 )
+
+[node name="InteractionArea" type="Area2D" parent="."]
+position = Vector2( 0, 15.375 )
+collision_layer = 0
+collision_mask = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource( 11 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
 autoplay = "HitBlinkStop"
