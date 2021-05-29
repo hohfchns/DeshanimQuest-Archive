@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sword-Flash.png-5d7c7644e3dce74e016d861f279a979b.stex"
+path="res://.import/Sword.png-ed11720dd79a17e75b91f2bed3b7fbc9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Textures/Sword/Sword-Flash.png"
-dest_files=[ "res://.import/Sword-Flash.png-5d7c7644e3dce74e016d861f279a979b.stex" ]
+source_file="res://Items/Items/Weapons/Melee/Sword/Sword.png"
+dest_files=[ "res://.import/Sword.png-ed11720dd79a17e75b91f2bed3b7fbc9.stex" ]
 
 [params]
 

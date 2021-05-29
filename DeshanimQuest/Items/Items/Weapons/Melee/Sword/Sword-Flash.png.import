@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MuzzleFlash.png-82ed136a9a83456941796764a089a1df.stex"
+path="res://.import/Sword-Flash.png-00fea92526fd87e365e0dcd2e1b5b5bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Textures/Glock/MuzzleFlash.png"
-dest_files=[ "res://.import/MuzzleFlash.png-82ed136a9a83456941796764a089a1df.stex" ]
+source_file="res://Items/Items/Weapons/Melee/Sword/Sword-Flash.png"
+dest_files=[ "res://.import/Sword-Flash.png-00fea92526fd87e365e0dcd2e1b5b5bd.stex" ]
 
 [params]
 

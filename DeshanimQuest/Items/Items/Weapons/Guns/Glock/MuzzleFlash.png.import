@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HealingPotion.png-edd8fcdcfc60bcdbcfbcfbf43e799c90.stex"
+path="res://.import/MuzzleFlash.png-560cd304567cfe30bf29e701416b9f1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Textures/Utility/HealingPotion.png"
-dest_files=[ "res://.import/HealingPotion.png-edd8fcdcfc60bcdbcfbcfbf43e799c90.stex" ]
+source_file="res://Items/Items/Weapons/Guns/Glock/MuzzleFlash.png"
+dest_files=[ "res://.import/MuzzleFlash.png-560cd304567cfe30bf29e701416b9f1d.stex" ]
 
 [params]
 

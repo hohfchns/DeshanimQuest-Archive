@@ -1,7 +1,7 @@
 extends Node2D
 
-var __sword = preload("res://Items/Nodes/Sword/Sword.tscn")
-var __glock = preload("res://Items/Nodes/Glock/Glock.tscn")
+var __sword = preload("res://Items/Items/Weapons/Melee/Sword/Sword.tscn")
+var __glock = preload("res://Items/Items/Weapons/Guns/Glock/Glock.tscn")
 
 var __items_arr: Array = [__sword, __glock]
 var __cur_item_index: int = 0

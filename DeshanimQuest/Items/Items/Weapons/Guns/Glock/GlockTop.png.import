@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Glock.png-7e8f9ae5599eb8a44d7266e9827d5e1a.stex"
+path="res://.import/GlockTop.png-9d5ffbcb6c1790db58b7aafbdcf01a80.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Textures/Glock/Glock.png"
-dest_files=[ "res://.import/Glock.png-7e8f9ae5599eb8a44d7266e9827d5e1a.stex" ]
+source_file="res://Items/Items/Weapons/Guns/Glock/GlockTop.png"
+dest_files=[ "res://.import/GlockTop.png-9d5ffbcb6c1790db58b7aafbdcf01a80.stex" ]
 
 [params]
 
