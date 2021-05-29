@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Components/Collisions/Hurtbox/Hurtbox.gd"
 }, {
+"base": "Resource",
+"class": "ItemResource",
+"language": "GDScript",
+"path": "res://Items/Item.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -96,6 +101,7 @@ _global_script_class_icons={
 "HealthBar": "",
 "Hitbox": "",
 "Hurtbox": "",
+"ItemResource": "",
 "Player": "",
 "PlayerDetectionZone": "",
 "SoftCollision": "",

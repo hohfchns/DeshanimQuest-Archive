@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Items/Item.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+node_path = ""
+item_name = "Health Potion"
+stackable = false
+max_stack_size = 0
+type = 0
