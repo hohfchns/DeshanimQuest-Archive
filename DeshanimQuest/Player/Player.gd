@@ -125,11 +125,9 @@ func __get_player_input():
 		if __interaction_area.get_overlapping_bodies():
 			var object = __interaction_area.get_overlapping_bodies()[0]
 			object.interact()
-			print("interacted with body")
 		elif __interaction_area.get_overlapping_areas():
 			var object = __interaction_area.get_overlapping_areas()[0]
 			object.interact()
-			print("interacted with area")
 
 
 func set_current_item(item_ref):

@@ -12,7 +12,7 @@
 [ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/UI/Death/DeathText.gd" type="Script" id=11]
 [ext_resource path="res://Entities/NPCs/OldMan/OldMan.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Items/Pickups/PotionPickup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Pickups/HealthPotionPickup.tscn" type="PackedScene" id=13]
 
 [node name="SceneRoot" type="Node2D"]
 

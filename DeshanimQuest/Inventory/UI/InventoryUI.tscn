@@ -1,0 +1,586 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Themes/inventory_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Inventory/UI/ItemSlot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/UI/InventoryBackground.png" type="Texture" id=3]
+[ext_resource path="res://Inventory/UI/InventoryUI.gd" type="Script" id=4]
+
+[node name="InventoryUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 176.0
+margin_top = 160.0
+margin_right = 383.0
+margin_bottom = 272.0
+rect_scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.775
+anchor_top = 0.564
+anchor_right = 0.775
+anchor_bottom = 0.564
+margin_left = -360.0
+margin_top = -88.56
+margin_right = -72.0001
+margin_bottom = 80.44
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemsGrid" type="GridContainer" parent="ScrollContainer"]
+margin_right = 267.0
+margin_bottom = 164.0
+custom_constants/hseparation = 3
+columns = 10
+
+[node name="ItemSlot10" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="ItemSlot11" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_right = 51.0
+margin_bottom = 24.0
+
+[node name="ItemSlot12" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_right = 78.0
+margin_bottom = 24.0
+
+[node name="ItemSlot13" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_right = 105.0
+margin_bottom = 24.0
+
+[node name="ItemSlot14" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_right = 132.0
+margin_bottom = 24.0
+
+[node name="ItemSlot15" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_right = 159.0
+margin_bottom = 24.0
+
+[node name="ItemSlot16" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_right = 186.0
+margin_bottom = 24.0
+
+[node name="ItemSlot17" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_right = 213.0
+margin_bottom = 24.0
+
+[node name="ItemSlot18" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_right = 240.0
+margin_bottom = 24.0
+
+[node name="ItemSlot19" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_right = 267.0
+margin_bottom = 24.0
+
+[node name="ItemSlot20" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 28.0
+margin_right = 24.0
+margin_bottom = 52.0
+
+[node name="ItemSlot21" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = 28.0
+margin_right = 51.0
+margin_bottom = 52.0
+
+[node name="ItemSlot22" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 28.0
+margin_right = 78.0
+margin_bottom = 52.0
+
+[node name="ItemSlot23" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_top = 28.0
+margin_right = 105.0
+margin_bottom = 52.0
+
+[node name="ItemSlot24" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = 28.0
+margin_right = 132.0
+margin_bottom = 52.0
+
+[node name="ItemSlot25" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_top = 28.0
+margin_right = 159.0
+margin_bottom = 52.0
+
+[node name="ItemSlot26" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_top = 28.0
+margin_right = 186.0
+margin_bottom = 52.0
+
+[node name="ItemSlot27" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_top = 28.0
+margin_right = 213.0
+margin_bottom = 52.0
+
+[node name="ItemSlot28" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_top = 28.0
+margin_right = 240.0
+margin_bottom = 52.0
+
+[node name="ItemSlot29" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 28.0
+margin_right = 267.0
+margin_bottom = 52.0
+
+[node name="ItemSlot30" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 56.0
+margin_right = 24.0
+margin_bottom = 80.0
+
+[node name="ItemSlot31" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = 56.0
+margin_right = 51.0
+margin_bottom = 80.0
+
+[node name="ItemSlot32" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 56.0
+margin_right = 78.0
+margin_bottom = 80.0
+
+[node name="ItemSlot33" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_top = 56.0
+margin_right = 105.0
+margin_bottom = 80.0
+
+[node name="ItemSlot34" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = 56.0
+margin_right = 132.0
+margin_bottom = 80.0
+
+[node name="ItemSlot35" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_top = 56.0
+margin_right = 159.0
+margin_bottom = 80.0
+
+[node name="ItemSlot36" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_top = 56.0
+margin_right = 186.0
+margin_bottom = 80.0
+
+[node name="ItemSlot37" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_top = 56.0
+margin_right = 213.0
+margin_bottom = 80.0
+
+[node name="ItemSlot38" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_top = 56.0
+margin_right = 240.0
+margin_bottom = 80.0
+
+[node name="ItemSlot39" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 56.0
+margin_right = 267.0
+margin_bottom = 80.0
+
+[node name="ItemSlot40" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 84.0
+margin_right = 24.0
+margin_bottom = 108.0
+
+[node name="ItemSlot41" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = 84.0
+margin_right = 51.0
+margin_bottom = 108.0
+
+[node name="ItemSlot42" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 84.0
+margin_right = 78.0
+margin_bottom = 108.0
+
+[node name="ItemSlot43" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_top = 84.0
+margin_right = 105.0
+margin_bottom = 108.0
+
+[node name="ItemSlot44" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = 84.0
+margin_right = 132.0
+margin_bottom = 108.0
+
+[node name="ItemSlot45" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_top = 84.0
+margin_right = 159.0
+margin_bottom = 108.0
+
+[node name="ItemSlot46" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_top = 84.0
+margin_right = 186.0
+margin_bottom = 108.0
+
+[node name="ItemSlot47" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_top = 84.0
+margin_right = 213.0
+margin_bottom = 108.0
+
+[node name="ItemSlot48" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_top = 84.0
+margin_right = 240.0
+margin_bottom = 108.0
+
+[node name="ItemSlot49" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 84.0
+margin_right = 267.0
+margin_bottom = 108.0
+
+[node name="ItemSlot50" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 112.0
+margin_right = 24.0
+margin_bottom = 136.0
+
+[node name="ItemSlot51" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = 112.0
+margin_right = 51.0
+margin_bottom = 136.0
+
+[node name="ItemSlot52" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 112.0
+margin_right = 78.0
+margin_bottom = 136.0
+
+[node name="ItemSlot53" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_top = 112.0
+margin_right = 105.0
+margin_bottom = 136.0
+
+[node name="ItemSlot54" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = 112.0
+margin_right = 132.0
+margin_bottom = 136.0
+
+[node name="ItemSlot55" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_top = 112.0
+margin_right = 159.0
+margin_bottom = 136.0
+
+[node name="ItemSlot56" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_top = 112.0
+margin_right = 186.0
+margin_bottom = 136.0
+
+[node name="ItemSlot57" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_top = 112.0
+margin_right = 213.0
+margin_bottom = 136.0
+
+[node name="ItemSlot58" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_top = 112.0
+margin_right = 240.0
+margin_bottom = 136.0
+
+[node name="ItemSlot59" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 112.0
+margin_right = 267.0
+margin_bottom = 136.0
+
+[node name="ItemSlot60" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 140.0
+margin_right = 24.0
+margin_bottom = 164.0
+
+[node name="ItemSlot61" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 27.0
+margin_top = 140.0
+margin_right = 51.0
+margin_bottom = 164.0
+
+[node name="ItemSlot62" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 54.0
+margin_top = 140.0
+margin_right = 78.0
+margin_bottom = 164.0
+
+[node name="ItemSlot63" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 81.0
+margin_top = 140.0
+margin_right = 105.0
+margin_bottom = 164.0
+
+[node name="ItemSlot64" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 108.0
+margin_top = 140.0
+margin_right = 132.0
+margin_bottom = 164.0
+
+[node name="ItemSlot65" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_top = 140.0
+margin_right = 159.0
+margin_bottom = 164.0
+
+[node name="ItemSlot66" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 162.0
+margin_top = 140.0
+margin_right = 186.0
+margin_bottom = 164.0
+
+[node name="ItemSlot67" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 189.0
+margin_top = 140.0
+margin_right = 213.0
+margin_bottom = 164.0
+
+[node name="ItemSlot68" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 216.0
+margin_top = 140.0
+margin_right = 240.0
+margin_bottom = 164.0
+
+[node name="ItemSlot69" parent="ScrollContainer/ItemsGrid" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 243.0
+margin_top = 140.0
+margin_right = 267.0
+margin_bottom = 164.0
+
+[node name="HotbarContainer" type="Container" parent="."]
+margin_left = 288.0
+margin_top = 392.0
+margin_right = 664.0
+margin_bottom = 432.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hotbar" type="HBoxContainer" parent="HotbarContainer"]
+rect_scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemSlot1" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="ItemSlot2" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+
+[node name="ItemSlot3" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+
+[node name="ItemSlot4" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+
+[node name="ItemSlot5" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 112.0
+margin_right = 136.0
+margin_bottom = 24.0
+
+[node name="ItemSlot6" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 140.0
+margin_right = 164.0
+margin_bottom = 24.0
+
+[node name="ItemSlot7" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 168.0
+margin_right = 192.0
+margin_bottom = 24.0
+
+[node name="ItemSlot8" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 196.0
+margin_right = 220.0
+margin_bottom = 24.0
+
+[node name="ItemSlot9" parent="HotbarContainer/Hotbar" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 224.0
+margin_right = 248.0
+margin_bottom = 24.0

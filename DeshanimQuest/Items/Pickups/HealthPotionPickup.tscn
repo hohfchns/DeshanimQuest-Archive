@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Items/Items/Utility/HealthPotion/HealingPotion.png" type="Texture" id=1]
-[ext_resource path="res://Items/Pickups/PotionPickup.gd" type="Script" id=2]
+[ext_resource path="res://Items/Pickups/HealthPotionPickup.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.11132
 height = 8.58206
 
-[node name="PotionPickup" type="Area2D"]
+[node name="HealthPotionPickup" type="Area2D"]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
