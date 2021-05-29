@@ -94,10 +94,10 @@ height = 7.8423
 radius = 7.37502
 height = 17.5
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=9]
 radius = 36.0767
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
@@ -112,7 +112,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
@@ -177,6 +177,7 @@ position = Vector2( -1.52588e-05, 15.375 )
 shape = SubResource( 8 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 15.375 )
 collision_layer = 0
 collision_mask = 32
@@ -185,12 +186,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
 autoplay = "HitBlinkStop"
-anims/HitBlinkStart = SubResource( 9 )
-anims/HitBlinkStop = SubResource( 10 )
+anims/HitBlinkStart = SubResource( 10 )
+anims/HitBlinkStop = SubResource( 11 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

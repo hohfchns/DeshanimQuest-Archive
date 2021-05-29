@@ -15,6 +15,31 @@ _global_script_classes=[ {
 "path": "res://Components/VFX/DamageIndicator/DamageNumberIndicator.gd"
 }, {
 "base": "Node",
+"class": "Dialogic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicClass.gd"
+}, {
+"base": "Control",
+"class": "DialogicBackgroundMusic",
+"language": "GDScript",
+"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
+}, {
+"base": "Node",
+"class": "DialogicDefinitionsUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
+}, {
+"base": "Reference",
+"class": "DialogicResources",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicResources.gd"
+}, {
+"base": "Reference",
+"class": "DialogicUtil",
+"language": "GDScript",
+"path": "res://addons/dialogic/Other/DialogicUtil.gd"
+}, {
+"base": "Node",
 "class": "EnemyStats",
 "language": "GDScript",
 "path": "res://Entities/Stats/EnemyStats.gd"
@@ -61,6 +86,11 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "DamageNumberIndicator": "",
+"Dialogic": "",
+"DialogicBackgroundMusic": "",
+"DialogicDefinitionsUtil": "",
+"DialogicResources": "",
+"DialogicUtil": "",
 "EnemyStats": "",
 "FloatingHand": "",
 "HealthBar": "",
@@ -84,6 +114,7 @@ DebugControls="*res://Debug/DebugControls.tscn"
 GameManager="*res://Managers/GameManager.tscn"
 DebugSettings="*res://Debug/DebugSettings.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
+DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 
 [display]
 
@@ -93,7 +124,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 [importer_defaults]
 
