@@ -6,6 +6,11 @@ signal inventory_changed
 export var __items = Array() setget set_items, get_items
 
 
+func __fill_items(index):
+	while (get_items().size() - 1) < index:
+		__items.append(null)
+
+
 func set_items(new_items):
 	var previous_items = __items
 	
@@ -21,15 +26,17 @@ func get_items():
 func set_item(index, item):
 	var previous_item = get_items()[index]
 	
-	while (get_items().size() - 1) < index:
-		__items.append(null)
+	__fill_items(index)
 	
 	__items[index] = item
+	
 	emit_signal("inventory_changed", self)
 	
 	return previous_item
 
 func get_item(index):
+	__fill_items(index)
+	
 	return get_items()[index]
 
 func remove_item(index):
@@ -79,6 +86,12 @@ func add_item(item_name, quantity):
 			var inventory_item = get_items()[i]
 			
 			if not inventory_item:
+				var new_item = {
+				item_reference = item,
+				quantity = min(remaining_quantity, max_stack_size)
+				}
+				set_item(i, new_item)
+				remaining_quantity -= quantity
 				continue
 			
 			if inventory_item.item_reference.item_name != item.item_name:

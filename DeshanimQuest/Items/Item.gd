@@ -2,6 +2,7 @@ extends Resource
 class_name ItemResource
 
 export(String, FILE) var node_path
+export(String, FILE) var pickup_path
 
 export(String) var item_name
 

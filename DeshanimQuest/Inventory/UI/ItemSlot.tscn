@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Inventory/UI/InventorySlot.png" type="Texture" id=1]
 [ext_resource path="res://Inventory/UI/ItemSlot.gd" type="Script" id=2]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 7
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="ItemSlot" type="TextureRect"]
 anchor_right = 0.025
@@ -23,6 +30,22 @@ margin_top = -0.00800037
 margin_right = 0.00799942
 margin_bottom = 0.00799942
 rect_min_size = Vector2( 16, 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuantityText" type="RichTextLabel" parent="."]
+anchor_left = 0.917
+anchor_top = 0.771
+anchor_right = 0.917
+anchor_bottom = 0.771
+margin_left = -52.008
+margin_top = -5.504
+margin_right = -0.00800133
+margin_bottom = 5.496
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right][/right]"
 __meta__ = {
 "_edit_use_anchors_": false
 }

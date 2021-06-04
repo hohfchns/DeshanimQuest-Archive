@@ -197,6 +197,7 @@ anims/HitBlinkStop = SubResource( 11 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 

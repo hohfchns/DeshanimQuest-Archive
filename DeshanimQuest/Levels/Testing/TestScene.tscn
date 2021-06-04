@@ -68,6 +68,46 @@ position = Vector2( 760, 592 )
 [node name="OldMan" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 1019.03, 650.701 )
 
+[node name="PotionPickup" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1110.03, 744.054 )
+amount = 3
+
+[node name="PotionPickup2" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1128, 792 )
+
+[node name="PotionPickup3" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1064, 800 )
+
+[node name="PotionPickup5" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 1016, 808 )
+
+[node name="PotionPickup6" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 960, 792 )
+
+[node name="PotionPickup7" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 952, 760 )
+
+[node name="PotionPickup8" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 952, 736 )
+
+[node name="PotionPickup9" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 920, 736 )
+
+[node name="PotionPickup10" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 880, 736 )
+
+[node name="PotionPickup11" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 840, 736 )
+
+[node name="PotionPickup12" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 856, 720 )
+
+[node name="PotionPickup13" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 912, 720 )
+
+[node name="PotionPickup4" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 992, 776 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 9 )]
@@ -78,18 +118,6 @@ margin_bottom = 56.0
 
 [node name="DeathText" parent="CanvasLayer" instance=ExtResource( 10 )]
 script = ExtResource( 11 )
-
-[node name="PotionPickup" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1110.03, 744.054 )
-
-[node name="PotionPickup2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1128, 792 )
-
-[node name="PotionPickup3" parent="." instance=ExtResource( 13 )]
-position = Vector2( 1064, 800 )
-
-[node name="PotionPickup4" parent="." instance=ExtResource( 13 )]
-position = Vector2( 992, 776 )
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]

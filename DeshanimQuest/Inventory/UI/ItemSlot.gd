@@ -2,16 +2,11 @@ extends TextureRect
 
 onready var __inventory = PlayerInventory.inventory as Inventory
 
-
-
-
-
-func _ready():
-	pass
+var slot_index: int
 
 
 func get_drag_data(position):
-	var item_index = int(self.name[len(self.name) - 1]) - 1
+	var item_index = slot_index
 	var item = __inventory.remove_item(item_index)
 	
 	if item && item.has("item_reference"):
@@ -29,4 +24,8 @@ func can_drop_data(position, data):
 	return data is Dictionary and data.has("item")
 
 func drop_data(position, data):
-	pass
+	var my_item_index = slot_index
+	var my_item = __inventory.get_item(my_item_index)
+	
+	__inventory.swap_items(my_item_index, data.item_index)
+	__inventory.set_item(my_item_index, data.item)
