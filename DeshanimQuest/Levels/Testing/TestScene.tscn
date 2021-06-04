@@ -82,5 +82,14 @@ script = ExtResource( 11 )
 [node name="PotionPickup" parent="." instance=ExtResource( 13 )]
 position = Vector2( 1110.03, 744.054 )
 
+[node name="PotionPickup2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1128, 792 )
+
+[node name="PotionPickup3" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1064, 800 )
+
+[node name="PotionPickup4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 992, 776 )
+
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]

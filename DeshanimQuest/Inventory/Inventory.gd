@@ -7,15 +7,55 @@ export var __items = Array() setget set_items, get_items
 
 
 func set_items(new_items):
+	var previous_items = __items
+	
 	__items = new_items
+	
 	emit_signal("inventory_changed", self)
+	
+	return previous_items
 
 func get_items():
 	return __items
 
+func set_item(index, item):
+	var previous_item = get_items()[index]
+	
+	while (get_items().size() - 1) < index:
+		__items.append(null)
+	
+	__items[index] = item
+	emit_signal("inventory_changed", self)
+	
+	return previous_item
 
 func get_item(index):
 	return get_items()[index]
+
+func remove_item(index):
+	if index > get_items().size() - 1 or index < 0:
+		return null
+	
+	var previous_item = get_items()[index]
+	
+	__items[index] = null
+	
+	emit_signal("inventory_changed", self)
+	
+	return previous_item
+
+func swap_items(item_index, target_item_index):
+#	while (get_items().size() - 1) < item_index:
+#		__items.append(null)
+#	while (get_items().size() - 1) < target_item_index:
+#		__items.append(null)
+	
+	var target_item = get_items()[target_item_index]
+	var item = get_items()[item_index]
+	
+	__items[target_item_index] = item
+	__items[item_index] = target_item
+
 
 func add_item(item_name, quantity):
 	if quantity <= 0:
@@ -37,6 +77,9 @@ func add_item(item_name, quantity):
 				break
 			
 			var inventory_item = get_items()[i]
+			
+			if not inventory_item:
+				continue
 			
 			if inventory_item.item_reference.item_name != item.item_name:
 				continue
