@@ -79,10 +79,10 @@ position = Vector2( 1128, 792 )
 position = Vector2( 1064, 800 )
 
 [node name="PotionPickup5" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1016, 808 )
+position = Vector2( 1024, 760 )
 
 [node name="PotionPickup6" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 960, 792 )
+position = Vector2( 968, 784 )
 
 [node name="PotionPickup7" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 952, 760 )
@@ -91,13 +91,13 @@ position = Vector2( 952, 760 )
 position = Vector2( 952, 736 )
 
 [node name="PotionPickup9" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 920, 736 )
+position = Vector2( 936, 712 )
 
 [node name="PotionPickup10" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 880, 736 )
+position = Vector2( 888, 712 )
 
 [node name="PotionPickup11" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 840, 736 )
+position = Vector2( 824, 712 )
 
 [node name="PotionPickup12" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 856, 720 )

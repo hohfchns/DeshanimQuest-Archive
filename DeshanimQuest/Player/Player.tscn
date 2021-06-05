@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Components/Collisions/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Components/Prototype/WeaponSwapper/WeaponSwapper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Items/EmptyHand/EmptyHand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://Inventory/UI/InventoryUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/UI/Hotbar/PlayerHotbar.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -142,8 +143,7 @@ __hurtbox = NodePath("Hurtbox")
 __interaction_area = NodePath("InteractionArea")
 __body_anim = NodePath("BodySprite/BodyAP")
 __effects_anim = NodePath("EffectsAP")
-
-[node name="WeaponSwapper" parent="." instance=ExtResource( 3 )]
+__hotbar = NodePath("CanvasLayer/PlayerHotbar")
 
 [node name="CameraRemoteTransform" type="RemoteTransform2D" parent="."]
 
@@ -163,6 +163,9 @@ anims/RunRight = SubResource( 6 )
 position = Vector2( 0, 20 )
 
 [node name="HandRotPoint" type="Node2D" parent="HandAxis"]
+
+[node name="EmptyHand" parent="HandAxis/HandRotPoint" instance=ExtResource( 3 )]
+position = Vector2( 12, 0 )
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 visible = false
@@ -195,6 +198,16 @@ anims/HitBlinkStart = SubResource( 10 )
 anims/HitBlinkStop = SubResource( 11 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHotbar" parent="CanvasLayer" instance=ExtResource( 6 )]
+anchor_left = 0.208
+anchor_top = 0.874
+anchor_right = 0.8
+anchor_bottom = 0.963
+margin_left = 0.319992
+margin_top = 0.039978
+margin_right = 0.0
+margin_bottom = -0.0200195
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false

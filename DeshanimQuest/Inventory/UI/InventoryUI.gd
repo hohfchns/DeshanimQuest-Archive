@@ -48,8 +48,6 @@ func drop_data(position, data):
 	pickup.amount = data.item.quantity
 	pickup.global_position = player.global_position
 	
-	print(pickup.name)
-	
 	player.get_parent().add_child(pickup)
 
 

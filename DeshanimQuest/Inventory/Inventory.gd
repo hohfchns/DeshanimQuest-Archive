@@ -51,6 +51,15 @@ func remove_item(index):
 	
 	return previous_item
 
+func remove_item_amt(index, amount):
+	__items[index].quantity -= amount
+	
+	if __items[index].quantity <= 0:
+		remove_item(index)
+		return
+	
+	emit_signal("inventory_changed", self)
+
 func swap_items(item_index, target_item_index):
 #	while (get_items().size() - 1) < item_index:
 #		__items.append(null)
@@ -111,3 +120,4 @@ func add_item(item_name, quantity):
 		remaining_quantity -= new_item.quantity
 	
 	emit_signal("inventory_changed", self)
+

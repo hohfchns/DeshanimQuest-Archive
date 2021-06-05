@@ -24,6 +24,8 @@ export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPla
 export(NodePath) onready var __effects_anim = get_node(__effects_anim) as AnimationPlayer
 
 #export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
+export(NodePath) onready var __hotbar = get_node(__hotbar) as HBoxContainer
+
 
 var __can_attack: bool = true
 var __can_move: bool = true
@@ -52,7 +54,7 @@ func _physics_process(delta):
 	
 	__get_player_input()
 	
-	__last_input_vector = __input_vector if __input_vector else __last_input_vector 
+	__last_input_vector = __input_vector if __input_vector else __last_input_vector
 
 
 func __connect_signal_functions():
@@ -62,6 +64,8 @@ func __connect_signal_functions():
 	__hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	__hurtbox.connect("invincibility_started", self, "_on_hurtbox_invincibility_started")
 	__hurtbox.connect("invincibility_ended", self, "_on_hurtbox_invincibility_ended")
+	
+	__hotbar.connect("selected_item_changed", self, "_on_selected_item_changed")
 
 
 func __calc_input_vector():
@@ -103,7 +107,6 @@ func __set_hand_rot():
 		__hand_axis.scale.x = -1
 	
 	__hand_rot_point.look_at(get_global_mouse_position())
-	
 
 
 func __play_current_item_anim(var anim_name: String):
@@ -130,15 +133,21 @@ func __get_player_input():
 			object.interact()
 
 
-func set_current_item(item_ref):
+func set_current_item(item_ref, slot_index):
+	for node in __hand_rot_point.get_children():
+		__hand_rot_point.remove_child(node)
+	
 	__hand_rot_point.add_child(item_ref)
-	if __hand_rot_point.get_children().size() > 1:
-		__current_item = __hand_rot_point.get_child(1)
-		__hand_rot_point.get_child(0).queue_free()
-	else:
-		__current_item = __hand_rot_point.get_child(0)
+	
+	for node in __hand_rot_point.get_children():
+		if node.name == item_ref.name:
+			__current_item = node
+			break
 	
 	__current_item.position.x = __hand_distance
+	
+	if "slot_index" in __current_item:
+		__current_item.slot_index = slot_index
 
 
 func _on_stats_health_changed():
@@ -147,6 +156,10 @@ func _on_stats_health_changed():
 
 func _on_stats_no_health():
 	queue_free()
+
+
+func _on_selected_item_changed(item_instance, slot_index):
+	set_current_item(item_instance, slot_index)
 
 
 func _on_hurtbox_entered(area):

@@ -20,6 +20,9 @@ func set_health(value):
 func get_health():
 	return __health
 
+func add_health(value):
+	set_health(min(get_health() + value, get_max_health()))
+
 func subtract_health(value):
 	set_health(__health - value)
 
