@@ -1,12 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://Items/Items/Utility/HealthPotion/HealingPotion.png" type="Texture" id=1]
 [ext_resource path="res://Items/Item.gd" type="Script" id=2]
+[ext_resource path="res://Items/Items/Utility/HealthPotion/HealthPotion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Pickups/Utility/HealthPotionPickup.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 2 )
-node_path = "res://Items/Items/Utility/HealthPotion/HealthPotion.tscn"
-pickup_path = "res://Items/Pickups/Utility/HealthPotionPickup.tscn"
+node_path = ExtResource( 3 )
+pickup_path = ExtResource( 4 )
 item_name = "Health Potion"
 stackable = true
 max_stack_size = 3

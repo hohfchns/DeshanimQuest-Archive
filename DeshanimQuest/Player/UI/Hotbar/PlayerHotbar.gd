@@ -52,7 +52,7 @@ func update_selected_slot():
 		return
 	
 	var item_path = __inventory.get_items()[__selected_slot_index].item_reference.node_path
-	var item_to_set_active = load(item_path).instance()
+	var item_to_set_active = item_path.instance()
 	
 	emit_signal("selected_item_changed", item_to_set_active, __selected_slot_index)
 	
