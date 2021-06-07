@@ -19,6 +19,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+item_icon = NodePath("ItemIcon")
+quantity_text = NodePath("QuantityText")
 
 [node name="ItemIcon" type="TextureRect" parent="."]
 anchor_left = 0.167

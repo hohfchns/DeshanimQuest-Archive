@@ -31,11 +31,14 @@ func _on_inventory_changed(inventory):
 		var item_slot = find_node("ItemSlot%s" % (i + 1))
 		
 		if __inventory.get_item(i):
-			item_slot.get_node("ItemIcon").texture = __inventory.get_item(i).item_reference.icon
-			item_slot.get_node("QuantityText").bbcode_text = "[right]%s[/right]" % str(__inventory.get_item(i).quantity)
+			item_slot.item_icon.texture = __inventory.get_item(i).item_reference.icon
+			if __inventory.get_item(i).quantity > 1:
+				item_slot.quantity_text.bbcode_text = "[right]%s[/right]" % str(__inventory.get_item(i).quantity)
+			else:
+				item_slot.quantity_text.bbcode_text = ""
 		else:
-			item_slot.get_node("ItemIcon").texture = null
-			item_slot.get_node("QuantityText").bbcode_text = ""
+			item_slot.item_icon.texture = null
+			item_slot.quantity_text.bbcode_text = ""
 
 
 func can_drop_data(position, data):

@@ -4,6 +4,8 @@ onready var __inventory = PlayerInventory.inventory as Inventory
 
 var slot_index: int
 
+export(NodePath) onready var item_icon = get_node(item_icon) as TextureRect
+export(NodePath) onready var quantity_text = get_node(quantity_text) as RichTextLabel
 
 func get_drag_data(position):
 	var item_index = slot_index
