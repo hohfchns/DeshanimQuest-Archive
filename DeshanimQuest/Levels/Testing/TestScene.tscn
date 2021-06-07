@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,7 +12,9 @@
 [ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/UI/Death/DeathText.gd" type="Script" id=11]
 [ext_resource path="res://Entities/NPCs/OldMan/OldMan.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Items/Pickups/HealthPotionPickup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Pickups/Utility/HealthPotionPickup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Pickups/Weapons/Guns/GlockPickup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/Pickups/Weapons/Melee/SwordPickup.tscn" type="PackedScene" id=15]
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -42,7 +44,7 @@ tile_data = PoolIntArray( 1114137, 0, 0, 1114138, 0, 1, 1114139, 0, 1, 1114140, 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 1040, 720 )
 
-[node name="CameraRemoteTransform" parent="YSort/Player" index="1"]
+[node name="CameraRemoteTransform" parent="YSort/Player" index="0"]
 remote_path = NodePath("../../../PlayerCamera")
 
 [node name="Entities" type="YSort" parent="YSort"]
@@ -118,6 +120,12 @@ margin_bottom = 56.0
 
 [node name="DeathText" parent="CanvasLayer" instance=ExtResource( 10 )]
 script = ExtResource( 11 )
+
+[node name="GlockPickup" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1098.1, 705.268 )
+
+[node name="SwordPickup" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1077.97, 684.079 )
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]

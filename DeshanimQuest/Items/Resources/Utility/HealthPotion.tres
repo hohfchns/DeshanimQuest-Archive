@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 node_path = "res://Items/Items/Utility/HealthPotion/HealthPotion.tscn"
-pickup_path = "res://Items/Pickups/HealthPotionPickup.tscn"
+pickup_path = "res://Items/Pickups/Utility/HealthPotionPickup.tscn"
 item_name = "Health Potion"
 stackable = true
 max_stack_size = 3

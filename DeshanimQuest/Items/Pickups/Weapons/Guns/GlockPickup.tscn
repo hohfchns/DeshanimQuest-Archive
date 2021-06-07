@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Items/Pickups/Pickup.gd" type="Script" id=2]
+[ext_resource path="res://Items/Items/Weapons/Guns/Glock/Glock.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 7
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.95662
+height = 2.5842
+
+[node name="GlockPickup" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 2 )
+__amount_text = NodePath("AmountText")
+item_name = "Glock"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 32 )
+texture = ExtResource( 3 )
+
+[node name="AmountText" type="Label" parent="."]
+margin_left = -24.0
+margin_top = 32.0
+margin_right = 8.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 32 )
+shape = SubResource( 2 )

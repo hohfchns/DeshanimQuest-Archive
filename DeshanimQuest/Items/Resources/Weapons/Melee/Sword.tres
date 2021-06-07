@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 node_path = "res://Items/Items/Weapons/Melee/Sword/Sword.tscn"
+pickup_path = "res://Items/Pickups/Weapons/Melee/SwordPickup.tscn"
 item_name = "Sword"
 stackable = false
 max_stack_size = 1

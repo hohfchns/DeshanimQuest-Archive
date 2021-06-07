@@ -43,6 +43,7 @@ margin_left = -52.008
 margin_top = -5.504
 margin_right = -0.00800133
 margin_bottom = 5.496
+mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[right][/right]"
