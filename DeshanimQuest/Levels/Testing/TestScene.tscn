@@ -110,6 +110,12 @@ position = Vector2( 912, 720 )
 [node name="PotionPickup4" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 992, 776 )
 
+[node name="GlockPickup" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( 1098.1, 705.268 )
+
+[node name="SwordPickup" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1077.97, 684.079 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 9 )]
@@ -120,12 +126,6 @@ margin_bottom = 56.0
 
 [node name="DeathText" parent="CanvasLayer" instance=ExtResource( 10 )]
 script = ExtResource( 11 )
-
-[node name="GlockPickup" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1098.1, 705.268 )
-
-[node name="SwordPickup" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1077.97, 684.079 )
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]
