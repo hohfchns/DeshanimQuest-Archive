@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,13 @@
 [ext_resource path="res://Items/Pickups/Utility/HealthPotionPickup.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Pickups/Weapons/Guns/GlockPickup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Items/Pickups/Weapons/Melee/SwordPickup.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/Testing/ControlsButton.gd" type="Script" id=16]
+[ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=17]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=18]
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 18 )
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -126,6 +133,42 @@ margin_bottom = 56.0
 
 [node name="DeathText" parent="CanvasLayer" instance=ExtResource( 10 )]
 script = ExtResource( 11 )
+
+[node name="ControlsText" type="Label" parent="."]
+visible = false
+margin_left = 823.297
+margin_top = 603.124
+margin_right = 1543.3
+margin_bottom = 754.124
+custom_fonts/font = SubResource( 1 )
+text = "Welcome to DeshanimQuest!
+Controls are:
+Press F to go fullscreen
+Press Q to quit
+Aim and attack with the mouse (some
+weapons have left and right click attacks)
+Press E to interact (talk to npcs, pick up items, etc.)
+Press I to open inventory and drag
+items to move them around the inventory,
+or drag them out of it to drop them
+Use scroll wheel to change between the items in your hotbar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsButton" type="Button" parent="."]
+margin_left = 858.926
+margin_top = 570.1
+margin_right = 1067.93
+margin_bottom = 595.1
+custom_fonts/font = ExtResource( 17 )
+text = "Click to show controls"
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ControlsButton" to="ControlsButton" method="_on_ControlsButton_pressed"]
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]

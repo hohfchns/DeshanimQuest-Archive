@@ -112,6 +112,23 @@ func add_item(item_name, quantity):
 				remaining_quantity -= inventory_item.quantity - original_quantity
 	
 	while remaining_quantity > 0:
+		for i in get_items().size():
+			var inventory_item = get_items()[i]
+			
+			if not inventory_item:
+				var new_item = {
+				item_reference = item,
+				quantity = min(remaining_quantity, max_stack_size)
+				}
+				
+				set_item(i, new_item)
+				
+				remaining_quantity -= new_item.quantity
+				
+				emit_signal("inventory_changed", self)
+				
+				return
+		
 		var new_item = {
 			item_reference = item,
 			quantity = min(remaining_quantity, max_stack_size)

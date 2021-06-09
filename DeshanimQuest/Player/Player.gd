@@ -60,12 +60,17 @@ func _physics_process(delta):
 func __connect_signal_functions():
 	__stats.connect("health_changed", self, "_on_stats_health_changed")
 	__stats.connect("no_health", self, "_on_stats_no_health")
+	
 	connect("tree_entered", self, "_on_tree_entered")
+	
 	__hurtbox.connect("area_entered", self, "_on_hurtbox_entered")
 	__hurtbox.connect("invincibility_started", self, "_on_hurtbox_invincibility_started")
 	__hurtbox.connect("invincibility_ended", self, "_on_hurtbox_invincibility_ended")
 	
 	__hotbar.connect("selected_item_changed", self, "_on_selected_item_changed")
+	
+	GameEvents.connect("dialogue_started", self, "_on_dialogue_started")
+	GameEvents.connect("dialogue_ended", self, "_on_dialogue_ended")
 
 
 func __calc_input_vector():
@@ -171,6 +176,13 @@ func _on_hurtbox_invincibility_started():
 
 func _on_hurtbox_invincibility_ended():
 	__effects_anim.play("HitBlinkStop")
+
+
+func _on_dialogue_started():
+	__hotbar.visible = false
+
+func _on_dialogue_ended():
+	__hotbar.visible = true
 
 
 func _on_tree_entered():

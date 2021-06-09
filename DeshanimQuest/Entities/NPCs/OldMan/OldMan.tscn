@@ -31,4 +31,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="DialogueCanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
