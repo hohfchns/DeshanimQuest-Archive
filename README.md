@@ -2,6 +2,8 @@
 
 This game is a passion project. It will most likely not be monitized in any way.
 
+The game is developed in the Godot game engine. It is programmed mostly on Linux, so Linux support is guaranteed and tested.
+
 **Disclaimers**
 
 This game is almost fully in Hebrew, and English translations are unlikely.
