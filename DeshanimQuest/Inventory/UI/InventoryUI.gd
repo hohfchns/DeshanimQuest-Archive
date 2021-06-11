@@ -45,6 +45,8 @@ func can_drop_data(position, data):
 	return data is Dictionary and data.has("item")
 
 func drop_data(position, data):
+	# Instances the item pickup at the player's position
+	
 	var pickup = data.item.item_reference.pickup_path.instance()
 	var player = get_parent().get_parent() as Player
 	
