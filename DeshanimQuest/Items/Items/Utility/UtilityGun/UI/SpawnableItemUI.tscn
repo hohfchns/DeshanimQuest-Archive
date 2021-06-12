@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Entities/Enemies/Slime/Slime.png" type="Texture" id=2]
+[ext_resource path="res://Items/Items/Utility/UtilityGun/UI/SpawnableItemUI.gd" type="Script" id=3]
+[ext_resource path="res://Items/Items/Utility/UtilityGun/UI/SpawnButton.gd" type="Script" id=4]
+
+[node name="SpawnableItemUI" type="Control"]
+margin_left = -128.0
+margin_top = -16.0
+margin_bottom = 16.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+spawn_button = NodePath("HBoxContainer/SpawnButton")
+spawn_texture = NodePath("HBoxContainer/SpawnableTexture")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_bottom = 32.0
+alignment = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnButton" type="Button" parent="HBoxContainer"]
+margin_left = 22.0
+margin_right = 92.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "Spawn"
+script = ExtResource( 4 )
+
+[node name="SpawnableTexture" type="TextureRect" parent="HBoxContainer"]
+margin_left = 96.0
+margin_right = 128.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}

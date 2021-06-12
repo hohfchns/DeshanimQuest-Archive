@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Components/Collisions/SoftCollision/SoftCollision.gd"
 }, {
+"base": "Resource",
+"class": "SpawnableResource",
+"language": "GDScript",
+"path": "res://Items/Items/Utility/UtilityGun/SpawnableResource.gd"
+}, {
 "base": "Node2D",
 "class": "WanderController",
 "language": "GDScript",
@@ -117,6 +122,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerDetectionZone": "",
 "SoftCollision": "",
+"SpawnableResource": "",
 "WanderController": ""
 }
 
@@ -135,6 +141,7 @@ DebugSettings="*res://Debug/DebugSettings.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 ItemDatabase="*res://Managers/ItemDatabase.gd"
+SpawnableItemsDatabase="*res://Items/Items/Utility/UtilityGun/SpawnableItemsDatabase.gd"
 PlayerInventory="*res://Inventory/PlayerInventory.tscn"
 
 [display]

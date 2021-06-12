@@ -119,6 +119,8 @@ func __play_current_item_anim(var anim_name: String):
 	ap.play(anim_name)
 
 func __use_current_item(action):
+	if GameManager.is_mouse_on_button:
+		return
 	__current_item.use(action)
 
 

@@ -1,5 +1,7 @@
 extends Area2D
 
+export(Vector2) var sprite_offset
+
 export(NodePath) onready var __amount_text = get_node(__amount_text) as Label
 
 export(String) var item_name

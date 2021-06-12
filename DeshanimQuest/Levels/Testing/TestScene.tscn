@@ -1,20 +1,17 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/GrassLevel/GrassesTilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Misc/TargetDummy/TargetDummy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Pickups/Utility/UtilityGunPickup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/GrassLevel/CliffTilemap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/UI/Death/DeathText.gd" type="Script" id=11]
 [ext_resource path="res://Entities/NPCs/OldMan/OldMan.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Items/Pickups/Utility/HealthPotionPickup.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Items/Pickups/Weapons/Guns/GlockPickup.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Items/Pickups/Weapons/Melee/SwordPickup.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/Testing/ControlsButton.gd" type="Script" id=16]
 [ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=18]
@@ -59,69 +56,11 @@ remote_path = NodePath("../../../PlayerCamera")
 [node name="TargetDummy" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1192, 736 )
 
-[node name="Slime" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1220, 471.892 )
-
-[node name="Slime2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1464.14, 742.638 )
-
-[node name="Slime3" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1217.33, 1009.45 )
-
-[node name="Slime4" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 704, 856 )
-
-[node name="Slime5" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 760, 592 )
-
 [node name="OldMan" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 1019.03, 650.701 )
 
-[node name="PotionPickup" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1110.03, 744.054 )
-amount = 3
-
-[node name="PotionPickup2" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1128, 792 )
-
-[node name="PotionPickup3" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1064, 800 )
-
-[node name="PotionPickup5" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 1024, 760 )
-
-[node name="PotionPickup6" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 968, 784 )
-
-[node name="PotionPickup7" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 952, 760 )
-
-[node name="PotionPickup8" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 952, 736 )
-
-[node name="PotionPickup9" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 936, 712 )
-
-[node name="PotionPickup10" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 888, 712 )
-
-[node name="PotionPickup11" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 824, 712 )
-
-[node name="PotionPickup12" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 856, 720 )
-
-[node name="PotionPickup13" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 912, 720 )
-
-[node name="PotionPickup4" parent="YSort" instance=ExtResource( 13 )]
-position = Vector2( 992, 776 )
-
-[node name="GlockPickup" parent="YSort" instance=ExtResource( 14 )]
-position = Vector2( 1098.1, 705.268 )
-
-[node name="SwordPickup" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 1077.97, 684.079 )
+[node name="UtilityGunPickup" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 996.025, 684.21 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -151,7 +90,10 @@ Press E to interact (talk to npcs, pick up items, etc.)
 Press I to open inventory and drag
 items to move them around the inventory,
 or drag them out of it to drop them
-Use scroll wheel to change between the items in your hotbar"
+Use scroll wheel to change between the items in your hotbar
+
+To use the utility gun just pick it up, open the spawnables menu
+and choose which spawnable to spawn, then shoot!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -162,7 +104,7 @@ margin_top = 570.1
 margin_right = 1067.93
 margin_bottom = 595.1
 custom_fonts/font = ExtResource( 17 )
-text = "Click to show controls"
+text = "Click to show/hide how to play"
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false

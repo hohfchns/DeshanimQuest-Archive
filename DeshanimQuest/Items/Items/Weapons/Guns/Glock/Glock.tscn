@@ -253,13 +253,11 @@ texture = ExtResource( 5 )
 
 [node name="FlashSprite" type="Sprite" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 11.25, -2.75 )
-scale = Vector2( 1, 0.5 )
 texture = ExtResource( 6 )
 
 [node name="HandSprite" type="Sprite" parent="."]
-position = Vector2( -3.6, 0.5 )
+position = Vector2( -3.5, 1.5 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 4 )
 

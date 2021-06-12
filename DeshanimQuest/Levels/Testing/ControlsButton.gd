@@ -6,4 +6,4 @@ func _ready():
 
 
 func _on_ControlsButton_pressed():
-	get_parent().get_node("ControlsText").visible = true
+	get_parent().get_node("ControlsText").visible = not get_parent().get_node("ControlsText").visible

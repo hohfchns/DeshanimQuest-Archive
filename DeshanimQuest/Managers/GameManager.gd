@@ -2,6 +2,8 @@ extends Node
 
 var __player_ref = null
 
+var is_mouse_on_button = false
+
 # Should be called by the player when it enters the scene
 func generate_player_ref():
 	__player_ref = get_node("/root/SceneRoot/YSort/Player")
