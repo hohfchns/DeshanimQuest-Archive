@@ -8,10 +8,9 @@
 [ext_resource path="res://Items/Items/Utility/UtilityGun/ProcessMaterial.tres" type="Material" id=6]
 [ext_resource path="res://Items/Items/Utility/UtilityGun/UI/SpawnablesButton.tscn" type="PackedScene" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Enter"
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite/LightsSprite:rotation_degrees")
@@ -38,8 +37,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Spawn"
+[sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("LineParent/SpawnPosLine:visible")
@@ -70,7 +68,7 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 __animation_player = NodePath("AnimationPlayer")
 __spawn_pos_line = NodePath("LineParent/SpawnPosLine")
-__spawnables_list_ui = NodePath("CanvasLayer/SpawnablesScrollContainer/SpawnablesVBoxContainer")
+__spawnables_list_ui = NodePath("CanvasLayer/SpawnablesList/SpawnablesListContainer")
 
 [node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -86,7 +84,7 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 4 )
 
 [node name="Particles2D" type="Particles2D" parent="BodySprite"]
-material = SubResource( 3 )
+material = SubResource( 1 )
 position = Vector2( -1.5, -2.5 )
 scale = Vector2( 0.05, 0.05 )
 process_material = ExtResource( 6 )
@@ -102,31 +100,33 @@ default_color = Color( 1, 0.996078, 0.933333, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Enter"
-anims/Enter = SubResource( 1 )
-anims/Spawn = SubResource( 2 )
+anims/Enter = SubResource( 2 )
+anims/Spawn = SubResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
 
 [node name="SpawnablesButton" parent="CanvasLayer" instance=ExtResource( 7 )]
-__spawnables_list = NodePath("../SpawnablesScrollContainer")
+__spawnables_list = NodePath("../SpawnablesList")
 
-[node name="SpawnablesScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-anchor_left = 0.525
-anchor_top = 0.104
-anchor_right = 0.525
-anchor_bottom = 0.104
-margin_left = -440.0
-margin_top = 7.84
-margin_right = 440.0
-margin_bottom = 199.84
+[node name="SpawnablesList" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.541
+anchor_top = 0.119
+anchor_right = 0.541
+anchor_bottom = 0.119
+margin_left = -425.36
+margin_top = -0.260002
+margin_right = 424.64
+margin_bottom = 463.74
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpawnablesVBoxContainer" type="VBoxContainer" parent="CanvasLayer/SpawnablesScrollContainer"]
+[node name="SpawnablesListContainer" type="VBoxContainer" parent="CanvasLayer/SpawnablesList"]
 margin_right = 850.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 850, 40 )
-custom_constants/separation = 50
-alignment = 2
+custom_constants/separation = 25
+alignment = 1

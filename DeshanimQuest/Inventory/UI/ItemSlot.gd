@@ -49,9 +49,18 @@ func drop_data(position, data):
 	
 	if target_item.quantity < max_stack_size:
 		var original_quantity = target_item.quantity
-		target_item.quantity = min(original_quantity + remaining_quantity, max_stack_size)
+		var new_target_quantity = target_item.quantity
 		
-		remaining_quantity -= target_item.quantity - original_quantity
+		new_target_quantity = min(original_quantity + remaining_quantity, max_stack_size)
+		
+		var new_target_item = {
+			item_reference = target_item.item_reference,
+			quantity = new_target_quantity
+		}
+		
+		__inventory.set_item(my_item_index, new_target_item)
+		
+		remaining_quantity -= __inventory.get_item(my_item_index).quantity - original_quantity
 	
 	var new_dragged_item = {
 		item_reference = data.item.item_reference,
