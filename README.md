@@ -8,6 +8,6 @@ The game is programmed mostly on Linux, so Linux support is guaranteed and teste
 
 **Disclaimers**
 
-This game is almost fully in Hebrew, and English translations are unlikely.
+This game is going to be almost fully in Hebrew (debug purposes and early phases might be English), and English translations are unlikely.
 
 This game contains a lot of references to our school and real life, so some confusion is unavoidable for people who don't know us.
