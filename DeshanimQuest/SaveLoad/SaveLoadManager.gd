@@ -1,5 +1,7 @@
 extends Node
 
+signal slot_changed(slot_index)
+
 
 func __save_to_file(path: String, data: Dictionary):
 	var file = File.new()
@@ -28,10 +30,10 @@ func __load_from_file(path):
 	return data
 
 
-func get_cur_save_data() -> Dictionary:
+func generate_cur_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	
-	save_data["last_scene"] = get_tree().current_scene
+	save_data["last_scene"] = get_tree().get_current_scene().filename
 	
 	save_data["player"] = {}
 	save_data["player"]["max_health"] = PlayerStats.get_max_health()
@@ -43,7 +45,7 @@ func get_cur_save_data() -> Dictionary:
 
 func load_data(data: Dictionary):
 	if "last_scene" in data:
-		get_tree().change_scene_to(data["last_scene"])
+		get_tree().change_scene_to(load(data["last_scene"]))
 	
 	if "player" in data:
 		if "max_health" in data["player"]:
@@ -55,20 +57,27 @@ func load_data(data: Dictionary):
 
 
 func save_to_slot(slot_index: int):
-	var dir_path = "user:://Saves/"
-	var path = "%ssave%s.json" % [dir_path, slot_index]
+	var dir_path = "user://Saves/save%s" % slot_index
+	var path = "%s/save%s.json" % [dir_path, slot_index]
 	
 	var dir = Directory.new()
 	
 	if not dir.dir_exists(dir_path):
 		dir.make_dir_recursive(dir_path)
 	
-	var save_data: Dictionary = get_cur_save_data()
+	var save_data: Dictionary = generate_cur_save_data()
+	
+	var img = get_viewport().get_texture().get_data()
+	img.flip_y()
+#	yield(get_tree(), "idle_frame")
+	img.save_png("%s/save%s.png" % [dir_path, slot_index])
 	
 	__save_to_file(path, save_data)
+	
+	emit_signal("slot_changed", slot_index)
 
 func load_from_slot(slot_index: int):
-	var path = "user://Saves/save%s.json" % slot_index
+	var path = "user://Saves/save%s/save%s.json" % [slot_index, slot_index]
 	
 	var save_data: Dictionary = __load_from_file(path)
 	

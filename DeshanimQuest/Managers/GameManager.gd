@@ -6,7 +6,6 @@ var is_mouse_on_button = false
 
 func _ready():
 	SaveLoad.save_to_slot(0)
-	print(OS.get_user_data_dir())
 
 # Should be called by the player when it enters the scene
 func generate_player_ref():
