@@ -140,7 +140,7 @@ GameEvents="*res://Managers/GameEvents.tscn"
 DebugSettings="*res://Debug/DebugSettings.tscn"
 PlayerStats="*res://Player/PlayerStats.tscn"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
-ItemDatabase="*res://Managers/ItemDatabase.gd"
+ItemDatabase="*res://Items/ItemDatabase.gd"
 SpawnableItemsDatabase="*res://Items/Items/Utility/UtilityGun/SpawnableItemsDatabase.gd"
 PlayerInventory="*res://Inventory/PlayerInventory.tscn"
 
