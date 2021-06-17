@@ -28,14 +28,12 @@ func __add_dir_contents(dir: Directory, files: Array, directories: Array):
 		var path = dir.get_current_dir() + "/" + file_name
 
 		if dir.current_is_dir():
-			print("Found directory: %s" % path)
 			var subDir = Directory.new()
 			subDir.open(path)
 			subDir.list_dir_begin(true, false)
 			directories.append(path)
 			__add_dir_contents(subDir, files, directories)
 		else:
-			print("Found file: %s" % path)
 			files.append(path)
 
 		file_name = dir.get_next()

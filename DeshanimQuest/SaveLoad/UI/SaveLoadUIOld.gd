@@ -8,7 +8,7 @@ export(NodePath) onready var __save_close_button = get_node(__save_close_button)
 export(NodePath) onready var __prev_button = get_node(__prev_button) as Button
 export(NodePath) onready var __next_button = get_node(__next_button) as Button
 
-var __save_load_slot_scene = preload("res://SaveLoad/UI/SaveLoadSlot.tscn")
+var __save_load_slot = preload("res://SaveLoad/UI/SaveLoadSlot.tscn")
 
 onready var __slots_per_page = __slot_grid.get_child_count()
 
@@ -27,24 +27,36 @@ func __connect_signals():
 	__next_button.connect("pressed", self, "__on_next_button_pressed")
 
 
-func __update_slot(slot_idx):
-	pass
-
-
-func __load_page(page_idx):
-	for slot in __slot_grid.get_children():
-		slot.visible = false
+func __update_slot(slot_idx: int):
+#	var slot = __slot_grid.find_node("SaveLoadSlot%s" % (slot_idx + 1))
+	var slot = __slot_grid.get_child(slot_idx)
+	var slots_data = SlotsData.get_slots_data()
 	
-	var page_start = page_idx * __slots_per_page + 1
-	var page_end = (page_idx * __slots_per_page) + __slots_per_page
-	for slot_idx in range(page_start - 1, page_end):
-		if __slot_grid.get_child_count() < page_start:
-			for i in range(__slots_per_page):
-				__slot_grid.add_child(__save_load_slot_scene.instance())
+	if not slots_data or not slots_data[slot_idx]:
+		slot.screenshot_rect.texture = null
+		return
+	
+	slot.screenshot_rect.texture = load("user://Saves/save%s.png" % slot_idx)
+
+
+func __load_page(page_idx: int):
+	for child in __slot_grid.get_children():
+		child.free()
+	
+	while __slot_grid.get_child_count() < __slots_per_page:
+		var slot = __save_load_slot.instance()
+		slot.slot_idx = get_child_count() - 1
+		__slot_grid.add_child(slot)
 		
-		__slot_grid.get_child(slot_idx).visible = true
+#		slot.name = "SaveLoadSlot%s" % get_child_count()
 		
-		__update_slot(slot_idx)
+		__update_slot(get_child_count() - 1)
+	
+	var slots_data = SlotsData.get_slots_data()
+	
+	if slots_data.size() <= __current_page_idx * __slots_per_page:
+		for i in range(__slots_per_page):
+			SlotsData.add_slot_data(null)
 	
 	__current_page_idx = page_idx
 

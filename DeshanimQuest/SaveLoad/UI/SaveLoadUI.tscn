@@ -1,42 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://UI/Themes/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://SaveLoad/UI/SaveLoadUI.gd" type="Script" id=2]
 [ext_resource path="res://SaveLoad/UI/SlotGrid.gd" type="Script" id=3]
 [ext_resource path="res://SaveLoad/UI/SaveLoadSlot.tscn" type="PackedScene" id=4]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.207843, 0.211765, 0.223529, 1 )
 
 [node name="SaveLoadUI" type="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-__save_close_button = NodePath("Save/CloseButton")
+__slot_grid = NodePath("Save/SlotGrid")
+__save_close_button = NodePath("Save/ButtonsRow/CloseHBox/CloseButton")
+__prev_button = NodePath("Save/ButtonsRow/ButtonsHBox/Previous")
+__next_button = NodePath("Save/ButtonsRow/ButtonsHBox/Next")
 
 [node name="Save" type="Tabs" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 29.0
-
-[node name="CloseButton" type="Button" parent="Save"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -44.0
-margin_right = -21.0
-margin_bottom = -19.0
-text = "Close"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = 1.0
+margin_top = 22.0
+margin_right = -1.0
+margin_bottom = -1.0
 
 [node name="SlotGrid" type="GridContainer" parent="Save"]
 anchor_left = 0.5
@@ -55,7 +43,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveLoadSlot" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot1" parent="Save/SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -290,3 +278,48 @@ margin_left = 780.0
 margin_top = 303.0
 margin_right = 924.0
 margin_bottom = 384.0
+
+[node name="ButtonsRow" type="HBoxContainer" parent="Save"]
+margin_left = 16.0
+margin_top = 443.0
+margin_right = 944.0
+margin_bottom = 491.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="Save/ButtonsRow"]
+margin_right = 864.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Previous" type="Button" parent="Save/ButtonsRow/ButtonsHBox"]
+margin_left = 329.0
+margin_right = 422.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 93, 48 )
+text = "Previous"
+
+[node name="Next" type="Button" parent="Save/ButtonsRow/ButtonsHBox"]
+margin_left = 442.0
+margin_right = 535.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 93, 48 )
+text = "Next"
+
+[node name="CloseHBox" type="HBoxContainer" parent="Save/ButtonsRow"]
+margin_left = 868.0
+margin_right = 928.0
+margin_bottom = 48.0
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="Save/ButtonsRow/CloseHBox"]
+margin_right = 60.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 60, 48 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
