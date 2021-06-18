@@ -14,6 +14,9 @@ onready var __slots_per_page = __slot_grid.get_child_count()
 
 var __current_page_idx = 0
 
+#var __sd = SlotsData
+var slots_data = []
+
 
 func _ready():
 	__connect_signals()
@@ -28,7 +31,12 @@ func __connect_signals():
 
 
 func __update_slot(slot_idx):
-	pass
+	if not slots_data or not slots_data[slot_idx]:
+		__slot_grid.get_child(slot_idx).screenshot_rect.texture = null
+		return
+	
+	var screenshot = load("user://Saves/save%s/save%s.png" % [slot_idx, slot_idx])
+	__slot_grid.get_child(slot_idx).screenshot_rect.texture = screenshot
 
 
 func __load_page(page_idx):
