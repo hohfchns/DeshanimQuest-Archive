@@ -1,24 +1,70 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SaveLoad/UI/SaveLoadSlot.gd" type="Script" id=1]
+[ext_resource path="res://Player/Portraits/EmptyPortrait.png" type="Texture" id=2]
+[ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=3]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 9
+font_data = ExtResource( 4 )
 
 [node name="SaveLoadSlot" type="Panel"]
-anchor_left = -0.075
+anchor_left = -0.083
 anchor_top = -0.074
-anchor_right = 0.075
+anchor_right = 0.083
 anchor_bottom = 0.074
+margin_left = -0.319992
 margin_top = -0.0400009
+margin_right = 0.319992
 margin_bottom = 1.04
 rect_min_size = Vector2( 144, 81 )
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-screenshot_rect = NodePath("Screenshot")
+icon_rect = NodePath("CharacterIcon")
+slot_name = NodePath("SlotName")
+level_label = NodePath("LevelLabel")
 
-[node name="Screenshot" type="TextureRect" parent="."]
+[node name="CharacterIcon" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -32.5
+margin_right = 72.0
+margin_bottom = 31.5
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 2 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlotName" type="Label" parent="."]
 anchor_right = 1.0
-anchor_bottom = 1.0
+margin_bottom = 14.0
+mouse_filter = 1
+text = "Empty Slot"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.593
+anchor_right = 1.0
+anchor_bottom = 0.593
+margin_left = -80.0
+margin_top = -32.033
+margin_bottom = 31.967
+mouse_filter = 1
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

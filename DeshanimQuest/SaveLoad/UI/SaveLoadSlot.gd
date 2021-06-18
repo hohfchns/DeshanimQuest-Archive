@@ -1,6 +1,8 @@
 extends Panel
 
-export(NodePath) onready var screenshot_rect = get_node(screenshot_rect) as TextureRect
+export(NodePath) onready var icon_rect = get_node(icon_rect) as TextureRect
+export(NodePath) onready var slot_name = get_node(slot_name) as Label
+export(NodePath) onready var level_label = get_node(level_label) as Label
 
 var slot_idx = 0
 

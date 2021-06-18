@@ -2,7 +2,10 @@ extends Node
 
 signal slot_changed(new_data, slot_index)
 signal save_loaded(data, slot_index)
-signal about_to_save
+
+
+func _ready():
+	connect("save_loaded", self, "_on_save_loaded")
 
 
 func __save_to_file(path: String, data: Dictionary):
@@ -14,7 +17,7 @@ func __save_to_file(path: String, data: Dictionary):
 	
 	file.close()
 
-func __load_from_file(path):
+func load_from_file(path):
 	var file = File.new()
 	
 	if not file.file_exists(path):
@@ -35,7 +38,9 @@ func __load_from_file(path):
 func generate_cur_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	
-	save_data["last_scene"] = get_tree().get_current_scene().filename
+	save_data["scene"] = {}
+	save_data["scene"]["scene_name"] = get_tree().get_current_scene().scene_name
+	save_data["scene"]["scene_path"] = get_tree().get_current_scene().filename
 	
 	save_data["player"] = {}
 	save_data["player"]["max_health"] = PlayerStats.get_max_health()
@@ -45,17 +50,9 @@ func generate_cur_save_data() -> Dictionary:
 	return save_data
 
 
-func load_data(data: Dictionary):
-	if "last_scene" in data:
-		get_tree().change_scene_to(load(data["last_scene"]))
-	
-	if "player" in data:
-		if "max_health" in data["player"]:
-			PlayerStats.set_max_health(data["player"]["max_health"])
-		if "health" in data["player"]:
-			PlayerStats.set_health(data["player"]["health"])
-		if "inventory_items" in data["player"]:
-			PlayerInventory.inventory.set_items(data["player"]["inventory_items"])
+func _on_save_loaded(save_data, slot_index):
+	if "scene" in save_data and "scene_path" in save_data["scene"]:
+		get_tree().change_scene_to(load(save_data["scene"]["scene_path"]))
 
 
 func save_to_slot(slot_index: int):
@@ -68,21 +65,19 @@ func save_to_slot(slot_index: int):
 		dir.make_dir_recursive(dir_path)
 	
 	var save_data: Dictionary = generate_cur_save_data()
-	
-	emit_signal("about_to_save")
-	
-	var img = get_viewport().get_texture().get_data()
-	img.flip_y()
-#	yield(get_tree(), "idle_frame")
-	img.save_png("%s/save%s.png" % [dir_path, slot_index])
+	save_data["slot_index"] = slot_index
 	
 	__save_to_file(path, save_data)
 	
 	emit_signal("slot_changed", save_data, slot_index)
+	
+	print("saved to slot %s" % slot_index)
 
 func load_from_slot(slot_index: int):
 	var path = "user://Saves/save%s/save%s.json" % [slot_index, slot_index]
 	
-	var save_data: Dictionary = __load_from_file(path)
+	var save_data: Dictionary = load_from_file(path)
 	
 	emit_signal("save_loaded", save_data, slot_index)
+	
+	print("loaded from slot %s" % slot_index)

@@ -8,6 +8,7 @@ signal no_health
 
 func _ready():
 	connect("health_changed", self, "_on_health_changed")
+	SaveLoad.connect("save_loaded", self, "_on_save_loaded")
 	
 	__health = __max_health
 
@@ -37,3 +38,15 @@ func get_max_health():
 func _on_health_changed():
 	if __health <= 0:
 		emit_signal("no_health")
+
+
+func _on_save_loaded(save_data, slot_idx):
+	if not "player" in save_data:
+		return
+	
+	if "max_health" in save_data["player"]:
+		set_max_health(save_data["player"]["max_health"])
+	if "health" in save_data["player"]:
+		set_health(save_data["player"]["health"])
+	
+	print("health set from save")

@@ -3,11 +3,12 @@ extends Node
 var __slots_data = []
 
 signal slot_data_changed(index)
-signal slots_data_set
 
 
 func _ready():
 	SaveLoad.connect("slot_changed", self, "_on_SaveLoad_slot_changed")
+	
+	__check_for_existing_saves()
 
 
 func set_slot_data(index, data):
@@ -35,6 +36,35 @@ func fill_slots_data(up_to_idx):
 	while __slots_data.size() <= up_to_idx:
 		__slots_data.append(null)
 		emit_signal("slot_data_changed", __slots_data.size() - 1)
+
+
+func list_files_in_directory(path):
+	var files = []
+	var dir = Directory.new()
+	dir.open(path)
+	dir.list_dir_begin()
+	
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		elif not file.begins_with("."):
+			files.append(file)
+	
+	dir.list_dir_end()
+	
+	return files
+
+func __check_for_existing_saves():
+	var saves_path = "user://Saves"
+	var save_names = list_files_in_directory(saves_path)
+	
+	for save_name in save_names:
+		var path = "%s/%s/%s.json" % [saves_path, save_name, save_name]
+		var save = SaveLoad.load_from_file(path)
+		var slot_index = save["slot_index"]
+		fill_slots_data(slot_index)
+		set_slot_data(slot_index, save)
 
 
 func _on_SaveLoad_slot_changed(data, slot_idx):

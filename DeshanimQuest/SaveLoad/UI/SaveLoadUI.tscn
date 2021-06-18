@@ -5,7 +5,7 @@
 [ext_resource path="res://SaveLoad/UI/SlotGrid.gd" type="Script" id=3]
 [ext_resource path="res://SaveLoad/UI/SaveLoadSlot.tscn" type="PackedScene" id=4]
 
-[node name="SaveLoadUI" type="TabContainer"]
+[node name="SaveLoadUI" type="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -13,28 +13,64 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-__slot_grid = NodePath("Save/SlotGrid")
-__save_close_button = NodePath("Save/ButtonsRow/CloseHBox/CloseButton")
-__prev_button = NodePath("Save/ButtonsRow/ButtonsHBox/Previous")
-__next_button = NodePath("Save/ButtonsRow/ButtonsHBox/Next")
+__slot_grid = NodePath("SlotGrid")
+__save_toggle_button = NodePath("TogglesHBox/SaveToggle")
+__load_toggle_button = NodePath("TogglesHBox/LoadToggle")
+__current_mode_label = NodePath("CurrentModeLabel")
+__close_button = NodePath("ButtonsRow/CloseHBox/CloseButton")
+__prev_button = NodePath("ButtonsRow/ButtonsHBox/Previous")
+__next_button = NodePath("ButtonsRow/ButtonsHBox/Next")
+__page_number = NodePath("ButtonsRow/ButtonsHBox/PageNumber")
 
-[node name="Save" type="Tabs" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 22.0
-margin_right = -1.0
-margin_bottom = -1.0
+[node name="CurrentModeLabel" type="Label" parent="."]
+anchor_top = 0.059
+anchor_bottom = 0.059
+margin_left = 16.0
+margin_top = -23.86
+margin_right = 212.0
+margin_bottom = 24.14
+text = "Current Mode: Save"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="SlotGrid" type="GridContainer" parent="Save"]
+[node name="TogglesHBox" type="HBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.084
 anchor_right = 0.5
+margin_left = -480.0
+margin_top = 16.0
+margin_right = 480.0
+margin_bottom = 48.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveToggle" type="Button" parent="TogglesHBox"]
+margin_left = 355.0
+margin_right = 475.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 120, 32 )
+text = "Save Mode"
+
+[node name="LoadToggle" type="Button" parent="TogglesHBox"]
+margin_left = 485.0
+margin_right = 605.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 120, 32 )
+text = "Load Mode"
+
+[node name="SlotGrid" type="GridContainer" parent="."]
+anchor_left = 0.498
+anchor_top = 0.084
+anchor_right = 0.498
 anchor_bottom = 0.084
-margin_left = -464.0
-margin_top = 0.0759964
-margin_right = 460.0
-margin_bottom = 414.076
+margin_left = -462.08
+margin_top = 20.144
+margin_right = 461.92
+margin_bottom = 434.144
 custom_constants/vseparation = 20
 custom_constants/hseparation = 12
 columns = 6
@@ -43,16 +79,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveLoadSlot1" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot1" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 0.0
 margin_right = 144.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot2" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot2" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -62,7 +99,7 @@ margin_top = 0.0
 margin_right = 300.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot3" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot3" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -72,7 +109,7 @@ margin_top = 0.0
 margin_right = 456.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot4" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot4" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -82,7 +119,7 @@ margin_top = 0.0
 margin_right = 612.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot5" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot5" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -92,7 +129,7 @@ margin_top = 0.0
 margin_right = 768.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot6" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot6" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -102,16 +139,17 @@ margin_top = 0.0
 margin_right = 924.0
 margin_bottom = 81.0
 
-[node name="SaveLoadSlot7" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot7" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 101.0
 margin_right = 144.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot8" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot8" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -121,7 +159,7 @@ margin_top = 101.0
 margin_right = 300.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot9" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot9" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -131,7 +169,7 @@ margin_top = 101.0
 margin_right = 456.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot10" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot10" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -141,7 +179,7 @@ margin_top = 101.0
 margin_right = 612.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot11" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot11" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -151,7 +189,7 @@ margin_top = 101.0
 margin_right = 768.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot12" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot12" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -161,16 +199,17 @@ margin_top = 101.0
 margin_right = 924.0
 margin_bottom = 182.0
 
-[node name="SaveLoadSlot13" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot13" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 202.0
 margin_right = 144.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot14" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot14" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -180,7 +219,7 @@ margin_top = 202.0
 margin_right = 300.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot15" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot15" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -190,7 +229,7 @@ margin_top = 202.0
 margin_right = 456.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot16" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot16" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -200,7 +239,7 @@ margin_top = 202.0
 margin_right = 612.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot17" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot17" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -210,7 +249,7 @@ margin_top = 202.0
 margin_right = 768.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot18" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot18" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -220,16 +259,17 @@ margin_top = 202.0
 margin_right = 924.0
 margin_bottom = 283.0
 
-[node name="SaveLoadSlot19" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot19" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 303.0
 margin_right = 144.0
 margin_bottom = 384.0
 
-[node name="SaveLoadSlot20" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot20" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -239,7 +279,7 @@ margin_top = 303.0
 margin_right = 300.0
 margin_bottom = 384.0
 
-[node name="SaveLoadSlot21" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot21" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -249,7 +289,7 @@ margin_top = 303.0
 margin_right = 456.0
 margin_bottom = 384.0
 
-[node name="SaveLoadSlot22" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot22" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -259,7 +299,7 @@ margin_top = 303.0
 margin_right = 612.0
 margin_bottom = 384.0
 
-[node name="SaveLoadSlot23" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot23" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -269,7 +309,7 @@ margin_top = 303.0
 margin_right = 768.0
 margin_bottom = 384.0
 
-[node name="SaveLoadSlot24" parent="Save/SlotGrid" instance=ExtResource( 4 )]
+[node name="SaveLoadSlot24" parent="SlotGrid" instance=ExtResource( 4 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -279,43 +319,50 @@ margin_top = 303.0
 margin_right = 924.0
 margin_bottom = 384.0
 
-[node name="ButtonsRow" type="HBoxContainer" parent="Save"]
-margin_left = 16.0
-margin_top = 443.0
-margin_right = 944.0
-margin_bottom = 491.0
+[node name="ButtonsRow" type="HBoxContainer" parent="."]
+margin_left = 17.0
+margin_top = 465.0
+margin_right = 945.0
+margin_bottom = 513.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonsHBox" type="HBoxContainer" parent="Save/ButtonsRow"]
+[node name="ButtonsHBox" type="HBoxContainer" parent="ButtonsRow"]
 margin_right = 864.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 custom_constants/separation = 20
 alignment = 1
 
-[node name="Previous" type="Button" parent="Save/ButtonsRow/ButtonsHBox"]
-margin_left = 329.0
-margin_right = 422.0
+[node name="Previous" type="Button" parent="ButtonsRow/ButtonsHBox"]
+margin_left = 313.0
+margin_right = 406.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 93, 48 )
 text = "Previous"
 
-[node name="Next" type="Button" parent="Save/ButtonsRow/ButtonsHBox"]
-margin_left = 442.0
-margin_right = 535.0
+[node name="PageNumber" type="Label" parent="ButtonsRow/ButtonsHBox"]
+margin_left = 426.0
+margin_top = 14.0
+margin_right = 437.0
+margin_bottom = 33.0
+text = "0"
+
+[node name="Next" type="Button" parent="ButtonsRow/ButtonsHBox"]
+margin_left = 457.0
+margin_right = 550.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 93, 48 )
 text = "Next"
 
-[node name="CloseHBox" type="HBoxContainer" parent="Save/ButtonsRow"]
+[node name="CloseHBox" type="HBoxContainer" parent="ButtonsRow"]
 margin_left = 868.0
 margin_right = 928.0
 margin_bottom = 48.0
 alignment = 2
 
-[node name="CloseButton" type="Button" parent="Save/ButtonsRow/CloseHBox"]
+[node name="CloseButton" type="Button" parent="ButtonsRow/CloseHBox"]
 margin_right = 60.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 60, 48 )
@@ -323,3 +370,7 @@ text = "Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_right = 40.0
+margin_bottom = 21.0

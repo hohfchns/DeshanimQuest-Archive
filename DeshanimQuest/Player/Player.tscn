@@ -214,6 +214,7 @@ margin_bottom = -0.0200195
 visible = false
 
 [node name="SaveLoadUI" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 
