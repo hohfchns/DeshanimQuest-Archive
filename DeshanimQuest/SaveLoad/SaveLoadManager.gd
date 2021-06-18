@@ -1,6 +1,8 @@
 extends Node
 
-signal slot_changed(slot_index)
+signal slot_changed(new_data, slot_index)
+signal save_loaded(data, slot_index)
+signal about_to_save
 
 
 func __save_to_file(path: String, data: Dictionary):
@@ -67,6 +69,8 @@ func save_to_slot(slot_index: int):
 	
 	var save_data: Dictionary = generate_cur_save_data()
 	
+	emit_signal("about_to_save")
+	
 	var img = get_viewport().get_texture().get_data()
 	img.flip_y()
 #	yield(get_tree(), "idle_frame")
@@ -74,11 +78,11 @@ func save_to_slot(slot_index: int):
 	
 	__save_to_file(path, save_data)
 	
-	emit_signal("slot_changed", slot_index)
+	emit_signal("slot_changed", save_data, slot_index)
 
 func load_from_slot(slot_index: int):
 	var path = "user://Saves/save%s/save%s.json" % [slot_index, slot_index]
 	
 	var save_data: Dictionary = __load_from_file(path)
 	
-	load_data(save_data)
+	emit_signal("save_loaded", save_data, slot_index)

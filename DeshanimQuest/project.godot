@@ -145,7 +145,7 @@ SpawnableItemsDatabase="*res://Items/Items/Utility/UtilityGun/SpawnableItemsData
 PlayerInventory="*res://Inventory/PlayerInventory.tscn"
 GameManager="*res://Managers/GameManager.tscn"
 SaveLoad="*res://SaveLoad/SaveLoadManager.tscn"
-SlotsData="*res://SaveLoad/SlotsData.tscn"
+SlotsData="*res://SaveLoad/UI/SlotsData.tscn"
 
 [display]
 
