@@ -10,4 +10,27 @@ func _ready():
 
 func _on_save_loaded(save_data, slot_idx):
 	if "player" in save_data and "inventory_items" in save_data["player"]:
-		inventory.set_items(save_data["player"]["inventory_items"])
+		var saved_items = save_data["player"]["inventory_items"]
+		var items: Array
+		
+		if not saved_items:
+			inventory.set_items([])
+			print("Loaded empty array as inventory from save %s" % slot_idx)
+			return
+		
+		for saved_item in saved_items:
+			if saved_item == null:
+				items.append(null)
+				continue
+			
+			var item_name = saved_item.item_name
+			
+			var inventory_item = {
+				item_reference = ItemDatabase.get_item(item_name),
+				quantity = saved_item.quantity
+			}
+			
+			items.append(inventory_item)
+		
+		inventory.set_items(items)
+		print("Loaded items from save %s" % slot_idx)

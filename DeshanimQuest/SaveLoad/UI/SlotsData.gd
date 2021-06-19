@@ -41,6 +41,10 @@ func fill_slots_data(up_to_idx):
 func list_files_in_directory(path):
 	var files = []
 	var dir = Directory.new()
+	
+	if not dir.dir_exists(path):
+		return []
+	
 	dir.open(path)
 	dir.list_dir_begin()
 	
@@ -58,6 +62,11 @@ func list_files_in_directory(path):
 func __check_for_existing_saves():
 	var saves_path = "user://Saves"
 	var save_names = list_files_in_directory(saves_path)
+	
+	if save_names:
+		print("Found save files: %s" % str(save_names))
+	else:
+		print("Found no save files")
 	
 	for save_name in save_names:
 		var path = "%s/%s/%s.json" % [saves_path, save_name, save_name]

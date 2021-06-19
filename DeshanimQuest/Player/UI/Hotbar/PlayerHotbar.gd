@@ -12,8 +12,8 @@ signal selected_item_changed(item_instance, slot_index)
 
 func _ready():
 	__inventory.connect("inventory_changed", self, "_on_inventory_changed")
-	update_visuals()
-	update_selected_slot()
+	call_deferred("update_visuals")
+	call_deferred("update_selected_slot")
 
 
 func update_visuals():
@@ -55,7 +55,6 @@ func update_selected_slot():
 	var item_to_set_active = item_path.instance()
 	
 	emit_signal("selected_item_changed", item_to_set_active, __selected_slot_index)
-	
 
 
 func set_selected_slot(index):

@@ -35,6 +35,23 @@ func load_from_file(path):
 	return data
 
 
+func __get_item_dicts():
+	var inventory_items = PlayerInventory.inventory.get_items()
+	var item_dicts: Array = []
+	for item in inventory_items:
+		if item == null:
+			item_dicts.append(null)
+			continue
+		
+		var item_dict = {
+			item_name = item.item_reference.item_name,
+			quantity = item.quantity
+		}
+		
+		item_dicts.append(item_dict)
+	
+	return item_dicts
+
 func generate_cur_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	
@@ -45,7 +62,7 @@ func generate_cur_save_data() -> Dictionary:
 	save_data["player"] = {}
 	save_data["player"]["max_health"] = PlayerStats.get_max_health()
 	save_data["player"]["health"] = PlayerStats.get_health()
-	save_data["player"]["inventory_items"] = PlayerInventory.inventory.get_items()
+	save_data["player"]["inventory_items"] = __get_item_dicts()
 	
 	return save_data
 
@@ -53,6 +70,9 @@ func generate_cur_save_data() -> Dictionary:
 func _on_save_loaded(save_data, slot_index):
 	if "scene" in save_data and "scene_path" in save_data["scene"]:
 		get_tree().change_scene_to(load(save_data["scene"]["scene_path"]))
+		
+		var scene_name = save_data["scene"]["scene_name"]
+		print("Loaded scene \"%s\" from slot %s" % [scene_name, slot_index])
 
 
 func save_to_slot(slot_index: int):
@@ -69,15 +89,19 @@ func save_to_slot(slot_index: int):
 	
 	__save_to_file(path, save_data)
 	
-	emit_signal("slot_changed", save_data, slot_index)
+	print("Saved to slot %s" % slot_index)
 	
-	print("saved to slot %s" % slot_index)
+	emit_signal("slot_changed", save_data, slot_index)
 
 func load_from_slot(slot_index: int):
 	var path = "user://Saves/save%s/save%s.json" % [slot_index, slot_index]
 	
-	var save_data: Dictionary = load_from_file(path)
+	var save_data = load_from_file(path)
+	
+	if not save_data:
+		print("Save data not found at slot %s, not loading" % slot_index)
+		return
+	
+	print("Loaded from slot %s" % slot_index)
 	
 	emit_signal("save_loaded", save_data, slot_index)
-	
-	print("loaded from slot %s" % slot_index)

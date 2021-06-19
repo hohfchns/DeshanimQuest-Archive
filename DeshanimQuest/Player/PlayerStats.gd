@@ -49,4 +49,4 @@ func _on_save_loaded(save_data, slot_idx):
 	if "health" in save_data["player"]:
 		set_health(save_data["player"]["health"])
 	
-	print("health set from save")
+	print("Player stats set from save %s" % slot_idx)
