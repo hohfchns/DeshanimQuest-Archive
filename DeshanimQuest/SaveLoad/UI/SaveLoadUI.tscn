@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://SaveLoad/UI/SaveLoadUI.gd" type="Script" id=2]
 [ext_resource path="res://SaveLoad/UI/SlotGrid.gd" type="Script" id=3]
 [ext_resource path="res://SaveLoad/UI/SaveLoadSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://SaveLoad/UI/DialogsParent.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 5 )
 
 [node name="SaveLoadUI" type="Panel"]
 anchor_right = 1.0
@@ -21,6 +27,13 @@ __close_button = NodePath("ButtonsRow/CloseHBox/CloseButton")
 __prev_button = NodePath("ButtonsRow/ButtonsHBox/Previous")
 __next_button = NodePath("ButtonsRow/ButtonsHBox/Next")
 __page_number = NodePath("ButtonsRow/ButtonsHBox/PageNumber")
+__dialogs_parent = NodePath("Dialogs")
+__overwrite_confirm_dialog = NodePath("Dialogs/OverwriteConfirmDialog")
+__overwrite_cancel_button = NodePath("Dialogs/OverwriteConfirmDialog/ButtonsHBox/CancelButton")
+__overwrite_confirm_button = NodePath("Dialogs/OverwriteConfirmDialog/ButtonsHBox/OverwriteButton")
+__load_confirm_dialog = NodePath("Dialogs/LoadConfirmDialog")
+__load_cancel_button = NodePath("Dialogs/LoadConfirmDialog/ButtonsHBox/CancelButton")
+__load_confirm_button = NodePath("Dialogs/LoadConfirmDialog/ButtonsHBox/LoadButton")
 
 [node name="CurrentModeLabel" type="Label" parent="."]
 anchor_top = 0.059
@@ -374,3 +387,132 @@ __meta__ = {
 [node name="Button" type="Button" parent="."]
 margin_right = 40.0
 margin_bottom = 21.0
+
+[node name="Dialogs" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverwriteConfirmDialog" type="Panel" parent="Dialogs"]
+visible = false
+anchor_left = 0.067
+anchor_top = 0.178
+anchor_right = 0.933
+anchor_bottom = 0.833
+margin_left = -0.32
+margin_top = -6.12
+margin_right = 0.319946
+margin_bottom = 0.179962
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Dialogs/OverwriteConfirmDialog"]
+anchor_left = 0.077
+anchor_top = 0.106
+anchor_right = 0.923
+anchor_bottom = 0.817
+margin_left = -0.064003
+margin_top = -0.160004
+margin_right = 0.0639648
+margin_bottom = -0.120026
+custom_fonts/font = SubResource( 1 )
+text = "Saving over an existing save will overwrite it.
+Are you sure you want to save?"
+align = 1
+valign = 1
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="Dialogs/OverwriteConfirmDialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -416.0
+margin_top = -58.0
+margin_right = 416.0
+margin_bottom = -10.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="Dialogs/OverwriteConfirmDialog/ButtonsHBox"]
+margin_left = 301.0
+margin_right = 406.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 105, 0 )
+text = "Cancel"
+
+[node name="OverwriteButton" type="Button" parent="Dialogs/OverwriteConfirmDialog/ButtonsHBox"]
+margin_left = 426.0
+margin_right = 531.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 105, 0 )
+text = "Save"
+
+[node name="LoadConfirmDialog" type="Panel" parent="Dialogs"]
+visible = false
+anchor_left = 0.067
+anchor_top = 0.178
+anchor_right = 0.933
+anchor_bottom = 0.833
+margin_left = -0.32
+margin_top = -6.12
+margin_right = 0.319946
+margin_bottom = 0.179962
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Dialogs/LoadConfirmDialog"]
+anchor_left = 0.077
+anchor_top = 0.106
+anchor_right = 0.923
+anchor_bottom = 0.817
+margin_left = -0.064003
+margin_top = -0.160004
+margin_right = 0.0639648
+margin_bottom = -0.120026
+custom_fonts/font = SubResource( 1 )
+text = "Loading a save will erase your current progress
+Are you sure you want to load?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="Dialogs/LoadConfirmDialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -416.0
+margin_top = -58.0
+margin_right = 416.0
+margin_bottom = -10.0
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="Dialogs/LoadConfirmDialog/ButtonsHBox"]
+margin_left = 301.0
+margin_right = 406.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 105, 0 )
+text = "Cancel"
+
+[node name="LoadButton" type="Button" parent="Dialogs/LoadConfirmDialog/ButtonsHBox"]
+margin_left = 426.0
+margin_right = 531.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 105, 0 )
+text = "Load"

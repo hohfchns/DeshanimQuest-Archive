@@ -14,6 +14,15 @@ export(NodePath) onready var __next_button = get_node(__next_button) as Button
 
 export(NodePath) onready var __page_number = get_node(__page_number) as Label
 
+export(NodePath) onready var __dialogs_parent = get_node(__dialogs_parent) as Control
+export(NodePath) onready var __overwrite_confirm_dialog = get_node(__overwrite_confirm_dialog) as Panel
+export(NodePath) onready var __overwrite_cancel_button = get_node(__overwrite_cancel_button) as Button
+export(NodePath) onready var __overwrite_confirm_button = get_node(__overwrite_confirm_button) as Button
+export(NodePath) onready var __load_confirm_dialog = get_node(__load_confirm_dialog) as Panel
+export(NodePath) onready var __load_cancel_button = get_node(__load_cancel_button) as Button
+export(NodePath) onready var __load_confirm_button = get_node(__load_confirm_button) as Button
+
+
 var __save_load_slot_scene = preload("res://SaveLoad/UI/SaveLoadSlot.tscn")
 
 var __ranger_icon = preload("res://Player/Portraits/RANGERPortrait.png")
@@ -42,6 +51,11 @@ func __connect_signals():
 	
 	__prev_button.connect("pressed", self, "_on_prev_button_pressed")
 	__next_button.connect("pressed", self, "_on_next_button_pressed")
+	
+	__overwrite_cancel_button.connect("pressed", self, "_on_overwrite_cancel_pressed")
+	__overwrite_confirm_button.connect("pressed", self, "_on_overwrite_confirm_pressed")
+	__load_cancel_button.connect("pressed", self, "_on_load_cancel_pressed")
+	__load_confirm_button.connect("pressed", self, "_on_load_confirm_pressed")
 
 
 func __update_slot(slot_idx):
@@ -75,6 +89,8 @@ func __load_page(page_idx):
 		
 		__slot_grid.get_child(slot_idx).slot_idx = slot_idx
 		
+		__slot_grid.get_child(slot_idx).connect("slot_pressed", self, "_on_slot_pressed")
+		
 		__sd.fill_slots_data(slot_idx)
 		
 		__update_slot(slot_idx)
@@ -88,6 +104,48 @@ func __hide_ui():
 	self.visible = false
 
 
+func __attempt_save(slot_idx):
+	if not SlotsData.get_slots_data().size() < slot_idx \
+	and SlotsData.get_slots_data()[slot_idx] != null \
+	and not DebugVars.quick_debug:
+		__dialogs_parent.show()
+		__overwrite_confirm_dialog.show()
+		__dialogs_parent.slot_idx = slot_idx
+	else:
+		SaveLoad.save_to_slot(slot_idx)
+
+func __attempt_load(slot_idx):
+	__dialogs_parent.show()
+	__load_confirm_dialog.show()
+	__dialogs_parent.slot_idx = slot_idx
+
+
+func _on_slot_pressed(save_or_load, slot_idx):
+	if save_or_load == SaveLoadSlot.SAVE:
+		__attempt_save(slot_idx)
+	elif save_or_load == SaveLoadSlot.LOAD:
+		__attempt_load(slot_idx)
+
+
+func _on_overwrite_cancel_pressed():
+	__dialogs_parent.hide()
+	__overwrite_confirm_dialog.hide()
+
+func _on_overwrite_confirm_pressed():
+	__dialogs_parent.hide()
+	__overwrite_confirm_dialog.hide()
+	SaveLoad.load_from_slot(__dialogs_parent.slot_idx)
+
+func _on_load_cancel_pressed():
+	__dialogs_parent.hide()
+	__load_confirm_dialog.hide()
+
+func _on_load_confirm_pressed():
+	__dialogs_parent.hide()
+	__load_confirm_dialog.hide()
+	SaveLoad.load_from_slot(__dialogs_parent.slot_idx)
+
+
 func _on_next_button_pressed():
 	__load_page(__current_page_idx + 1)
 
@@ -98,13 +156,13 @@ func _on_prev_button_pressed():
 
 func _on_save_toggle_pressed():
 	for slot in __slot_grid.get_children():
-		slot.save_or_load = slot.SAVE
+		slot.save_or_load = SaveLoadSlot.SAVE
 	
 	__current_mode_label.text = "Current Mode: Save"
 
 func _on_load_toggle_pressed():
 	for slot in __slot_grid.get_children():
-		slot.save_or_load = slot.LOAD
+		slot.save_or_load = SaveLoadSlot.LOAD
 	
 	__current_mode_label.text = "Current Mode: Load"
 
