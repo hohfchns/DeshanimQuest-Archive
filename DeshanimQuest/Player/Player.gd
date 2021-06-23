@@ -40,6 +40,19 @@ func _ready():
 	randomize()
 	
 	__connect_signal_functions()
+	
+	var ll = LinkedList.new(["object1", "object2", ["object3_1, object3_2"], 4])
+	print(ll.get_forward_string())
+	print(ll.get_forward_list())
+	print("Head is %s" % str(ll.head.data))
+	print("Tail is %s" % str(ll.tail.data))
+	print("Size is %s" % ll.size)
+	ll.push_back("object_back")
+	print(ll.get_forward_string())
+	print("New head is %s" % str(ll.head.data))
+	print("New size is %s" % ll.size)
+	ll.insert_at_index(1, "index_object")
+	print(ll.get_forward_string())
 
 
 func _physics_process(delta):

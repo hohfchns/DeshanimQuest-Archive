@@ -7,7 +7,7 @@ var next
 var prev
 
 
-func _init(data, next, prev):
+func _init(data):
 	self.data = data
-	self.next = next
-	self.prev = prev
+#	self.next = next
+#	self.prev = prev
