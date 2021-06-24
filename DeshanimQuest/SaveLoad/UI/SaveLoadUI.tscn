@@ -12,6 +12,7 @@ size = 24
 font_data = ExtResource( 5 )
 
 [node name="SaveLoadUI" type="Panel"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
