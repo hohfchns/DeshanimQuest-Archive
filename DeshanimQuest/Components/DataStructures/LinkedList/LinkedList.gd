@@ -13,6 +13,7 @@ func _init(data_list: Array):
 	for data in data_list:
 		push_front(data)
 
+
 func get_forward_string():
 	var ll_str = ""
 	var itr = head
@@ -37,6 +38,7 @@ func get_forward_list():
 		itr = itr.next
 	
 	return list
+
 
 func push_front(data):
 	var object = LinkedObject.new(data)
@@ -98,3 +100,47 @@ func insert_at_index(index, data):
 		itr_index += 1
 		itr = itr.next
 
+
+func pop_front():
+	if not tail:
+		print("Can't pop since linked list is empty")
+		return
+	
+	tail.prev.next = null
+	tail = tail.prev
+	
+	self.size -= 1
+
+func pop_back():
+	if not head:
+		print("Can't pop since linked list is empty")
+		return
+	
+	head.next.prev = null
+	head = head.next
+	
+	self.size -= 1
+
+func remove_at_index(index):
+	if index < 0 or index > self.size - 1:
+		print("Can't remove from linked list. Index is out of range")
+		return
+	
+	if index == 0:
+		pop_back()
+		return
+	if index == self.size - 1:
+		pop_front()
+		return
+	
+	var itr = self.head
+	var itr_index = 0
+	while itr:
+		if itr_index == index:
+			itr.next.prev = itr.prev
+			itr.prev.next = itr.next
+			self.size -= 1
+			return
+		
+		itr_index += 1
+		itr = itr.next
