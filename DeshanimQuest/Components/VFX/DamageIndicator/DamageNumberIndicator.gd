@@ -40,9 +40,6 @@ func animate():
 	
 	position_tween.start()
 	opacity_tween.start()
-	
-	opacity_tween.connect("tween_completed", self, "_on_tween_completed")
-	
 
 
 func set_text_number(value: int):
@@ -52,7 +49,3 @@ func set_text_number(value: int):
 func start(damage_value: int = __damage_text):
 	set_text_number(damage_value)
 	animate()
-
-
-func _on_tween_completed():
-	self.visible = false

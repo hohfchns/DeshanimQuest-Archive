@@ -47,7 +47,7 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HandSprite:position")
+tracks/3/path = NodePath("Sprite/HandSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -59,7 +59,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 5.5 ), Vector2( 0, 0 ), Vector2( 24.5, 0 ), Vector2( 0, 0 ), Vector2( 0, 5.5 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HandSprite:rotation_degrees")
+tracks/4/path = NodePath("Sprite/HandSprite:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -99,7 +99,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HandSprite:position")
+tracks/2/path = NodePath("Sprite/HandSprite:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -111,7 +111,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 6.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HandSprite:rotation_degrees")
+tracks/3/path = NodePath("Sprite/HandSprite:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -174,78 +174,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("SwingHitbox:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 20.5271, -0.529732 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("SwingHitbox/CollisionShape2D:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("SwingHitbox/CollisionShape2D:shape:radius")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 18.2366 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("SwingHitbox/CollisionShape2D:shape:height")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("HandSprite:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.35, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 5.5 ), Vector2( 0, -14.5 ), Vector2( 12, -10 ), Vector2( 14, 0 ), Vector2( 10, 12 ), Vector2( 0, 14 ), Vector2( 0, 5.5 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("HandSprite:rotation_degrees")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25, 0.35, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 33.0, 90.0, 120.0, 180.0, 0.0 ]
-}
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.2366
@@ -260,18 +188,19 @@ script = ExtResource( 3 )
 anim = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -5.82705 )
 texture = ExtResource( 1 )
+
+[node name="HandSprite" type="Sprite" parent="Sprite"]
+position = Vector2( 0, 5.5 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
 
 [node name="FlashSprite" type="Sprite" parent="."]
 visible = false
 position = Vector2( 20, 0 )
 rotation = 1.5708
 texture = ExtResource( 4 )
-
-[node name="HandSprite" type="Sprite" parent="."]
-position = Vector2( 0, 5.5 )
-scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Start"
@@ -280,7 +209,6 @@ anims/Start = SubResource( 2 )
 anims/Swing = SubResource( 3 )
 
 [node name="SwingHitbox" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 20.5271, -0.529732 )
 collision_mask = 8
 damage = 7
@@ -291,7 +219,6 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="Stabhitbox" parent="." instance=ExtResource( 2 )]
-visible = false
 collision_mask = 8
 damage = 10
 
