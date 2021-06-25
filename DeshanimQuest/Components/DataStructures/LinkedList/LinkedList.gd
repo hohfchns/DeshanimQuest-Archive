@@ -79,11 +79,9 @@ func insert_at_index(index, data):
 	
 	if index == 0:
 		push_back(data)
-		self.size += 1
 		return
 	elif index == self.size - 1:
 		push_front(data)
-		self.size += 1
 		return
 	
 	var itr = head
