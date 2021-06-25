@@ -6,7 +6,7 @@ var tail: LinkedObject = null
 
 var size: int = 0
 
-func _init(data_list: Array):
+func _init(data_list: Array = []):
 	if not data_list:
 		return
 	
