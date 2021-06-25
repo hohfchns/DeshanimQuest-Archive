@@ -85,6 +85,8 @@ margin_bottom = 754.124
 custom_fonts/font = SubResource( 1 )
 text = "Welcome to DeshanimQuest!
 Controls are:
+Press escape (Esc) to open the pause menu
+Press ~ to directly open the save/load menu
 Press F to go fullscreen
 Press Q to quit
 Aim and attack with the mouse (some
