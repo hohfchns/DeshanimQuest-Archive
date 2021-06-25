@@ -26,6 +26,9 @@ export(NodePath) onready var __effects_anim = get_node(__effects_anim) as Animat
 #export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
 export(NodePath) onready var __hotbar = get_node(__hotbar) as HBoxContainer
 
+export(NodePath) onready var save_load_ui = get_node(save_load_ui) as Panel
+export(NodePath) onready var settings_menu = get_node(settings_menu) as Control
+
 
 var __can_attack: bool = true
 var __can_move: bool = true

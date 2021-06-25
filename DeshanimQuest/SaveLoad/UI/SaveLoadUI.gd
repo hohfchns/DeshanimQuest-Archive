@@ -60,6 +60,21 @@ func __connect_signals():
 	__load_confirm_button.connect("pressed", self, "_on_load_confirm_pressed")
 
 
+func start():
+	self.visible = true
+	get_tree().paused = true
+	
+	GameManager.menus_ll.push_front(self)
+
+func stop():
+	self.visible = false
+	get_tree().paused = false
+	
+	GameManager.menus_ll.pop_front()
+	if GameManager.menus_ll.get_forward_list():
+		GameManager.menus_ll.tail.data.start()
+
+
 func __update_slot(slot_idx):
 	var slots_data = __sd.get_slots_data()
 	var slot = __slot_grid.get_child(slot_idx)
@@ -102,10 +117,6 @@ func __load_page(page_idx):
 	__page_number.text = str(page_idx + 1)
 	
 	__current_page_idx = page_idx
-
-
-func __hide_ui():
-	self.visible = false
 
 
 func __attempt_save(slot_idx):
@@ -185,11 +196,12 @@ func _on_load_toggle_pressed():
 
 
 func _on_close_button_pressed():
-	__hide_ui()
-	get_tree().paused = false
+	stop()
 
 
 func _input(event):
 	if event.is_action_pressed("toggle_saveload_ui"):
-		self.visible = not self.visible
-		get_tree().paused = not get_tree().paused
+		if self.visible:
+			stop()
+		elif not self.visible and not GameManager.menus_ll.get_forward_list():
+			start()

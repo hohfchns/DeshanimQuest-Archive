@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/Menus/SettingsMenu/SettingsMenu.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+outline_size = 4
+outline_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+font_data = ExtResource( 2 )
+
+[node name="SettingsMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+__back_button = NodePath("MainPanel/ButtonsVBox/BackST/BackButton")
+__fullscreen_button = NodePath("MainPanel/ButtonsVBox/FullscreenST/FullscreenButton")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.156863, 0.156863, 0.156863, 0.313726 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MainPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = -28.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SETTINGSLabel" type="Label" parent="MainPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -160.0
+margin_top = 16.0
+margin_right = 160.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "SETTINGS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="MainPanel"]
+anchor_left = 0.5
+anchor_top = 0.148
+anchor_right = 0.5
+anchor_bottom = 0.148
+margin_left = -96.0
+margin_top = -0.223999
+margin_right = 96.0
+margin_bottom = 399.776
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackST" type="VBoxContainer" parent="MainPanel/ButtonsVBox"]
+margin_right = 192.0
+margin_bottom = 198.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="BackButton" type="Button" parent="MainPanel/ButtonsVBox/BackST"]
+margin_top = 84.0
+margin_right = 192.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 0, 30 )
+text = "Back"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FullscreenST" type="VBoxContainer" parent="MainPanel/ButtonsVBox"]
+margin_top = 202.0
+margin_right = 192.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="FullscreenButton" type="Button" parent="MainPanel/ButtonsVBox/FullscreenST"]
+margin_top = 84.0
+margin_right = 192.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 0, 30 )
+text = "Toggle Fullscreen"
+__meta__ = {
+"_edit_lock_": true
+}

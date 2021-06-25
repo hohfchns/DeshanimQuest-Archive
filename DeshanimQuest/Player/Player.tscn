@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Components/Collisions/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Inventory/UI/InventoryUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/UI/Hotbar/PlayerHotbar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SaveLoad/UI/SaveLoadUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Menus/PauseMenu/PauseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Menus/SettingsMenu/SettingsMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -145,6 +147,8 @@ __interaction_area = NodePath("InteractionArea")
 __body_anim = NodePath("BodySprite/BodyAP")
 __effects_anim = NodePath("EffectsAP")
 __hotbar = NodePath("CanvasLayer/PlayerHotbar")
+save_load_ui = NodePath("CanvasLayer/SaveLoadUI")
+settings_menu = NodePath("CanvasLayer/SettingsMenu")
 
 [node name="CameraRemoteTransform" type="RemoteTransform2D" parent="."]
 
@@ -214,6 +218,12 @@ margin_bottom = -0.0200195
 visible = false
 
 [node name="SaveLoadUI" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
 visible = false
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
