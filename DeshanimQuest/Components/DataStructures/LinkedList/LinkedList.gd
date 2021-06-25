@@ -104,6 +104,12 @@ func pop_front():
 		print("Can't pop since linked list is empty")
 		return
 	
+	if self.size == 1:
+		tail = null
+		head = null
+		self.size -= 1
+		return
+	
 	tail.prev.next = null
 	tail = tail.prev
 	
@@ -112,6 +118,12 @@ func pop_front():
 func pop_back():
 	if not head:
 		print("Can't pop since linked list is empty")
+		return
+	
+	if self.size == 1:
+		tail = null
+		head = null
+		self.size -= 1
 		return
 	
 	head.next.prev = null
