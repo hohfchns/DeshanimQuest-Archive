@@ -8,6 +8,13 @@ func _ready():
 	
 
 
+func __take_hit(damage: int):
+	damage_number_indicator.start(damage)
+
+
+func on_hitray_hit(hitray: Hitray):
+	__take_hit(hitray.damage)
+
 func _on_hurtbox_area_entered(area: Hitbox):
-	damage_number_indicator.start(area.damage)
+	__take_hit(area.damage)
 

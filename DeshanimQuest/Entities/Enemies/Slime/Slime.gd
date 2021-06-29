@@ -158,6 +158,19 @@ func __start_hit_effect(duration):
 	__flash_timer.start(__flash_time)
 
 
+func __take_hit(damage: int, knockback_amt, hitter):
+	var knockback_to_take = __knockback_multiplier\
+	* knockback_amt\
+	* hitter.get_parent().global_position.direction_to(self.global_position)
+	__velocity += knockback_to_take
+	
+	__stats.subtract_health(damage)
+	
+	__damage_number_indicator.start(damage)
+	
+	__start_hit_effect(__flash_time)
+
+
 func _on_slide_timer_timeout():
 	__move_delay_timer.start(__move_delay)
 	
@@ -174,17 +187,11 @@ func _on_flash_timeout():
 	__effects_animation_player.play("FlashStop")
 
 
+func on_hitray_hit(hitray: Hitray):
+	__take_hit(hitray.damage, hitray.knockback_amt, hitray)
+
 func _on_hurtbox_area_entered(area: Hitbox):
-	var knockback_to_take = __knockback_multiplier\
-	* area.knockback_amt\
-	* area.get_parent().global_position.direction_to(self.global_position)
-	__velocity += knockback_to_take
-	
-	__stats.subtract_health(area.damage)
-	
-	__damage_number_indicator.start(area.damage)
-	
-	__start_hit_effect(__flash_time)
+	__take_hit(area.damage, area.knockback_amt, area)
 
 func _on_stats_no_health():
 	queue_free()

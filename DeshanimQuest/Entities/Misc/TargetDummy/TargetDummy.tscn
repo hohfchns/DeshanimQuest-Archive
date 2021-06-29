@@ -13,7 +13,10 @@ height = 2.75
 radius = 9.75
 height = 13.5
 
-[node name="TargetDummy" type="StaticBody2D"]
+[node name="TargetDummy" type="StaticBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 65
 script = ExtResource( 3 )
 hurtbox = NodePath("Hurtbox")
 damage_number_indicator = NodePath("DamageNumberIndicator")

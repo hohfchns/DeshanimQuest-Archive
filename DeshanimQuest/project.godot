@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Components/Collisions/Hitbox/Hitbox.gd"
 }, {
+"base": "RayCast2D",
+"class": "Hitray",
+"language": "GDScript",
+"path": "res://Components/Collisions/Hitray/Hitray.gd"
+}, {
 "base": "TextureRect",
 "class": "HotbarSlot",
 "language": "GDScript",
@@ -130,6 +135,7 @@ _global_script_class_icons={
 "FloatingHand": "",
 "HealthBar": "",
 "Hitbox": "",
+"Hitray": "",
 "HotbarSlot": "",
 "Hurtbox": "",
 "Inventory": "",
@@ -290,6 +296,7 @@ toggle_pause_menu={
 2d_physics/layer_4="EnemyHurtbox"
 2d_physics/layer_5="SoftCollision"
 2d_physics/layer_6="Interactable"
+2d_physics/layer_7="Enemy"
 
 [physics]
 
