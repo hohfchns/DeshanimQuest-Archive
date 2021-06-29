@@ -165,7 +165,7 @@ func _on_load_confirm_pressed():
 	__dialogs_parent.hide()
 	__load_confirm_dialog.hide()
 	
-	get_tree().paused = false
+	stop()
 	
 	SaveLoad.load_from_slot(__dialogs_parent.slot_idx)
 
