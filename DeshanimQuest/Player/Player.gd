@@ -92,15 +92,15 @@ func __movement_code(delta):
 
 
 func __animate_sprites():
-	var moving: bool = __input_vector != Vector2.ZERO
+#	var moving: bool = __input_vector != Vector2.ZERO
 	var rot = __hand_axis.rotation_degrees
 	
-	if moving:
+	if __velocity:
 		if get_global_mouse_position() > self.global_position:
 			__body_anim.play("RunRight")
 		else:
 			__body_anim.play("RunLeft")
-	elif not moving:
+	elif not __velocity:
 		if get_global_mouse_position() > self.global_position:
 			__body_anim.play("IdleRight")
 		else:
