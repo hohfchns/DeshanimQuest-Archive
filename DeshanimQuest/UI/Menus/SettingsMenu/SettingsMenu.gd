@@ -19,8 +19,9 @@ func stop():
 	self.visible = false
 	get_tree().paused = false
 	
-	GameManager.menus_ll.pop_front()
-	GameManager.menus_ll.tail.data.start()
+	if GameManager.menus_ll.size:
+		GameManager.menus_ll.pop_front()
+		GameManager.menus_ll.tail.data.start()
 
 
 func _on_fullscreen_pressed():

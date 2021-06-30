@@ -1,6 +1,9 @@
 class_name Player
 extends KinematicBody2D
 
+enum States { MOVE, DEAD }
+var state = States.MOVE
+
 var __stats = PlayerStats
 
 export var __max_speed = Vector2(200, 200)
@@ -24,6 +27,8 @@ export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPla
 export(NodePath) onready var __effects_anim = get_node(__effects_anim) as AnimationPlayer
 
 #export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
+export(NodePath) onready var __canvas_layer = get_node(__canvas_layer) as CanvasLayer
+
 export(NodePath) onready var __hotbar = get_node(__hotbar) as HBoxContainer
 
 export(NodePath) onready var save_load_ui = get_node(save_load_ui) as Panel
@@ -47,17 +52,18 @@ func _ready():
 
 func _physics_process(delta):
 	
-	__calc_input_vector()
-	
-	__movement_code(delta)
-	
-	__animate_sprites()
-	
-	__set_hand_rot()
-	
-	__get_player_input()
-	
-	__last_input_vector = __input_vector if __input_vector else __last_input_vector
+	if state == States.MOVE:
+		__calc_input_vector()
+		
+		__movement_code(delta)
+		
+		__animate_sprites()
+		
+		__set_hand_rot()
+		
+		__get_player_input()
+		
+		__last_input_vector = __input_vector if __input_vector else __last_input_vector
 
 
 func __connect_signal_functions():
@@ -165,7 +171,19 @@ func _on_stats_health_changed():
 
 
 func _on_stats_no_health():
-	queue_free()
+	state = States.DEAD
+	
+	self.visible = false
+	
+	for menu in __canvas_layer.get_children():
+		if menu.has_method("stop"):
+			menu.stop()
+		else:
+			menu.visible = false
+	
+	save_load_ui.start()
+	save_load_ui.toggle_load()
+	save_load_ui.close_button.visible = false
 
 
 func _on_selected_item_changed(item_instance, slot_index):

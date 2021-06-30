@@ -98,7 +98,10 @@ or drag them out of it to drop them
 Use scroll wheel to change between the items in your hotbar
 
 To use the utility gun just pick it up, open the spawnables menu
-and choose which spawnable to spawn, then shoot!"
+and choose which spawnable to spawn, then shoot!
+
+Please make a save so you can load when you die instead of
+having to exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }

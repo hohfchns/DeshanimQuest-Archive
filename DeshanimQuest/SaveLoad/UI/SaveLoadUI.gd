@@ -7,7 +7,7 @@ export(NodePath) onready var __load_toggle_button = get_node(__load_toggle_butto
 
 export(NodePath) onready var __current_mode_label = get_node(__current_mode_label) as Label
 
-export(NodePath) onready var __close_button = get_node(__close_button) as Button
+export(NodePath) onready var close_button = get_node(close_button) as Button
 
 export(NodePath) onready var __prev_button = get_node(__prev_button) as Button
 export(NodePath) onready var __next_button = get_node(__next_button) as Button
@@ -46,10 +46,10 @@ func _ready():
 func __connect_signals():
 	SlotsData.connect("slot_data_changed", self, "__update_slot")
 	
-	__save_toggle_button.connect("pressed", self, "_on_save_toggle_pressed")
-	__load_toggle_button.connect("pressed", self, "_on_load_toggle_pressed")
+	__save_toggle_button.connect("pressed", self, "toggle_save")
+	__load_toggle_button.connect("pressed", self, "toggle_load")
 	
-	__close_button.connect("pressed", self, "_on_close_button_pressed")
+	close_button.connect("pressed", self, "_on_close_button_pressed")
 	
 	__prev_button.connect("pressed", self, "_on_prev_button_pressed")
 	__next_button.connect("pressed", self, "_on_next_button_pressed")
@@ -63,6 +63,8 @@ func __connect_signals():
 func start():
 	self.visible = true
 	get_tree().paused = true
+	
+	close_button.visible = true
 	
 	GameManager.menus_ll.push_front(self)
 
@@ -178,7 +180,7 @@ func _on_prev_button_pressed():
 		__load_page(__current_page_idx - 1)
 
 
-func _on_save_toggle_pressed():
+func toggle_save():
 	for slot in __slot_grid.get_children():
 		slot.save_or_load = SaveLoadSlot.SAVE
 	
@@ -186,7 +188,7 @@ func _on_save_toggle_pressed():
 	
 	__current_mode_label.text = "Current Mode: Save"
 
-func _on_load_toggle_pressed():
+func toggle_load():
 	for slot in __slot_grid.get_children():
 		slot.save_or_load = SaveLoadSlot.LOAD
 	
