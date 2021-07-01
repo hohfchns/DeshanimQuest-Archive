@@ -16,6 +16,19 @@ func _ready():
 	_on_inventory_changed(__inventory)
 
 
+func start():
+	self.visible = true
+	get_tree().paused = true
+	
+	GameManager.menus_ll.push_front(self)
+
+func stop():
+	self.visible = false
+	get_tree().paused = false
+	
+	GameManager.menus_ll.pop_front()
+
+
 func __set_slot_indexes():
 	for slot in __hotbar.get_children():
 		slot_refs.append(slot)
@@ -59,5 +72,11 @@ func drop_data(position, data):
 
 func _input(event):
 	if event.is_action_pressed("toggle_inventory"):
-		self.visible = not self.visible
-		get_tree().paused = not get_tree().paused
+		if self.visible:
+			stop()
+		elif not self.visible and not GameManager.menus_ll.size:
+			start()
+	
+	if event.is_action_pressed("ui_cancel"):
+		if self.visible:
+			stop()
