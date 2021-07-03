@@ -5,11 +5,11 @@ export(NodePath) onready var __save_load_button = get_node(__save_load_button) a
 export(NodePath) onready var __settings_button = get_node(__settings_button) as Button
 export(NodePath) onready var __quit_button = get_node(__quit_button) as Button
 
-var player = GameManager.get_player() as Player
+onready var player = GameManager.get_player("PauseMenu") as Player
 
 
 func _ready():
-	player = GameManager.get_player()
+	player = GameManager.get_player("PauseMenu")
 	
 	__resume_button.connect("pressed", self, "toggle")
 	__save_load_button.connect("pressed", self, "_on_save_load_pressed")

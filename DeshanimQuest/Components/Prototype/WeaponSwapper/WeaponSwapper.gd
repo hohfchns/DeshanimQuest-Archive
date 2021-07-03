@@ -9,7 +9,7 @@ var __cur_item_index: int = 0
 var __player_ref = null
 
 func _ready():
-	__player_ref = GameManager.get_player()
+	__player_ref = GameManager.get_player("WeaponSwapper")
 
 func _input(event):
 	if not event is InputEventMouseButton:

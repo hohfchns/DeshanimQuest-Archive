@@ -39,7 +39,7 @@ func __spawn_current_spawner():
 	else:
 		spawned_scene.global_position = mouse_position
 	
-	var world = GameManager.get_player().get_parent()
+	var world = GameManager.get_player("UtilityGun").get_parent()
 	world.add_child(spawned_scene)
 
 

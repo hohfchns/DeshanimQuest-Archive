@@ -10,9 +10,9 @@ var menus_ll: LinkedList = LinkedList.new()
 func generate_player_ref():
 	__player_ref = get_node("/root/SceneRoot/YSort/Player")
 
-func get_player():
+func get_player(caller_identity: String):
 	if __player_ref:
 		return __player_ref
 	else:
-		print("Player not found, is likely not in scene.")
+		print("%s tried to get player, but a player was not found, it is likely not in scene." % caller_identity)
 
