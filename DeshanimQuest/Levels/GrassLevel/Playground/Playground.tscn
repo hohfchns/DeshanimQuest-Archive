@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=1]
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Items/Pickups/Utility/UtilityGunPickup.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/GrassLevel/ForestryTilemap.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=12]
 
 [node name="SceneRoot" type="Node2D"]
 script = ExtResource( 1 )
@@ -43,6 +44,173 @@ tile_data = PoolIntArray( -786420, 0, 0, -786407, 0, 0, -655378, 0, 0, -720896, 
 remote_path = NodePath("../../../PlayerCamera")
 
 [node name="Entities" type="YSort" parent="YSort"]
+
+[node name="Slimes" type="YSort" parent="YSort/Entities"]
+
+[node name="Slime" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -160.01, -183.948 )
+
+[node name="Slime2" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -408.214, -170.089 )
+
+[node name="Slime3" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -498.928, 47.8769 )
+
+[node name="Slime4" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -582.083, 206.627 )
+
+[node name="Slime5" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -423.333, 332.619 )
+
+[node name="Slime6" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -438.452, 224.266 )
+
+[node name="Slime49" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -438.452, 224.266 )
+
+[node name="Slime48" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -246.377, 157.595 )
+
+[node name="Slime50" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -336.859, 129.022 )
+
+[node name="Slime51" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -41.6021, 316.335 )
+
+[node name="Slime52" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -43.1895, 503.648 )
+
+[node name="Slime53" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -287.649, 624.291 )
+
+[node name="Slime7" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -503.968, 146.151 )
+
+[node name="Slime8" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -453.571, -104.573 )
+
+[node name="Slime9" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -241.905, -244.425 )
+
+[node name="Slime10" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 175.129, -245.684 )
+
+[node name="Slime11" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 461.131, -236.865 )
+
+[node name="Slime12" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 663.978, -192.768 )
+
+[node name="Slime13" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 460, -83.7735 )
+
+[node name="Slime14" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 281.091, 52.298 )
+
+[node name="Slime15" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 415.903, 6.94081 )
+
+[node name="Slime16" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 504.097, 160.651 )
+
+[node name="Slime17" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 471.339, 308.062 )
+
+[node name="Slime18" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 305.03, 340.82 )
+
+[node name="Slime19" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 418.423, 427.754 )
+
+[node name="Slime20" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 234.474, 483.191 )
+
+[node name="Slime21" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 78.244, 507.129 )
+
+[node name="Slime22" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -230.436, 529.808 )
+
+[node name="Slime23" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -362.728, 426.494 )
+
+[node name="Slime24" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -523.998, 452.953 )
+
+[node name="Slime25" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -426.984, 594.064 )
+
+[node name="Slime26" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -493.76, 725.095 )
+
+[node name="Slime27" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -335.01, 765.413 )
+
+[node name="Slime28" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -148.542, 800.691 )
+
+[node name="Slime29" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( -219.097, 679.738 )
+
+[node name="Slime30" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 0.12912, 752.814 )
+
+[node name="Slime31" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 264.712, 838.488 )
+
+[node name="Slime32" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 104.703, 838.488 )
+
+[node name="Slime33" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 436.062, 823.369 )
+
+[node name="Slime34" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 491.498, 757.853 )
+
+[node name="Slime35" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 671.667, 741.474 )
+
+[node name="Slime36" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 557.014, 645.72 )
+
+[node name="Slime37" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 660.327, 611.703 )
+
+[node name="Slime38" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 754.821, 713.756 )
+
+[node name="Slime54" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 838.954, 835.986 )
+
+[node name="Slime55" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 726.248, 858.209 )
+
+[node name="Slime39" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 831.677, 567.605 )
+
+[node name="Slime40" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 940.03, 431.534 )
+
+[node name="Slime41" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 1033.26, 291.683 )
+
+[node name="Slime42" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 1035.78, 156.871 )
+
+[node name="Slime43" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 1009.33, 5.68079 )
+
+[node name="Slime44" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 895.933, 0.641113 )
+
+[node name="Slime45" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 777.5, 121.593 )
+
+[node name="Slime46" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 642.689, 281.603 )
+
+[node name="Slime47" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
+position = Vector2( 822.857, -93.8529 )
 
 [node name="UtilityGunPickup" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 67.4967, 33.8465 )
