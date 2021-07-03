@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Tsnon-Sheet.png-c7e325b2974893d94986e67a6e7bf646.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Entities/Enemies/Tsnon/Tsnon-Sheet.png"
+dest_files=[ "res://.import/Tsnon-Sheet.png-c7e325b2974893d94986e67a6e7bf646.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

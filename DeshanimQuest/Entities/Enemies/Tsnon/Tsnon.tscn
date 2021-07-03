@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.11522
+height = 8.45635
+
+[node name="Tsnon" type="KinematicBody2D"]
+collision_layer = 64
+script = ExtResource( 2 )
+__jump_tween_h = NodePath("JumpTweenH")
+__jump_tween_v = NodePath("JumpTweenV")
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 8
+
+[node name="WorldCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 8.00904 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="JumpTweenH" type="Tween" parent="."]
+
+[node name="JumpTweenV" type="Tween" parent="."]
