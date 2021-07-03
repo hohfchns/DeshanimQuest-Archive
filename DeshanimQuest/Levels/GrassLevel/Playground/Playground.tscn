@@ -216,6 +216,7 @@ position = Vector2( 822.857, -93.8529 )
 position = Vector2( 67.4967, 33.8465 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 5 )]
 
