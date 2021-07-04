@@ -44,8 +44,8 @@ tracks/0/keys = {
 [node name="Tsnon" type="KinematicBody2D"]
 collision_layer = 64
 script = ExtResource( 2 )
-__jump_tween_h = NodePath("JumpTweenH")
-__jump_tween_v = NodePath("JumpTweenV")
+__sprite = NodePath("Sprite")
+__anim = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
