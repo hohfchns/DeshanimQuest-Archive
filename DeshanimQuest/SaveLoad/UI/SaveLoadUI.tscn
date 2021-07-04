@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://SaveLoad/UI/SaveLoadUI.gd" type="Script" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://SaveLoad/UI/DialogsParent.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 5 )
 
@@ -48,6 +52,20 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LevelLoadLabel" type="RichTextLabel" parent="."]
+anchor_left = 1.0
+anchor_top = 0.067
+anchor_right = 1.0
+anchor_bottom = 0.067
+margin_left = -272.0
+margin_top = -20.18
+margin_right = -24.0
+margin_bottom = 19.82
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[b]Warning[/b]: Loading levels that aren't implemented yet will crash the game"
+text = "Warning: Loading levels that aren't implemented yet will crash the game"
 
 [node name="TogglesHBox" type="HBoxContainer" parent="."]
 anchor_left = 0.5
@@ -421,7 +439,7 @@ margin_left = -0.064003
 margin_top = -0.160004
 margin_right = 0.0639648
 margin_bottom = -0.120026
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Saving over an existing save will overwrite it.
 Are you sure you want to save?"
 align = 1
@@ -479,7 +497,7 @@ margin_left = -0.064003
 margin_top = -0.160004
 margin_right = 0.0639648
 margin_bottom = -0.120026
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Loading a save will erase your current progress
 Are you sure you want to load?"
 align = 1
