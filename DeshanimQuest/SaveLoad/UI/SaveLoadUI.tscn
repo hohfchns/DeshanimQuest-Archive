@@ -58,14 +58,14 @@ anchor_left = 1.0
 anchor_top = 0.067
 anchor_right = 1.0
 anchor_bottom = 0.067
-margin_left = -272.0
-margin_top = -20.18
+margin_left = -280.0
+margin_top = -36.18
 margin_right = -24.0
-margin_bottom = 19.82
+margin_bottom = 28.82
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[b]Warning[/b]: Loading levels that aren't implemented yet will crash the game"
-text = "Warning: Loading levels that aren't implemented yet will crash the game"
+bbcode_text = "[b]Warning[/b]: Loading levels that are only implemented in a future version of the game will cause unexpected behaviour"
+text = "Warning: Loading levels that are only implemented in a future version of the game will cause unexpected behaviour"
 
 [node name="TogglesHBox" type="HBoxContainer" parent="."]
 anchor_left = 0.5
