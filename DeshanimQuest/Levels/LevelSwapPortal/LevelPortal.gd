@@ -1,6 +1,6 @@
 extends Node2D
 
-export(PackedScene) var target_scene
+export(String, FILE) var target_scene
 
 export(float) var rotation_speed = 180.0
 
@@ -15,4 +15,4 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
-		get_tree().change_scene_to(target_scene)
+		get_tree().change_scene_to(load(target_scene))

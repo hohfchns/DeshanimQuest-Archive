@@ -18,6 +18,7 @@ anim_offset = 1.0
 radius = 16.4811
 
 [node name="LevelPortal" type="Area2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

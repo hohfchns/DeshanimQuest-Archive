@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=1]
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Levels/GrassLevel/ForestryTilemap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/LevelSwapPortal/LevelPortal.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Levels/Testing/TestScene.tscn" type="PackedScene" id=14]
 
 [node name="SceneRoot" type="Node2D"]
 script = ExtResource( 1 )
@@ -222,7 +221,7 @@ layer = 0
 
 [node name="LevelPortal" parent="." instance=ExtResource( 13 )]
 position = Vector2( -147.599, 13.8121 )
-target_scene = ExtResource( 14 )
+target_scene = "res://Levels/Testing/TestScene.tscn"
 
 [editable path="YSort/Player"]
 [editable path="YSort/Player/Hurtbox"]
