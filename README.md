@@ -2,7 +2,7 @@
 
 The roadmap for the game can be found here: https://trello.com/b/llTLmu8z/project-management
 
-##
+## Information
 
 This game is a passion project. It will most likely not be monitized in any way.
 
