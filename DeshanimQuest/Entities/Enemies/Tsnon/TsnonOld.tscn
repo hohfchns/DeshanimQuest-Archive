@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Enemies/Tsnon/Tsnon-Sheet.png" type="Texture" id=1]
-[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon.gd" type="Script" id=2]
+[ext_resource path="res://Entities/Enemies/Tsnon/TsnonOld.gd" type="Script" id=2]
 [ext_resource path="res://Components/Enemies/PlayerDetectionZone/PlayerDetectionZone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Components/Enemies/WanderController/WanderController.tscn" type="PackedScene" id=4]
 
@@ -9,13 +9,13 @@
 radius = 7.11522
 height = 8.45635
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 61.0237
-
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=3]
 radius = 198.495
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="CircleShape2D" id=2]
+radius = 61.0237
+
+[sub_resource type="Animation" id=4]
 resource_name = "IdleLeft"
 length = 0.001
 tracks/0/type = "value"
@@ -43,8 +43,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "IdleRight"
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -59,7 +58,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "RunLeft"
 length = 0.55
 loop = true
@@ -89,8 +88,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "RunRight"
+[sub_resource type="Animation" id=7]
 length = 0.55
 loop = true
 step = 0.05
@@ -106,18 +104,35 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Tsnon" type="KinematicBody2D"]
 collision_layer = 64
 script = ExtResource( 2 )
+__distance_dir_tolerance = Vector2( 64, 64 )
+__reaction_time_range = [ 0.25, 0.75 ]
 __sprite = NodePath("Sprite")
 __anim = NodePath("AnimationPlayer")
-__chase_player_detection = NodePath("ChasePlayerDetectionZone")
-__distance_player_detection = NodePath("DistancePlayerDetection")
+__chase_player_detection = NodePath("ChasePlayerDetection")
+__distance_player_detection = NodePath("DistancePlayerDetectionZone")
+__reaction_timer = NodePath("ReactionTimer")
+__reaction_cooldown_timer = NodePath("ReactionCooldownTimer")
+__distance_max_timer = NodePath("DistanceMaxTime")
+__distance_cooldown_timer = NodePath("DistanceCooldownTimer")
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-flip_h = true
 hframes = 7
 frame = 1
 
@@ -127,29 +142,37 @@ position = Vector2( 0, 8.00904 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="ChasePlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+[node name="ChasePlayerDetection" parent="." instance=ExtResource( 3 )]
 
-[node name="CollisionShape2D" parent="ChasePlayerDetectionZone" index="0"]
-shape = SubResource( 4 )
+[node name="CollisionShape2D" parent="ChasePlayerDetection" index="0"]
+shape = SubResource( 3 )
 
-[node name="DistancePlayerDetection" parent="." instance=ExtResource( 3 )]
+[node name="DistancePlayerDetectionZone" parent="." instance=ExtResource( 3 )]
 
-[node name="CollisionShape2D" parent="DistancePlayerDetection" index="0"]
-shape = SubResource( 5 )
+[node name="CollisionShape2D" parent="DistancePlayerDetectionZone" index="0"]
+shape = SubResource( 2 )
 
 [node name="WanderController" parent="." instance=ExtResource( 4 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 6 )
-anims/IdleRight = SubResource( 2 )
-anims/RunLeft = SubResource( 7 )
-anims/RunRight = SubResource( 3 )
+anims/IdleLeft = SubResource( 4 )
+anims/IdleRight = SubResource( 5 )
+anims/RunLeft = SubResource( 6 )
+anims/RunRight = SubResource( 7 )
 
 [node name="ReactionTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="ReactionCooldownTimer" type="Timer" parent="."]
+one_shot = true
 
-[editable path="ChasePlayerDetectionZone"]
-[editable path="DistancePlayerDetection"]
+[node name="DistanceMaxTime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="DistanceCooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[editable path="ChasePlayerDetection"]
+[editable path="DistancePlayerDetectionZone"]
