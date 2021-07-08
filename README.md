@@ -1,5 +1,9 @@
 # **DeshanimQuest - An RPG by hohfchns/Hanzofactory, DSDusty, and LordanHax/sounD**
 
+The roadmap for the game can be found here: https://trello.com/b/llTLmu8z/project-management
+
+## Information
+
 This game is a passion project. It will most likely not be monitized in any way.
 
 The game is developed in the Godot game engine and uses the Dialogic plugin for dialog.
