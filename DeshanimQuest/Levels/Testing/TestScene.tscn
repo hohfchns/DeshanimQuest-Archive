@@ -17,7 +17,6 @@
 [ext_resource path="res://Levels/Testing/ControlsButton.gd" type="Script" id=16]
 [ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=18]
-[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon.tscn" type="PackedScene" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
@@ -67,8 +66,6 @@ position = Vector2( 1470.34, 740.836 )
 [node name="OldMan" parent="YSort/Entities" instance=ExtResource( 12 )]
 position = Vector2( 1044.87, 649.81 )
 
-[node name="Tsnon" parent="YSort/Entities" instance=ExtResource( 19 )]
-position = Vector2( 1214.68, 674.748 )
 
 [node name="UtilityGunPickup" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 996.025, 684.21 )
