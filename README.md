@@ -1,6 +1,6 @@
 # **DeshanimQuest - An RPG by hohfchns/Hanzofactory, DSDusty, and LordanHax/sounD**
 
-The roadmap for the game can be found here: https://trello.com/b/llTLmu8z/project-management
+The roadmap for the game can be found here: https://trello.com/b/llTLmu8z/deshanimquest-roadmap
 
 ## Information
 
