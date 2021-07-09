@@ -5,6 +5,9 @@ var player = null
 
 
 func _ready():
+	if get_overlapping_bodies():
+		player = get_overlapping_bodies()[0]
+	
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 

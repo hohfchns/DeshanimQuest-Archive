@@ -14,6 +14,7 @@
 [ext_resource path="res://Entities/NPCs/OldMan/OldMan.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=13]
 [ext_resource path="res://Levels/LevelSwapPortal/LevelPortal.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/Testing/ControlsButton.gd" type="Script" id=16]
 [ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=18]
@@ -27,7 +28,7 @@ script = ExtResource( 13 )
 scene_name = "Test Scene"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1040, 720 )
+position = Vector2( 1044.72, 713.865 )
 
 [node name="Grass" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -50,7 +51,7 @@ tile_data = PoolIntArray( 4456564, 0, 0, 4456565, 0, 0, 4456566, 0, 0, 4456567, 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1040, 720 )
+position = Vector2( 1044.72, 713.865 )
 
 [node name="CameraRemoteTransform" parent="YSort/Player" index="0"]
 remote_path = NodePath("../../../PlayerCamera")
@@ -66,6 +67,8 @@ position = Vector2( 1470.34, 740.836 )
 [node name="OldMan" parent="YSort/Entities" instance=ExtResource( 12 )]
 position = Vector2( 1044.87, 649.81 )
 
+[node name="Tsnon" parent="YSort/Entities" instance=ExtResource( 15 )]
+position = Vector2( 1222, 688 )
 
 [node name="UtilityGunPickup" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 996.025, 684.21 )
