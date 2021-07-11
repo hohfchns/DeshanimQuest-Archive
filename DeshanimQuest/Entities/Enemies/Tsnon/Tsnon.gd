@@ -5,13 +5,12 @@ onready var anim = $AnimationPlayer
 
 
 func _process(delta):
-	if ai_controller.state == ai_controller.States.IDLE:
-		if ai_controller.actor_velocity.x > 0:
+	if ai_controller.actor_velocity.x > 0:
+		anim.play("RunRight")
+	elif ai_controller.actor_velocity.x < 0:
+		anim.play("RunLeft")
+	else:
+		if ai_controller.last_move_vector.x > 0:
 			anim.play("IdleRight")
 		else:
 			anim.play("IdleLeft")
-	else:
-		if ai_controller.actor_velocity.x > 0:
-			anim.play("RunRight")
-		else:
-			anim.play("RunLeft")

@@ -25,7 +25,7 @@ func get_time_left():
 	return __timer.time_left
 
 
-func __start_wander_timer(duration: float):
+func start_wander_timer(duration: float):
 	__timer.start(duration)
 
 

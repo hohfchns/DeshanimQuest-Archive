@@ -79,10 +79,12 @@ func _physics_process(delta):
 			var player = __player_detection_zone.player
 			
 			if player:
+				# Raycast to player position and on the world layer
 				var space_state = get_world_2d().direct_space_state
 				var result = space_state.intersect_ray(self.global_position, player.get_global_position(),\
 				 [self], 1)
 				
+				# If raycast hit a wall
 				if result:
 					__apply_friction(delta)
 				else:
@@ -139,7 +141,7 @@ func __pick_random_state(state_list: Array):
 
 func __update_wander():
 	__state = __pick_random_state([States.IDLE, States.WANDER])
-	__wander_controller.__start_wander_timer(rand_range(1, 3))
+	__wander_controller.start_wander_timer(rand_range(1, 3))
 
 
 func __connect_signals():
