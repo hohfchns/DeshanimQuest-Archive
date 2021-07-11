@@ -7,11 +7,12 @@ enum States { IDLE, WANDER, FLEE, CHASE, ATTACK }
 
 var state = States.IDLE
 
-export var max_speed: float = 125.0
-export var acceleration_amt: float = 800.0
-export var friction_amt: float = 500.0
-export var flee_start_range: float = 30.0
-export var flee_distance: float = 30.0
+export var __max_speed: float = 80.0
+export var __acceleration_amt: float = 500.0
+export var __friction_amt: float = 700.0
+export var __flee_start_range: float = 30.0
+export var __flee_distance: float = 30.0
+export var __dist_after_chase: float = 100.0
 
 
 export(NodePath) onready var __actor = get_node(__actor) as KinematicBody2D
@@ -34,14 +35,14 @@ func _physics_process(delta):
 		States.IDLE:
 			__seek_player()
 			
-			__apply_friction(delta)
+			__apply_friction_to_actor(delta)
 			__actor.move_and_slide(actor_velocity)
 		
 		States.WANDER:
 			pass
 			
 		States.FLEE:
-			var target_pos = flee_start_pos + flee_dir * flee_distance
+			var target_pos = flee_start_pos + flee_dir * __flee_distance
 			var is_in_target_pos = __actor.global_position.distance_to(target_pos) < 5
 			
 			if is_in_target_pos or not __flee_timer.time_left:
@@ -50,20 +51,37 @@ func _physics_process(delta):
 			var dir = __actor.global_position.direction_to(target_pos)
 			
 			if not is_in_target_pos:
-				actor_velocity = actor_velocity.move_toward(dir * max_speed, acceleration_amt * delta)
+				actor_velocity = actor_velocity.move_toward(dir * __max_speed, __acceleration_amt * delta)
 			else:
-				__apply_friction(delta)
+				__apply_friction_to_actor(delta)
 			
 			__actor.move_and_slide(actor_velocity)
 		States.CHASE:
-			pass
+			__seek_player()
+			
+			var player = __player_detection.player
+			
+			if not player:
+				set_state(States.IDLE)
+				return
+			
+			var dir_to_player = __actor.global_position.direction_to(player.global_position)
+			var dist_to_player = __actor.global_position.distance_to(player.global_position)
+			
+			# If the actor needs to get closer to the player
+			if __dist_after_chase < dist_to_player:
+				actor_velocity = actor_velocity.move_toward(dir_to_player * __max_speed, __acceleration_amt * delta)
+			else:
+				set_state(States.IDLE)
+			
+			__actor.move_and_slide(actor_velocity)
 			
 		States.ATTACK:
 			pass
 
 
-func __apply_friction(delta):
-	actor_velocity = actor_velocity.move_toward(Vector2.ZERO, friction_amt * delta)
+func __apply_friction_to_actor(delta):
+	actor_velocity = actor_velocity.move_toward(Vector2.ZERO, __friction_amt * delta)
 
 
 func set_state(new_state, restart_state = false):
@@ -85,19 +103,15 @@ func __seek_player(restart_state = false):
 	if __player_detection.can_see_player():
 		var player = __player_detection.player
 		
-		if __actor.global_position.distance_to(player.global_position) < flee_start_range:
+		if __actor.global_position.distance_to(player.global_position) < __flee_start_range:
 			if restart_state == true:
 				set_state(States.FLEE, true)
 				return
-			
-			set_state(States.FLEE)
-			return
-		else:
-			if restart_state == true:
-				set_state(States.IDLE, true)
+			else:
+				set_state(States.FLEE)
 				return
-			
-			set_state(States.IDLE)
+		else:
+			set_state(States.CHASE)
 			return
 	elif not __player_detection.can_see_player():
 		set_state(States.IDLE)

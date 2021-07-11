@@ -7,7 +7,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 height = 7.11573
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "IdleLeft"
 length = 0.001
 tracks/0/type = "value"
@@ -35,7 +35,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "IdleRight"
 length = 0.001
 tracks/0/type = "value"
@@ -63,7 +63,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "RunLeft"
 length = 0.6
 loop = true
@@ -92,7 +92,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "RunRight"
 length = 0.6
 loop = true
@@ -121,7 +121,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=6]
 radius = 140.592
 
 [node name="Tsnon" type="KinematicBody2D"]
@@ -141,20 +141,17 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleRight"
-anims/IdleLeft = SubResource( 3 )
-anims/IdleRight = SubResource( 4 )
-anims/RunLeft = SubResource( 5 )
-anims/RunRight = SubResource( 6 )
+anims/IdleLeft = SubResource( 2 )
+anims/IdleRight = SubResource( 3 )
+anims/RunLeft = SubResource( 4 )
+anims/RunRight = SubResource( 5 )
 
 [node name="RangedEnemyAI" parent="." instance=ExtResource( 2 )]
-acceleration_amt = 400.0
-friction_amt = 200.0
-flee_distance = 60.0
 __actor = NodePath("..")
 
 [node name="CollisionShape2D" parent="RangedEnemyAI/PlayerDetectionZone" index="0"]
 position = Vector2( 0, 11.1244 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [editable path="RangedEnemyAI"]
 [editable path="RangedEnemyAI/PlayerDetectionZone"]
