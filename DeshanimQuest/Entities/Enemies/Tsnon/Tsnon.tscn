@@ -134,7 +134,6 @@ position = Vector2( 0, 9.00544 )
 texture = ExtResource( 1 )
 flip_h = true
 hframes = 7
-frame = 5
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 visible = false
