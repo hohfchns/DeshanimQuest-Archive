@@ -77,7 +77,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 2, 3, 4, 5, 6 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:flip_h")
@@ -96,6 +96,7 @@ tracks/1/keys = {
 resource_name = "RunRight"
 length = 0.6
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -106,7 +107,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 2, 3, 4, 5, 6 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:flip_h")
@@ -131,10 +132,12 @@ script = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 9.00544 )
 texture = ExtResource( 1 )
+flip_h = true
 hframes = 7
 frame = 5
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 17.7045 )
 rotation = -1.57079
 shape = SubResource( 1 )
@@ -148,6 +151,9 @@ anims/RunRight = SubResource( 5 )
 
 [node name="RangedEnemyAI" parent="." instance=ExtResource( 2 )]
 __actor = NodePath("..")
+
+[node name="PlayerDetectionZone" parent="RangedEnemyAI" index="0"]
+visible = false
 
 [node name="CollisionShape2D" parent="RangedEnemyAI/PlayerDetectionZone" index="0"]
 position = Vector2( 0, 11.1244 )
