@@ -20,11 +20,14 @@ export var __dist_after_chase: float = 100.0
 export var __wander_timer_range: Array = [1.0, 3.0]
 export var __wander_target_range: float = 3
 
+export var __attack_cooldown_time: float = 2.0
+
 export(NodePath) onready var __actor = get_node(__actor) as KinematicBody2D
 
 onready var __player_detection = $PlayerDetectionZone
 onready var __wander_controller = $WanderController
 onready var __flee_timer = $FleeTimer
+onready var __attack_cooldown = $AttackCooldownTimer
 
 
 var actor_velocity: Vector2 = Vector2.ZERO
@@ -100,14 +103,16 @@ func _physics_process(delta):
 			if __dist_after_chase < dist_to_player:
 				actor_velocity = actor_velocity.move_toward(dir_to_player * __max_speed, __acceleration_amt * delta)
 			else:
-				__apply_friction_to_actor(delta)
+#				__apply_friction_to_actor(delta)
+				set_state(States.ATTACK)
 			
 			__actor.move_and_slide(actor_velocity)
 			
 			last_move_vector = dir_to_player
 			
 		States.ATTACK:
-			pass
+			__apply_friction_to_actor(delta)
+			__actor.move_and_slide(actor_velocity)
 
 
 func __apply_friction_to_actor(delta):
@@ -122,6 +127,11 @@ func __get_random_state(states_list: Array):
 func set_state(new_state, restart_state = false):
 	if state == new_state and not restart_state:
 		return
+	
+	if new_state == States.ATTACK and __attack_cooldown.time_left:
+		return
+	elif new_state == States.ATTACK and not __attack_cooldown.time_left:
+		__attack_cooldown.start(__attack_cooldown_time)
 	
 	state = new_state
 	emit_signal("state_changed", new_state)
@@ -159,11 +169,10 @@ func __update_wander():
 	__wander_controller.start_wander_timer(rand_range(__wander_timer_range[0], __wander_timer_range[1]))
 
 
-
+func on_attack_anim_ended():
+	set_state(States.IDLE)
 
 
 func _on_DebugTimer_timeout():
-	print(States.keys()[state])
-	print("actor velocity is %s" % actor_velocity)
-	print("last_move_dir is %s" % last_move_vector)
+#	print(States.keys()[state])
 	pass
