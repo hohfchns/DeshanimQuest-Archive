@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=1]
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/GrassLevel/GrassesTilemap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/GrassLevel/CliffNewTilemap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Tsnon/Tsnon.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/PlayerCamera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/GrassLevel/ForestryTilemap.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=12]
@@ -211,6 +212,50 @@ position = Vector2( 642.689, 281.603 )
 
 [node name="Slime47" parent="YSort/Entities/Slimes" instance=ExtResource( 12 )]
 position = Vector2( 822.857, -93.8529 )
+
+[node name="Tsnons" type="YSort" parent="YSort/Entities"]
+
+[node name="Tsnon" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( -298.432, -218.268 )
+
+[node name="Tsnon2" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 103.181, -224.617 )
+
+[node name="Tsnon3" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 506.381, -145.247 )
+
+[node name="Tsnon4" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 363.515, -16.6677 )
+
+[node name="Tsnon5" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 545.273, 276.208 )
+
+[node name="Tsnon6" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 834.18, 46.0347 )
+
+[node name="Tsnon7" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 1000.86, 146.835 )
+
+[node name="Tsnon8" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 687.345, 669.884 )
+
+[node name="Tsnon9" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 345.26, 828.624 )
+
+[node name="Tsnon10" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( 14.2866, 787.352 )
+
+[node name="Tsnon11" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( -290.495, 655.597 )
+
+[node name="Tsnon12" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( -438.123, 450.822 )
+
+[node name="Tsnon13" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( -463.521, 187.313 )
+
+[node name="Tsnon14" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
+position = Vector2( -226.205, 80.1638 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

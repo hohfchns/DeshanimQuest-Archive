@@ -212,6 +212,7 @@ anims/Swing = SubResource( 3 )
 position = Vector2( 20.5271, -0.529732 )
 collision_mask = 8
 damage = 7
+knockback_amt = 150
 
 [node name="CollisionShape2D" parent="SwingHitbox" index="0"]
 position = Vector2( -6.54074, -0.176777 )
