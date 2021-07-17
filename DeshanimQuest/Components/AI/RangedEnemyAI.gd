@@ -64,6 +64,7 @@ func _physics_process(delta):
 				last_move_vector = dir
 			else:
 				__apply_friction_to_actor(delta)
+				__actor.move_and_slide(actor_velocity)
 			
 		States.FLEE:
 			var target_pos = flee_start_pos + flee_dir * __flee_distance
@@ -99,7 +100,7 @@ func _physics_process(delta):
 			if __dist_after_chase < dist_to_player:
 				actor_velocity = actor_velocity.move_toward(dir_to_player * __max_speed, __acceleration_amt * delta)
 			else:
-				set_state(States.IDLE)
+				__apply_friction_to_actor(delta)
 			
 			__actor.move_and_slide(actor_velocity)
 			
