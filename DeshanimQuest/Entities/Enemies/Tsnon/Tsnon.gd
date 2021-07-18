@@ -13,6 +13,8 @@ export var __knockback_multiplier: float = 1.2
 
 var pellet = preload("res://Entities/Enemies/Tsnon/TsnonPellet.tscn")
 
+var __death_effect = preload("res://Entities/Enemies/DeathEffect/EnemyDeathEffect.tscn")
+
 
 func _ready():
 	__stats.connect("no_health", self, "_on_stats_no_health")
@@ -67,4 +69,9 @@ func _on_hurtbox_area_entered(area: Hitbox):
 
 
 func _on_stats_no_health():
+	var effect = __death_effect.instance()
+	effect.global_position = self.global_position
+	
+	get_parent().add_child(effect)
+	
 	queue_free()

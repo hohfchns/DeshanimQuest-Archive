@@ -464,7 +464,7 @@ tracks/8/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "ShootLeft"
 length = 0.45
 step = 0.05
@@ -890,20 +890,19 @@ tracks/16/keys = {
 } ]
 }
 
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 9 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 9 )
+shader_param/active = true
+
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 9 )
 shader_param/active = true
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = ExtResource( 9 )
-shader_param/active = true
-
-[sub_resource type="ShaderMaterial" id=12]
-shader = ExtResource( 9 )
-shader_param/active = true
-
-[sub_resource type="Animation" id=9]
-resource_name = "Flash"
+[sub_resource type="Animation" id=11]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("LegLeftSprite:material")
@@ -915,7 +914,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ SubResource( 10 ), null ]
+"values": [ SubResource( 8 ), null ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodySprite:material")
@@ -927,7 +926,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ SubResource( 11 ), null ]
+"values": [ SubResource( 9 ), null ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("LegRightSprite:material")
@@ -939,13 +938,13 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ SubResource( 12 ), null ]
+"values": [ SubResource( 10 ), null ]
 }
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 11.7485
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=13]
 radius = 248.356
 
 [node name="Tsnon" type="KinematicBody2D" groups=[
@@ -992,11 +991,11 @@ anims/IdleLeft = SubResource( 2 )
 anims/IdleRight = SubResource( 3 )
 anims/RunLeft = SubResource( 4 )
 anims/RunRight = SubResource( 5 )
-anims/ShootLeft = SubResource( 8 )
+anims/ShootLeft = SubResource( 6 )
 anims/ShootRight = SubResource( 7 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
-anims/Flash = SubResource( 9 )
+anims/Flash = SubResource( 11 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 10 )]
 visible = false
@@ -1004,7 +1003,7 @@ collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 6.55509 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 
 [node name="ShotStartPos" type="Node2D" parent="."]
 position = Vector2( 5, 2 )
@@ -1015,7 +1014,7 @@ __actor = NodePath("..")
 
 [node name="CollisionShape2D" parent="RangedEnemyAI/PlayerDetectionZone" index="0"]
 position = Vector2( 0, 11.1244 )
-shape = SubResource( 6 )
+shape = SubResource( 13 )
 
 [node name="DamageNumberIndicator" parent="." instance=ExtResource( 8 )]
 visible = false

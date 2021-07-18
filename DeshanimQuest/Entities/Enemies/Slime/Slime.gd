@@ -45,6 +45,7 @@ export(NodePath) onready var __move_delay_timer = get_node(__move_delay_timer) a
 
 export(NodePath) onready var __flash_timer = get_node(__flash_timer) as Timer
 
+var __death_effect = preload("res://Entities/Enemies/DeathEffect/EnemyDeathEffect.tscn")
 
 func _ready():
 	__connect_signals()
@@ -196,5 +197,10 @@ func _on_hurtbox_area_entered(area: Hitbox):
 	__take_hit(area.damage, area.knockback_amt, area)
 
 func _on_stats_no_health():
+	var effect = __death_effect.instance()
+	effect.global_position = self.global_position
+	
+	get_parent().add_child(effect)
+	
 	queue_free()
 
