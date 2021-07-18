@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Entities/NPCs/OldMan/OldMan.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=13]
 [ext_resource path="res://Levels/LevelSwapPortal/LevelPortal.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Entities/Enemies/Slime/Slime.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/Testing/ControlsButton.gd" type="Script" id=16]
 [ext_resource path="res://UI/Fonts/tinypixelFont.tres" type="DynamicFont" id=17]
 [ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=18]
@@ -126,9 +125,6 @@ script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Slime" parent="." instance=ExtResource( 15 )]
-position = Vector2( 1325.92, 702.053 )
 
 [connection signal="pressed" from="ControlsButton" to="ControlsButton" method="_on_ControlsButton_pressed"]
 
