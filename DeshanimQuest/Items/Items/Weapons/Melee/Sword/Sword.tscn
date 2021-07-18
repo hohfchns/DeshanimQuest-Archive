@@ -9,7 +9,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "Stab"
 length = 0.6
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
@@ -53,10 +53,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2, 0.45, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 5.5 ), Vector2( 0, 0 ), Vector2( 24.5, 0 ), Vector2( 0, 0 ), Vector2( 0, 5.5 ) ]
+"values": [ Vector2( 0, 5.5 ), Vector2( 0, 5.5 ), Vector2( 0, 5.5 ), Vector2( 0, 5.5 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite/HandSprite:rotation_degrees")
@@ -69,6 +69,20 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 90.0, 90.0, 90.0, 0.0 ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.19 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "check_for_walls"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -122,10 +136,46 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("SwingHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stabhitbox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("FlashSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.6
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
@@ -174,6 +224,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.09 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "check_for_walls"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.2366
@@ -188,7 +252,6 @@ script = ExtResource( 3 )
 anim = NodePath("AnimationPlayer")
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -5.82705 )
 texture = ExtResource( 1 )
 
 [node name="HandSprite" type="Sprite" parent="Sprite"]
@@ -228,6 +291,10 @@ position = Vector2( 18.9151, 0 )
 rotation = 1.5708
 shape = SubResource( 5 )
 disabled = true
+
+[node name="WallCheckRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 35, 0 )
 
 [editable path="SwingHitbox"]
 [editable path="Stabhitbox"]
