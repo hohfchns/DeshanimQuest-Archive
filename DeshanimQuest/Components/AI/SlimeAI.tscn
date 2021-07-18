@@ -16,6 +16,5 @@ wait_time = 0.8
 one_shot = true
 
 [node name="DebugTimer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="DebugTimer" to="." method="_on_DebugTimer_timeout"]
