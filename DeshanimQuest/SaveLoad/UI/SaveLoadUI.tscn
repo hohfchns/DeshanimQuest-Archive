@@ -25,7 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 __slot_grid = NodePath("SlotGrid")
-__save_toggle_button = NodePath("TogglesHBox/SaveToggle")
+save_toggle_button = NodePath("TogglesHBox/SaveToggle")
 __load_toggle_button = NodePath("TogglesHBox/LoadToggle")
 __current_mode_label = NodePath("CurrentModeLabel")
 close_button = NodePath("ButtonsRow/CloseHBox/CloseButton")

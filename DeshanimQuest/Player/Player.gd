@@ -184,6 +184,7 @@ func _on_stats_no_health():
 	save_load_ui.start()
 	save_load_ui.toggle_load()
 	save_load_ui.close_button.visible = false
+	save_load_ui.save_toggle_button.visible = false
 
 
 func _on_selected_item_changed(item_instance, slot_index):

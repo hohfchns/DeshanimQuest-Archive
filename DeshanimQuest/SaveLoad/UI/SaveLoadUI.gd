@@ -2,7 +2,7 @@ extends Panel
 
 export(NodePath) onready var __slot_grid = get_node(__slot_grid) as GridContainer
 
-export(NodePath) onready var __save_toggle_button = get_node(__save_toggle_button) as Button
+export(NodePath) onready var save_toggle_button = get_node(save_toggle_button) as Button
 export(NodePath) onready var __load_toggle_button = get_node(__load_toggle_button) as Button
 
 export(NodePath) onready var __current_mode_label = get_node(__current_mode_label) as Label
@@ -46,7 +46,7 @@ func _ready():
 func __connect_signals():
 	SlotsData.connect("slot_data_changed", self, "__update_slot")
 	
-	__save_toggle_button.connect("pressed", self, "toggle_save")
+	save_toggle_button.connect("pressed", self, "toggle_save")
 	__load_toggle_button.connect("pressed", self, "toggle_load")
 	
 	close_button.connect("pressed", self, "_on_close_button_pressed")
@@ -65,6 +65,7 @@ func start():
 	get_tree().paused = true
 	
 	close_button.visible = true
+	save_toggle_button.visible = true
 	
 	GameManager.menus_ll.push_front(self)
 
