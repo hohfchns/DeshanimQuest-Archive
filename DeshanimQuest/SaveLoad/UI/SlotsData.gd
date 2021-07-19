@@ -70,7 +70,7 @@ func __check_for_existing_saves():
 	
 	for save_name in save_names:
 		var path = "%s/%s/%s.json" % [saves_path, save_name, save_name]
-		var save = SaveLoad.load_from_file(path)
+		var save = SaveLoad.load_data_from_file(path)
 		var slot_index = save["slot_index"]
 		fill_slots_data(slot_index)
 		set_slot_data(slot_index, save)

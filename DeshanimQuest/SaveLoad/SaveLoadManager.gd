@@ -17,7 +17,7 @@ func __save_to_file(path: String, data: Dictionary):
 	
 	file.close()
 
-func load_from_file(path):
+func load_data_from_file(path):
 	var file = File.new()
 	
 	if not file.file_exists(path):
@@ -99,7 +99,7 @@ func save_to_slot(slot_index: int):
 func load_from_slot(slot_index: int):
 	var path = "user://Saves/save%s/save%s.json" % [slot_index, slot_index]
 	
-	var save_data = load_from_file(path)
+	var save_data = load_data_from_file(path)
 	
 	if not save_data:
 		print("Save data not found at slot %s, not loading" % slot_index)
