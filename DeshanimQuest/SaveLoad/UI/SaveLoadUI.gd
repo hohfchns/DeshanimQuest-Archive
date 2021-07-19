@@ -8,6 +8,7 @@ export(NodePath) onready var __load_toggle_button = get_node(__load_toggle_butto
 export(NodePath) onready var __current_mode_label = get_node(__current_mode_label) as Label
 
 export(NodePath) onready var close_button = get_node(close_button) as Button
+export(NodePath) onready var quit_button = get_node(quit_button) as Button
 
 export(NodePath) onready var __prev_button = get_node(__prev_button) as Button
 export(NodePath) onready var __next_button = get_node(__next_button) as Button
@@ -50,6 +51,7 @@ func __connect_signals():
 	__load_toggle_button.connect("pressed", self, "toggle_load")
 	
 	close_button.connect("pressed", self, "_on_close_button_pressed")
+	quit_button.connect("pressed", self, "_on_quit_button_pressed")
 	
 	__prev_button.connect("pressed", self, "_on_prev_button_pressed")
 	__next_button.connect("pressed", self, "_on_next_button_pressed")
@@ -65,6 +67,7 @@ func start():
 	get_tree().paused = true
 	
 	close_button.visible = true
+	quit_button.visible = false
 	save_toggle_button.visible = true
 	
 	GameManager.menus_ll.push_front(self)
@@ -200,6 +203,9 @@ func toggle_load():
 
 func _on_close_button_pressed():
 	stop()
+
+func _on_quit_button_pressed():
+	get_tree().quit()
 
 
 func _input(event):

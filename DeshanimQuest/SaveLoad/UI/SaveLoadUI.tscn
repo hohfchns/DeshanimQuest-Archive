@@ -29,6 +29,7 @@ save_toggle_button = NodePath("TogglesHBox/SaveToggle")
 __load_toggle_button = NodePath("TogglesHBox/LoadToggle")
 __current_mode_label = NodePath("CurrentModeLabel")
 close_button = NodePath("ButtonsRow/CloseHBox/CloseButton")
+quit_button = NodePath("ButtonsRow/CloseHBox/QuitButton")
 __prev_button = NodePath("ButtonsRow/ButtonsHBox/Previous")
 __next_button = NodePath("ButtonsRow/ButtonsHBox/Next")
 __page_number = NodePath("ButtonsRow/ButtonsHBox/PageNumber")
@@ -399,6 +400,17 @@ margin_right = 60.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 60, 48 )
 text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="ButtonsRow/CloseHBox"]
+visible = false
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 60, 48 )
+text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
