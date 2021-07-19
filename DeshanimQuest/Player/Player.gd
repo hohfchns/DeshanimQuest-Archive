@@ -193,7 +193,9 @@ func _on_selected_item_changed(item_instance, slot_index):
 
 func _on_hurtbox_entered(area):
 	__hurtbox.start_invincibility(__invincibility_duration)
-	__stats.subtract_health(area.damage)
+	
+	var damage_to_take = area.damage / __hurtbox.get_overlapping_areas().size()
+	__stats.subtract_health(damage_to_take)
 
 func _on_hurtbox_invincibility_started():
 	__effects_anim.play("HitBlinkStart")
