@@ -143,6 +143,8 @@ func _on_state_changed(new_state):
 		flee_start_pos = __actor.global_position
 		
 		__flee_timer.start()
+	elif new_state == States.IDLE:
+		__wander_controller.start_wander_timer(rand_range(__wander_timer_range[0], __wander_timer_range[1]))
 
 
 func __seek_player(restart_state = false):
