@@ -149,6 +149,17 @@ func _on_state_changed(new_state):
 
 func __seek_player(restart_state = false):
 	if __player_detection.can_see_player():
+		var space_state = get_world_2d().direct_space_state
+		var result = space_state.intersect_ray(self.global_position, __player_detection.player.get_global_position(),\
+		[self], 1)
+		
+		if result:
+			if state == States.CHASE:
+				set_state(States.IDLE)
+				return
+			else:
+				return
+		
 		var player = __player_detection.player
 		
 		if __actor.global_position.distance_to(player.global_position) < __flee_start_range:

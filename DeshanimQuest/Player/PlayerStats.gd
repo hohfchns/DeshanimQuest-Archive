@@ -10,7 +10,7 @@ func _ready():
 	connect("health_changed", self, "_on_health_changed")
 	SaveLoad.connect("save_loaded", self, "_on_save_loaded")
 	
-	__health = __max_health
+#	__health = __max_health
 
 
 func set_health(value):
