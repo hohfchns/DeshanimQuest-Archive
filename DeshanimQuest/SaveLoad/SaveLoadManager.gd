@@ -72,7 +72,8 @@ func generate_cur_save_data() -> Dictionary:
 
 func _on_save_loaded(save_data, slot_index):
 	if "scene" in save_data and "scene_path" in save_data["scene"]:
-		get_tree().change_scene_to(load(save_data["scene"]["scene_path"]))
+		get_tree().call_deferred("change_scene_to", load(save_data["scene"]["scene_path"]))
+#		get_tree().change_scene_to(load(save_data["scene"]["scene_path"]))
 		
 		var scene_name = save_data["scene"]["scene_name"]
 		print("Loaded scene \"%s\" from slot %s" % [scene_name, slot_index])
