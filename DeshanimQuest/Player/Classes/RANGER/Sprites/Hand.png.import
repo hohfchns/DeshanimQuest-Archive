@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RangerLeftArmSheet.png-64dce5d15665d6501068cc240b8cd5cd.stex"
+path="res://.import/Hand.png-352ae2a062c865c238f23c7a4943d1dd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/RangerLeftArmSheet.png"
-dest_files=[ "res://.import/RangerLeftArmSheet.png-64dce5d15665d6501068cc240b8cd5cd.stex" ]
+source_file="res://Player/Classes/RANGER/Sprites/Hand.png"
+dest_files=[ "res://.import/Hand.png-352ae2a062c865c238f23c7a4943d1dd.stex" ]
 
 [params]
 

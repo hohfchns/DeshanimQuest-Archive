@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Classes/RANGER/RANGERPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/GrassLevel/GrassesTilemap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Misc/TargetDummy/TargetDummy.tscn" type="PackedScene" id=5]
@@ -27,7 +27,7 @@ script = ExtResource( 13 )
 scene_name = "Test Scene"
 
 [node name="PlayerCamera" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1044.72, 713.865 )
+position = Vector2( 1094.87, 696.736 )
 
 [node name="Grass" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -49,12 +49,6 @@ tile_data = PoolIntArray( 4456564, 0, 0, 4456565, 0, 0, 4456566, 0, 0, 4456567, 
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1044.72, 713.865 )
-
-[node name="CameraRemoteTransform" parent="YSort/Player" index="0"]
-remote_path = NodePath("../../../PlayerCamera")
-
 [node name="Entities" type="YSort" parent="YSort"]
 
 [node name="TargetDummy" parent="YSort/Entities" instance=ExtResource( 5 )]
@@ -72,6 +66,12 @@ position = Vector2( 996.025, 684.21 )
 [node name="LevelPortal" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( 1197.84, 605.326 )
 target_scene = "res://Levels/GrassLevel/Playground/Playground.tscn"
+
+[node name="RANGERPlayer" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 1094.87, 696.736 )
+
+[node name="CameraRemoteTransform" parent="YSort/RANGERPlayer" index="0"]
+remote_path = NodePath("../../../PlayerCamera")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -128,5 +128,5 @@ __meta__ = {
 
 [connection signal="pressed" from="ControlsButton" to="ControlsButton" method="_on_ControlsButton_pressed"]
 
-[editable path="YSort/Player"]
-[editable path="YSort/Player/Hurtbox"]
+[editable path="YSort/RANGERPlayer"]
+[editable path="YSort/RANGERPlayer/Hurtbox"]

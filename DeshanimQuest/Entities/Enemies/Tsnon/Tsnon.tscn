@@ -1012,6 +1012,9 @@ position = Vector2( 5, 2 )
 __flee_start_range = 50.0
 __actor = NodePath("..")
 
+[node name="PlayerDetectionZone" parent="RangedEnemyAI" index="0"]
+visible = false
+
 [node name="CollisionShape2D" parent="RangedEnemyAI/PlayerDetectionZone" index="0"]
 position = Vector2( 0, 11.1244 )
 shape = SubResource( 13 )

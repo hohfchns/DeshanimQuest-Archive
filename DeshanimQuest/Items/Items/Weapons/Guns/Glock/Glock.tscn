@@ -3,7 +3,7 @@
 [ext_resource path="res://Items/Items/Weapons/Guns/Glock/Glock.gd" type="Script" id=1]
 [ext_resource path="res://Components/Collisions/Hitray/Hitray.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Items/Weapons/Guns/Glock/GlockBody.png" type="Texture" id=3]
-[ext_resource path="res://Player/Sprites/Hand.png" type="Texture" id=4]
+[ext_resource path="res://Player/Classes/RANGER/Sprites/Hand.png" type="Texture" id=4]
 [ext_resource path="res://Items/Items/Weapons/Guns/Glock/GlockTop.png" type="Texture" id=5]
 [ext_resource path="res://Items/Items/Weapons/Guns/Glock/MuzzleFlash.png" type="Texture" id=6]
 

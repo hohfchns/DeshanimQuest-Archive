@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Classes/WARRIOR/WARRIORPlayer.gd" type="Script" id=2]
+
+[node name="WARRIORPlayer" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+__max_speed = Vector2( 200, 200 )
+__acceleration_amt = 1500
+__friction_amt = 1200
+__hand_distance = 20.0
+__invincibility_duration = 1.0
+
+[editable path="Hurtbox"]

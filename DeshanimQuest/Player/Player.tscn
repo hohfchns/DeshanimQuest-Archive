@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Player/Sprites/RangerBodySheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/Classes/RANGER/Sprites/RangerBodySheet.png" type="Texture" id=1]
 [ext_resource path="res://Components/Collisions/Hurtbox/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Items/EmptyHand/EmptyHand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.gd" type="Script" id=4]
@@ -140,16 +140,6 @@ __acceleration_amt = 1250
 __friction_amt = 900
 __hand_distance = 12.0
 __invincibility_duration = 0.5
-__hand_axis = NodePath("HandAxis")
-__hand_rot_point = NodePath("HandAxis/HandRotPoint")
-__hurtbox = NodePath("Hurtbox")
-__interaction_area = NodePath("InteractionArea")
-__body_anim = NodePath("BodySprite/BodyAP")
-__effects_anim = NodePath("EffectsAP")
-__canvas_layer = NodePath("CanvasLayer")
-__hotbar = NodePath("CanvasLayer/PlayerHotbar")
-save_load_ui = NodePath("CanvasLayer/SaveLoadUI")
-settings_menu = NodePath("CanvasLayer/SettingsMenu")
 
 [node name="CameraRemoteTransform" type="RemoteTransform2D" parent="."]
 
