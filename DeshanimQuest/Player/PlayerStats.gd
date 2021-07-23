@@ -7,7 +7,7 @@ signal class_changed(new_class)
 
 enum Classes { NOCLASS, RANGER, WARRIOR }
 
-var player_class = Classes.RANGER
+export(Classes) var player_class
 var current_class_name = Classes.keys()[player_class]
 
 export(int) var __max_health setget set_max_health, get_max_health
@@ -17,6 +17,7 @@ func _ready():
 	connect("health_changed", self, "_on_health_changed")
 	SaveLoad.connect("save_loaded", self, "_on_save_loaded")
 	
+	current_class_name = Classes.keys()[player_class]
 #	__health = __max_health
 
 

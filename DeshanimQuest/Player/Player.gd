@@ -48,6 +48,8 @@ func _ready():
 	randomize()
 	
 	__connect_signal_functions()
+	
+	print("player instanced")
 
 
 func _physics_process(delta):
