@@ -36,11 +36,6 @@ tracks/1/keys = {
 
 [node name="WARRIORPlayer" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-__max_speed = Vector2( 200, 200 )
-__acceleration_amt = 1500
-__friction_amt = 1200
-__hand_distance = 20.0
-__invincibility_duration = 1.0
 
 [node name="BodySprite" parent="." index="1"]
 texture = ExtResource( 3 )

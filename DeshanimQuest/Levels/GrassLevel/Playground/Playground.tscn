@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=1]
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=2]
-[ext_resource path="res://Player/Classes/RANGER/RANGERPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=6]
@@ -252,10 +252,7 @@ position = Vector2( -463.521, 187.313 )
 [node name="Tsnon14" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
 position = Vector2( -226.205, 80.1638 )
 
-[node name="RANGERPlayer" parent="YSort" instance=ExtResource( 3 )]
-
-[node name="CameraRemoteTransform" parent="YSort/RANGERPlayer" index="0"]
-remote_path = NodePath("../../../PlayerCamera")
+[node name="PlayerSpawner" parent="YSort" instance=ExtResource( 3 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -267,6 +264,3 @@ layer = 0
 [node name="LevelPortal" parent="." instance=ExtResource( 13 )]
 position = Vector2( -147.599, 13.8121 )
 target_scene = "res://Levels/Testing/TestScene.tscn"
-
-[editable path="YSort/RANGERPlayer"]
-[editable path="YSort/RANGERPlayer/Hurtbox"]
