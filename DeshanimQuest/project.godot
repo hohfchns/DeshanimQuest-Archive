@@ -170,7 +170,7 @@ PlayerInventory="*res://Inventory/PlayerInventory.tscn"
 SaveLoad="*res://SaveLoad/SaveLoadManager.tscn"
 GameManager="*res://Managers/GameManager.tscn"
 SlotsData="*res://SaveLoad/UI/SlotsData.tscn"
-DebugVars="*res://Debug/DebugVars.gd"
+DebugVars="*res://Debug/DebugVars.tscn"
 
 [display]
 

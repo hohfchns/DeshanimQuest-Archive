@@ -139,9 +139,13 @@ func __attempt_load(slot_idx):
 	if not __sd.get_slots_data()[slot_idx]:
 		return
 	
-	__dialogs_parent.show()
-	__load_confirm_dialog.show()
-	__dialogs_parent.slot_idx = slot_idx
+	if not DebugVars.quick_debug:
+		__dialogs_parent.show()
+		__load_confirm_dialog.show()
+		__dialogs_parent.slot_idx = slot_idx
+	else:
+		stop()
+		SaveLoad.load_from_slot(__dialogs_parent.slot_idx)
 
 
 func _on_slot_pressed(save_or_load, slot_idx):
@@ -158,8 +162,6 @@ func _on_overwrite_cancel_pressed():
 func _on_overwrite_confirm_pressed():
 	__dialogs_parent.hide()
 	__overwrite_confirm_dialog.hide()
-	
-	get_tree().paused = false
 	
 	SaveLoad.save_to_slot(__dialogs_parent.slot_idx)
 
