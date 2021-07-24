@@ -147,7 +147,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DeshanimQuest"
-run/main_scene="res://Levels/Testing/TestScene.tscn"
+run/main_scene="res://Player/Classes/ClassChoice/ClassChoiceUI.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="DeshanimQuest"
 config/icon="res://icon.png"

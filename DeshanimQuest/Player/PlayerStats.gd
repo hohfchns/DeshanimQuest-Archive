@@ -21,6 +21,13 @@ func _ready():
 #	__health = __max_health
 
 
+func set_class(new_class):
+	player_class = new_class
+	current_class_name = Classes.keys()[new_class]
+	
+	emit_signal("class_changed", new_class)
+
+
 func set_health(value):
 	__health = value
 	
