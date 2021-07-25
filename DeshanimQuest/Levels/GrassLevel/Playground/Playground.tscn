@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Levels/SceneName.gd" type="Script" id=1]
 [ext_resource path="res://Levels/GrassLevel/Assets/GrassGreen.png" type="Texture" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/UI/Death/DeathText.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/UI/Bars/HealthBar/HealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/GrassLevel/GrassLevelTilemap.tscn" type="PackedScene" id=6]
@@ -38,11 +38,6 @@ tile_data = PoolIntArray( -2228267, 0, 0, -2162733, 0, 0, -2162732, 0, 0, -21627
 tile_data = PoolIntArray( -786420, 0, 0, -786407, 0, 0, -655378, 0, 0, -720896, 0, 0, -720892, 0, 0, -720878, 0, 0, -720864, 0, 0, -655346, 0, 0, -655337, 0, 0, -655332, 0, 0, -524309, 0, 0, -589818, 0, 0, -589813, 0, 0, -589788, 0, 0, -458759, 0, 0, -524249, 0, 0, -458749, 0, 0, -458743, 0, 0, -458739, 0, 0, -458736, 0, 0, -458710, 0, 0, -327687, 0, 0, -393205, 0, 0, -393189, 0, 0, -393177, 0, 0, -327636, 0, 0, -262139, 0, 0, -262130, 0, 0, -262116, 0, 0, -131078, 0, 0, -131063, 0, 0, -5, 0, 0, -65511, 0, 0, 65527, 0, 0, 28, 0, 0, 196597, 0, 0, 196602, 0, 0, 131098, 0, 0, 262119, 0, 0, 458726, 0, 0, 393251, 0, 0, 393254, 0, 0, 458764, 0, 0, 524305, 0, 0, 589835, 0, 0, 589857, 0, 0, 589861, 0, 0, 655368, 0, 0, 786426, 0, 0, 720916, 0, 0, 720941, 0, 0, 851952, 0, 0, 786437, 0, 0, 786449, 0, 0, 786462, 0, 0, 786467, 0, 0, 917479, 0, 0, 917491, 0, 0, 917493, 0, 0, 917498, 0, 0, 851976, 0, 0, 852000, 0, 0, 917518, 0, 0, 1048567, 0, 0, 983045, 0, 0, 983067, 0, 0, 983071, 0, 0, 983078, 0, 0, 1179631, 0, 0, 1179637, 0, 0, 1114122, 0, 0, 1114125, 0, 0, 1114141, 0, 0, 1245170, 0, 0, 1245177, 0, 0, 1179675, 0, 0, 1179682, 0, 0, 1179690, 0, 0, 1310762, 0, 0, 1441769, 0, 0, 1441779, 0, 0, 1376282, 0, 0, 1441821, 0, 0, 1441824, 0, 0, 1572869, 0, 0, 1572873, 0, 0, 1572878, 0, 0, 1703935, 0, 0, 1638420, 0, 0, 1638439, 0, 0, 1769478, 0, 0, 1769485, 0, 0, 1769489, 0, 0, 1769509, 0, 0, 1900542, 0, 0, 1835010, 0, 0, 1835017, 0, 0, 1966058, 0, 0, 1966066, 0, 0, 1900555, 0, 0, 1900558, 0, 0, 1966119, 0, 0, 2097127, 0, 0, 2097142, 0, 0, 2031620, 0, 0, 2162667, 0, 0, 2097164, 0, 0, 2228207, 0, 0, 2228219, 0, 0, 2162725, 0, 0, 2293749, 0, 0, 2228249, 0, 0, 2228261, 0, 0, 2293792, 0, 0, 2359318, 0, 0, 2359323, 0, 0, 2359330, 0, 0 )
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="Player" parent="YSort" instance=ExtResource( 3 )]
-
-[node name="CameraRemoteTransform" parent="YSort/Player" index="0"]
-remote_path = NodePath("../../../PlayerCamera")
 
 [node name="Entities" type="YSort" parent="YSort"]
 
@@ -257,6 +252,8 @@ position = Vector2( -463.521, 187.313 )
 [node name="Tsnon14" parent="YSort/Entities/Tsnons" instance=ExtResource( 9 )]
 position = Vector2( -226.205, 80.1638 )
 
+[node name="PlayerSpawner" parent="YSort" instance=ExtResource( 3 )]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
 
@@ -267,6 +264,3 @@ layer = 0
 [node name="LevelPortal" parent="." instance=ExtResource( 13 )]
 position = Vector2( -147.599, 13.8121 )
 target_scene = "res://Levels/Testing/TestScene.tscn"
-
-[editable path="YSort/Player"]
-[editable path="YSort/Player/Hurtbox"]

@@ -12,7 +12,7 @@ func _ready():
 
 # Should be called by the player when it enters the scene
 func generate_player_ref():
-	__player_ref = get_node("/root/SceneRoot/YSort/Player")
+	__player_ref = get_node("/root/SceneRoot/YSort/%sPlayer" % PlayerStats.current_class_name)
 
 func get_player(caller_identity: String):
 	if __player_ref:

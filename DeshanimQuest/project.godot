@@ -44,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Stats/EnemyStats.gd"
 }, {
-"base": "Sprite",
-"class": "FloatingHand",
-"language": "GDScript",
-"path": "res://Player/Components/FloatingHand.gd"
-}, {
 "base": "TextureProgress",
 "class": "HealthBar",
 "language": "GDScript",
@@ -132,7 +127,6 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "EnemyStats": "",
-"FloatingHand": "",
 "HealthBar": "",
 "Hitbox": "",
 "Hitray": "",
@@ -153,7 +147,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DeshanimQuest"
-run/main_scene="res://Levels/Testing/TestScene.tscn"
+run/main_scene="res://Player/Classes/ClassChoice/ClassChoiceUI.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="DeshanimQuest"
 config/icon="res://icon.png"

@@ -14,25 +14,25 @@ export(float) var __hand_distance = 20.0
 
 export(float) var __invincibility_duration = 1.0
 
-export(NodePath) onready var __hand_axis = get_node(__hand_axis) as Node2D
-export(NodePath) onready var __hand_rot_point = get_node(__hand_rot_point) as Node2D
+onready var __hand_axis = $HandAxis
+onready var __hand_rot_point = $HandAxis/HandRotPoint
 onready var __current_item = __hand_rot_point.get_child(0)
 
-export(NodePath) onready var __hurtbox = get_node(__hurtbox) as Hurtbox
+onready var __hurtbox = $Hurtbox
 
-export(NodePath) onready var __interaction_area = get_node(__interaction_area) as Area2D
+onready var __interaction_area = $InteractionArea
 
-export(NodePath) onready var __body_anim = get_node(__body_anim) as AnimationPlayer
+onready var __body_anim = $BodySprite/BodyAP
 
-export(NodePath) onready var __effects_anim = get_node(__effects_anim) as AnimationPlayer
+onready var __effects_anim = $EffectsAP
 
 #export(NodePath) onready var __health_bar = get_node(__health_bar) as HealthBar
-export(NodePath) onready var __canvas_layer = get_node(__canvas_layer) as CanvasLayer
+onready var __canvas_layer = $CanvasLayer
 
-export(NodePath) onready var __hotbar = get_node(__hotbar) as HBoxContainer
+onready var __hotbar = $CanvasLayer/PlayerHotbar
 
-export(NodePath) onready var save_load_ui = get_node(save_load_ui) as Panel
-export(NodePath) onready var settings_menu = get_node(settings_menu) as Control
+onready var save_load_ui = $CanvasLayer/SaveLoadUI
+onready var settings_menu = $CanvasLayer/SettingsMenu
 
 
 var __can_attack: bool = true
@@ -48,6 +48,8 @@ func _ready():
 	randomize()
 	
 	__connect_signal_functions()
+	
+	print("player instanced")
 
 
 func _physics_process(delta):

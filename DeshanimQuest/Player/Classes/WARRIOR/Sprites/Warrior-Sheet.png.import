@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RangerLeftArmSheet.png-64dce5d15665d6501068cc240b8cd5cd.stex"
+path="res://.import/Warrior-Sheet.png-3226eab074db8acdcf7a839de8695ae8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/RangerLeftArmSheet.png"
-dest_files=[ "res://.import/RangerLeftArmSheet.png-64dce5d15665d6501068cc240b8cd5cd.stex" ]
+source_file="res://Player/Classes/WARRIOR/Sprites/Warrior-Sheet.png"
+dest_files=[ "res://.import/Warrior-Sheet.png-3226eab074db8acdcf7a839de8695ae8.stex" ]
 
 [params]
 
