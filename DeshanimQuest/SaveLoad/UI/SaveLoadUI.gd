@@ -94,7 +94,14 @@ func __update_slot(slot_idx):
 	
 	slot.slot_name.text = "Slot %s" % (slot_idx + 1)
 	slot.level_label.text = slot_data["scene"]["scene_name"]
-	slot.icon_rect.texture = __ranger_icon
+	
+	if not ("player" in slot_data):
+		return
+	
+	if "class_name" in slot_data["player"]:
+		slot.icon_rect.texture = load("res://Player/Portraits/%sPortrait.png" % slot_data["player"]["class_name"])
+	else:
+		slot.icon_rect.texture = __ranger_icon
 
 
 func __load_page(page_idx):

@@ -59,9 +59,14 @@ func _on_save_loaded(save_data, slot_idx):
 	if not "player" in save_data:
 		return
 	
+	if "class" in save_data["player"]:
+		set_class(save_data["player"]["class"])
+	else:
+		set_class(Classes.RANGER)
+	
 	if "max_health" in save_data["player"]:
 		set_max_health(save_data["player"]["max_health"])
 	if "health" in save_data["player"]:
 		set_health(save_data["player"]["health"])
 	
-	print("Player stats set from save %s" % slot_idx)
+	print("Player stats set from save %s" % (slot_idx+1))

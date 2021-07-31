@@ -63,6 +63,8 @@ func generate_cur_save_data() -> Dictionary:
 	save_data["scene"]["scene_path"] = get_tree().get_current_scene().filename
 	
 	save_data["player"] = {}
+	save_data["player"]["class"] = PlayerStats.player_class
+	save_data["player"]["class_name"] = PlayerStats.current_class_name
 	save_data["player"]["max_health"] = PlayerStats.get_max_health()
 	save_data["player"]["health"] = PlayerStats.get_health()
 	save_data["player"]["inventory_items"] = __get_item_dicts()
@@ -76,7 +78,7 @@ func _on_save_loaded(save_data, slot_index):
 #		get_tree().change_scene_to(load(save_data["scene"]["scene_path"]))
 		
 		var scene_name = save_data["scene"]["scene_name"]
-		print("Loaded scene \"%s\" from slot %s" % [scene_name, slot_index])
+		print("Loaded scene \"%s\" from slot %s" % [scene_name, (slot_index+1)])
 
 
 func save_to_slot(slot_index: int):
@@ -93,7 +95,7 @@ func save_to_slot(slot_index: int):
 	
 	__save_to_file(path, save_data)
 	
-	print("Saved to slot %s" % slot_index)
+	print("Saved to slot %s" % (slot_index+1))
 	
 	emit_signal("slot_changed", save_data, slot_index)
 
@@ -106,6 +108,6 @@ func load_from_slot(slot_index: int):
 		print("Save data not found at slot %s, not loading" % slot_index)
 		return
 	
-	print("Loaded from slot %s" % slot_index)
+	print("Loading from slot %s" % (slot_index+1))
 	
 	emit_signal("save_loaded", save_data, slot_index)

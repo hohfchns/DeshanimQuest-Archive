@@ -15,7 +15,7 @@ func _on_save_loaded(save_data, slot_idx):
 		
 		if not saved_items:
 			inventory.set_items([])
-			print("Loaded empty array as inventory from save %s" % slot_idx)
+			print("Loaded empty array as inventory from save %s" % (slot_idx+1))
 			return
 		
 		for saved_item in saved_items:
@@ -33,4 +33,4 @@ func _on_save_loaded(save_data, slot_idx):
 			items.append(inventory_item)
 		
 		inventory.set_items(items)
-		print("Loaded items from save %s" % slot_idx)
+		print("Loaded items from save %s" % (slot_idx+1))
