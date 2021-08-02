@@ -76,6 +76,10 @@ func stop():
 	self.visible = false
 	get_tree().paused = false
 	
+	__dialogs_parent.hide()
+	__overwrite_confirm_dialog.hide()
+	__load_confirm_dialog.hide()
+	
 	GameManager.menus_ll.pop_front()
 	if GameManager.menus_ll.get_forward_list():
 		GameManager.menus_ll.tail.data.start()
@@ -223,3 +227,10 @@ func _input(event):
 			stop()
 		elif not self.visible and not GameManager.menus_ll.get_forward_list():
 			start()
+	elif event.is_action_pressed("ui_cancel"):
+		if __dialogs_parent.visible:
+			__dialogs_parent.hide()
+			__overwrite_confirm_dialog.hide()
+			__load_confirm_dialog.hide()
+		else:
+			stop()
