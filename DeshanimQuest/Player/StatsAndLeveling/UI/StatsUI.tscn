@@ -61,6 +61,15 @@ __meta__ = {
 
 [node name="LVDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox" instance=ExtResource( 3 )]
 
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/LVDoubleLabel" index="0"]
+margin_right = 27.0
+text = "LV "
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/LVDoubleLabel" index="1"]
+margin_left = 31.0
+text = "0"
+align = 0
+
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
 margin_top = 37.0
 margin_right = 112.0
@@ -129,7 +138,7 @@ text = "100"
 
 [node name="StatsHBox" type="HBoxContainer" parent="VBoxContainer/StatsPanel"]
 margin_left = 8.0
-margin_top = 112.0
+margin_top = 127.0
 margin_right = 216.0
 margin_bottom = 232.0
 size_flags_horizontal = 3
@@ -141,7 +150,7 @@ __meta__ = {
 
 [node name="StatsVBox" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
 margin_right = 97.0
-margin_bottom = 217.0
+margin_bottom = 105.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 __meta__ = {
@@ -165,7 +174,7 @@ margin_bottom = 105.0
 [node name="StatsVBox2" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
 margin_left = 111.0
 margin_right = 208.0
-margin_bottom = 217.0
+margin_bottom = 105.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 __meta__ = {

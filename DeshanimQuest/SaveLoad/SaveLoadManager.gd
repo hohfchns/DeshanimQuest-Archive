@@ -56,7 +56,7 @@ func generate_cur_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	
 	save_data["game_version"] = "0.2"
-	save_data["save_version"] = 2
+	save_data["save_version"] = 3
 	
 	save_data["scene"] = {}
 	save_data["scene"]["scene_name"] = get_tree().get_current_scene().scene_name

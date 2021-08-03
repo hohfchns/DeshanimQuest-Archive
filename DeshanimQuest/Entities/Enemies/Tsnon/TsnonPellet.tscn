@@ -4,10 +4,10 @@
 [ext_resource path="res://Entities/Enemies/Tsnon/TsnonPellet.gd" type="Script" id=2]
 [ext_resource path="res://Components/Collisions/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 5.30008
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 3.80277
 
 [node name="TsnonPellet" type="KinematicBody2D"]
@@ -23,15 +23,15 @@ visible = false
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="DestroyCollision"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 visible = false
 collision_mask = 4
-damage = 1
+damage = 20
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 2.0

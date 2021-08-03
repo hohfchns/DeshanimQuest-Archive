@@ -10,26 +10,26 @@
 [ext_resource path="res://Components/Collisions/SoftCollision/SoftCollision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Shaders/WhiteColorShader.shader" type="Shader" id=10]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 5.88332
 height = 10.8129
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=2]
 radius = 162.5
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 7.15776
 height = 11.3393
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 6.15385
 height = 12.3077
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 4.93153
 height = 6.55479
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -56,7 +56,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.6
 step = 0.05
 tracks/0/type = "value"
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 10 )
 shader_param/active = true
 
@@ -101,7 +101,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ SubResource( 12 ), null ]
+"values": [ SubResource( 8 ), null ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader")
@@ -150,7 +150,7 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 0, -1 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="SlimeAI" parent="." instance=ExtResource( 2 )]
 __actor = NodePath("..")
@@ -159,7 +159,7 @@ __actor = NodePath("..")
 visible = false
 
 [node name="CollisionShape2D" parent="SlimeAI/PlayerDetectionZone" index="0"]
-shape = SubResource( 11 )
+shape = SubResource( 2 )
 
 [node name="WanderController" parent="SlimeAI" index="1"]
 wander_range = 24
@@ -179,22 +179,22 @@ collision_layer = 8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 rotation = 1.5708
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 4 )]
 visible = false
 collision_mask = 4
-damage = 1
+damage = 20
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, -1.0039 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 7 )
-anims/Move = SubResource( 8 )
+anims/Idle = SubResource( 6 )
+anims/Move = SubResource( 7 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
 autoplay = "FlashStop"

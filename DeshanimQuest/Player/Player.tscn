@@ -29,18 +29,18 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/active = false
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 6.87935
 height = 7.8423
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 7.37502
 height = 17.5
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=5]
 radius = 19.6333
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodySprite:material:shader_param/active")
@@ -95,7 +95,7 @@ position = Vector2( 12, 0 )
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -1.52588e-05, 21.2132 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]
 visible = false
@@ -103,7 +103,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1.52588e-05, 15.375 )
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 visible = false
@@ -115,12 +115,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 9 )
+shape = SubResource( 5 )
 
 [node name="EffectsAP" type="AnimationPlayer" parent="."]
 autoplay = "HitBlinkStop"
-anims/HitBlinkStart = SubResource( 10 )
-anims/HitBlinkStop = SubResource( 11 )
+anims/HitBlinkStart = SubResource( 6 )
+anims/HitBlinkStop = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
