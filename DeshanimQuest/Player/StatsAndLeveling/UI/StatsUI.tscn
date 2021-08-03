@@ -1,0 +1,231 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://Player/Portraits/RANGERPortrait.png" type="Texture" id=2]
+[ext_resource path="res://UI/Components/DoubleLabel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/StatsAndLeveling/UI/StatBox.tscn" type="PackedScene" id=4]
+
+[node name="StatsUI" type="Panel"]
+anchor_top = 0.533
+anchor_bottom = 0.533
+margin_left = 64.0
+margin_top = -223.82
+margin_right = 512.0
+margin_bottom = 224.18
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 240.0
+margin_bottom = 320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsPanel" type="Panel" parent="VBoxContainer"]
+margin_right = 224.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 240 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/StatsPanel"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusVBox" type="VBoxContainer" parent="VBoxContainer/StatsPanel"]
+anchor_left = 0.429
+anchor_top = 0.233
+anchor_right = 0.429
+anchor_bottom = 0.233
+margin_left = 7.90399
+margin_top = -47.92
+margin_right = 119.904
+margin_bottom = 56.08
+custom_constants/separation = 18
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LVDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox" instance=ExtResource( 3 )]
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+margin_top = 37.0
+margin_right = 112.0
+margin_bottom = 44.0
+max_value = 200.0
+value = 175.0
+percent_visible = false
+
+[node name="HPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar" instance=ExtResource( 3 )]
+margin_top = -15.0
+margin_bottom = 9.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel" index="0"]
+margin_top = 2.0
+margin_bottom = 21.0
+text = "HP"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel" index="1"]
+margin_top = 2.0
+margin_bottom = 21.0
+text = "200"
+
+[node name="MPProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+margin_top = 62.0
+margin_right = 112.0
+margin_bottom = 69.0
+value = 95.0
+percent_visible = false
+
+[node name="MPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar" instance=ExtResource( 3 )]
+margin_top = -15.0
+margin_bottom = 9.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel" index="0"]
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 21.0
+text = "MP"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel" index="1"]
+margin_left = 29.0
+margin_top = 2.0
+margin_bottom = 21.0
+text = "100"
+
+[node name="ProgressBar3" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+margin_top = 87.0
+margin_right = 112.0
+margin_bottom = 94.0
+value = 100.0
+percent_visible = false
+
+[node name="SPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3" instance=ExtResource( 3 )]
+margin_top = -15.0
+margin_bottom = 9.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel" index="0"]
+margin_top = 2.0
+margin_bottom = 21.0
+text = "SP"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel" index="1"]
+margin_top = 2.0
+margin_bottom = 21.0
+text = "100"
+
+[node name="StatsHBox" type="HBoxContainer" parent="VBoxContainer/StatsPanel"]
+margin_left = 8.0
+margin_top = 112.0
+margin_right = 216.0
+margin_bottom = 232.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsVBox" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
+margin_right = 97.0
+margin_bottom = 217.0
+size_flags_horizontal = 3
+custom_constants/separation = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+
+[node name="StatBox2" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+margin_top = 28.0
+margin_bottom = 49.0
+
+[node name="StatBox3" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+margin_top = 56.0
+margin_bottom = 77.0
+
+[node name="StatBox4" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+margin_top = 84.0
+margin_bottom = 105.0
+
+[node name="StatsVBox2" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
+margin_left = 111.0
+margin_right = 208.0
+margin_bottom = 217.0
+size_flags_horizontal = 3
+custom_constants/separation = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatBox5" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+
+[node name="StatBox6" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+margin_top = 28.0
+margin_bottom = 49.0
+
+[node name="StatBox7" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+margin_top = 56.0
+margin_bottom = 77.0
+
+[node name="StatBox8" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+margin_top = 84.0
+margin_bottom = 105.0
+
+[node name="PointsPanel" type="Panel" parent="VBoxContainer"]
+margin_top = 244.0
+margin_right = 224.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="DoubleLabel" parent="VBoxContainer/PointsPanel" instance=ExtResource( 3 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -30.0
+margin_right = 216.0
+margin_bottom = 30.0
+
+[node name="Label" parent="VBoxContainer/PointsPanel/DoubleLabel" index="0"]
+margin_top = 20.0
+margin_right = 150.0
+margin_bottom = 39.0
+text = "Available Points:"
+
+[node name="AmtLabel" parent="VBoxContainer/PointsPanel/DoubleLabel" index="1"]
+margin_left = 154.0
+margin_top = 20.0
+margin_right = 208.0
+margin_bottom = 39.0
+text = "1"
+
+[node name="ProperitesPanel" type="Panel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 432.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="VBoxContainer/StatsPanel/StatusVBox/LVDoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel"]
+[editable path="VBoxContainer/PointsPanel/DoubleLabel"]
