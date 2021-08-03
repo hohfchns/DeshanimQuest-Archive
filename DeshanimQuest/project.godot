@@ -156,7 +156,7 @@ config/icon="res://icon.png"
 
 DebugControls="*res://Debug/DebugControls.tscn"
 GameEvents="*res://Managers/GameEvents.tscn"
-PlayerStats="*res://Player/PlayerStats.tscn"
+PlayerStats="*res://Player/StatsAndLeveling/PlayerStats.tscn"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 ItemDatabase="*res://Items/ItemDatabase.gd"
 SpawnableItemsDatabase="*res://Items/Items/Utility/UtilityGun/SpawnableItemsDatabase.gd"
