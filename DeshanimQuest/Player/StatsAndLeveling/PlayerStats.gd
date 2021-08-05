@@ -13,11 +13,17 @@ export(Classes) var player_class
 var current_class_name = Classes.keys()[player_class]
 
 export var __stats: Dictionary = {
+	# VITALITY - Increase health
 	"VIT": 0,
+	# ENDURANCE - Increase stamina
 	"END": 0,
+	# STRENGTH - Increased damage with melee weapons
 	"STR": 0,
+	# DEXTERITY - Slightliy increased stamina and increased damage with ranged weapons
 	"DEX": 0,
+	# RESISTANCE - Increased defense
 	"RES": 0,
+	# INTELLIGENCE - Increased mana and damage with magic weapons
 	"INT": 0,
 } setget set_stats, get_stats
 
