@@ -1,6 +1,9 @@
 extends RayCast2D
 class_name Hitray
 
+enum DamageTypes { MELEE, MAGIC, RANGED }
+export(DamageTypes) var damage_type
+
 export(int) var damage
 export(float) var knockback_amt
 

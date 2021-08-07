@@ -238,6 +238,7 @@ position = Vector2( 5, -2 )
 enabled = true
 cast_to = Vector2( 85, 0 )
 collision_mask = 65
+damage_type = 2
 damage = 3
 knockback_amt = 100.0
 

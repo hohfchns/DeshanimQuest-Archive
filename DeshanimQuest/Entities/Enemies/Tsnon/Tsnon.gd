@@ -54,9 +54,19 @@ func __take_hit(damage: int, knockback_amt: float, hitter):
 	
 	__ai_controller.actor_velocity += knockback_to_take
 	
-	__stats.subtract_health(damage)
+	var multiplier: float = 1
+	if hitter.damage_type == Hitbox.DamageTypes.MELEE:
+		multiplier += PlayerStats.str_damage_mult_amt * PlayerStats.get_stats()["STR"]
+	elif hitter.damage_type == Hitbox.DamageTypes.MAGIC:
+		multiplier += PlayerStats.int_damage_mult_amt * PlayerStats.get_stats()["INT"]
+	elif hitter.damage_type == Hitbox.DamageTypes.RANGED:
+		multiplier += PlayerStats.dex_damage_mult_amt * PlayerStats.get_stats()["DEX"]
 	
-	__damage_number_indicator.start(damage)
+	var damage_to_take = damage * multiplier
+	
+	__stats.subtract_health(damage_to_take)
+	
+	__damage_number_indicator.start(damage_to_take)
 	
 	__effects_animation_player.play("Flash")
 

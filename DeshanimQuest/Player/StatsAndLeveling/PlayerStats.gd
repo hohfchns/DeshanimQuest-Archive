@@ -69,7 +69,7 @@ func _ready():
 			"VIT": 5,
 			"END": 3,
 			"STR": 10,
-			"DEX": 7,
+			"DEX": 20,
 			"RES": 5,
 			"INT": 10,
 		}

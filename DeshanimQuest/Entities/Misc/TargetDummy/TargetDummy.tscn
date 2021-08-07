@@ -16,7 +16,7 @@ height = 13.5
 [node name="TargetDummy" type="StaticBody2D" groups=[
 "Enemy",
 ]]
-collision_layer = 65
+collision_layer = 64
 script = ExtResource( 3 )
 hurtbox = NodePath("Hurtbox")
 damage_number_indicator = NodePath("DamageNumberIndicator")
