@@ -228,6 +228,9 @@ func _input(event):
 		elif not self.visible and not GameManager.menus_ll.get_forward_list():
 			start()
 	elif event.is_action_pressed("ui_cancel"):
+		if not self.visible:
+			return
+		
 		if __dialogs_parent.visible:
 			__dialogs_parent.hide()
 			__overwrite_confirm_dialog.hide()
