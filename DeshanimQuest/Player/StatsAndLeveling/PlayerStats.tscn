@@ -5,4 +5,7 @@
 [node name="PlayerStats" type="Node"]
 script = ExtResource( 1 )
 player_class = 2
-__health = 200
+__base_max_health = 100
+__health = 100
+__stamina = 100
+__mana = 100

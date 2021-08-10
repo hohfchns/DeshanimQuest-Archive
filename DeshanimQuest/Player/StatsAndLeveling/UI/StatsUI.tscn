@@ -1,42 +1,72 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Themes/MinimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://Player/Portraits/RANGERPortrait.png" type="Texture" id=2]
 [ext_resource path="res://UI/Components/DoubleLabel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/StatsAndLeveling/UI/StatBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/StatsAndLeveling/UI/StatsUI.gd" type="Script" id=5]
+[ext_resource path="res://UI/Fonts/tinypixel.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 11
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 11
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 11
+font_data = ExtResource( 6 )
 
 [node name="StatsUI" type="Panel"]
-anchor_top = 0.533
-anchor_bottom = 0.533
+pause_mode = 2
+anchor_top = 0.4
+anchor_bottom = 0.4
 margin_left = 64.0
-margin_top = -223.82
-margin_right = 512.0
-margin_bottom = 224.18
+margin_top = -152.0
+margin_right = 320.0
+margin_bottom = 160.0
 theme = ExtResource( 1 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+__health_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/HPProgressBar")
+__stamina_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/SPProgressBar")
+__mana_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/MPProgressBar")
+__stat_points_amt = NodePath("VBoxContainer/PointsPanel/DoubleLabel/AmtLabel")
+__vit = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox")
+__end = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox")
+__str = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox")
+__dex = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox")
+__res = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox")
+__int = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 240.0
-margin_bottom = 320.0
+margin_bottom = 296.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StatsPanel" type="Panel" parent="VBoxContainer"]
 margin_right = 224.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 0, 240 )
+margin_bottom = 216.0
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Portrait" type="TextureRect" parent="VBoxContainer/StatsPanel"]
-margin_right = 96.0
-margin_bottom = 96.0
+anchor_left = 0.214
+anchor_right = 0.214
+margin_left = -47.936
+margin_top = 16.0
+margin_right = 48.064
+margin_bottom = 112.0
 rect_min_size = Vector2( 96, 96 )
 texture = ExtResource( 2 )
 expand = true
@@ -50,10 +80,10 @@ anchor_left = 0.429
 anchor_top = 0.233
 anchor_right = 0.429
 anchor_bottom = 0.233
-margin_left = 7.90399
-margin_top = -47.92
+margin_left = 7.904
+margin_top = -34.328
 margin_right = 119.904
-margin_bottom = 56.08
+margin_bottom = 61.672
 custom_constants/separation = 18
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,7 +100,7 @@ margin_left = 31.0
 text = "0"
 align = 0
 
-[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+[node name="HPProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
 margin_top = 37.0
 margin_right = 112.0
 margin_bottom = 44.0
@@ -78,62 +108,62 @@ max_value = 200.0
 value = 175.0
 percent_visible = false
 
-[node name="HPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar" instance=ExtResource( 3 )]
+[node name="DoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/HPProgressBar" instance=ExtResource( 3 )]
 margin_top = -15.0
 margin_bottom = 9.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel" index="0"]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/HPProgressBar/DoubleLabel" index="0"]
 margin_top = 2.0
 margin_bottom = 21.0
 text = "HP"
 
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel" index="1"]
-margin_top = 2.0
-margin_bottom = 21.0
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/HPProgressBar/DoubleLabel" index="1"]
+margin_top = 5.0
+custom_fonts/font = SubResource( 1 )
 text = "200"
 
-[node name="MPProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+[node name="SPProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
 margin_top = 62.0
 margin_right = 112.0
 margin_bottom = 69.0
-value = 95.0
+value = 100.0
 percent_visible = false
 
-[node name="MPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar" instance=ExtResource( 3 )]
+[node name="DoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/SPProgressBar" instance=ExtResource( 3 )]
 margin_top = -15.0
 margin_bottom = 9.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel" index="0"]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/SPProgressBar/DoubleLabel" index="0"]
+margin_top = 2.0
+margin_bottom = 21.0
+text = "SP"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/SPProgressBar/DoubleLabel" index="1"]
+margin_top = 5.0
+custom_fonts/font = SubResource( 2 )
+text = "100"
+
+[node name="MPProgressBar" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
+margin_top = 87.0
+margin_right = 112.0
+margin_bottom = 94.0
+value = 95.0
+percent_visible = false
+
+[node name="DoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar" instance=ExtResource( 3 )]
+margin_top = -15.0
+margin_bottom = 9.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/DoubleLabel" index="0"]
 margin_top = 2.0
 margin_right = 25.0
 margin_bottom = 21.0
 text = "MP"
 
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel" index="1"]
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/DoubleLabel" index="1"]
 margin_left = 29.0
-margin_top = 2.0
-margin_bottom = 21.0
-text = "100"
-
-[node name="ProgressBar3" type="ProgressBar" parent="VBoxContainer/StatsPanel/StatusVBox"]
-margin_top = 87.0
-margin_right = 112.0
-margin_bottom = 94.0
-value = 100.0
-percent_visible = false
-
-[node name="SPDoubleLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3" instance=ExtResource( 3 )]
-margin_top = -15.0
-margin_bottom = 9.0
-
-[node name="Label" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel" index="0"]
-margin_top = 2.0
-margin_bottom = 21.0
-text = "SP"
-
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel" index="1"]
-margin_top = 2.0
-margin_bottom = 21.0
+margin_top = 5.0
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="StatsHBox" type="HBoxContainer" parent="VBoxContainer/StatsPanel"]
@@ -157,19 +187,28 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+[node name="VITStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
 
-[node name="StatBox2" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="0"]
+margin_right = 25.0
+text = "VIT"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="1"]
+margin_left = 29.0
+
+[node name="STRStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
 margin_top = 28.0
 margin_bottom = 49.0
 
-[node name="StatBox3" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="0"]
+text = "STR"
+
+[node name="RESStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
 margin_top = 56.0
 margin_bottom = 77.0
 
-[node name="StatBox4" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
-margin_top = 84.0
-margin_bottom = 105.0
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="0"]
+text = "RES"
 
 [node name="StatsVBox2" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
 margin_left = 111.0
@@ -181,24 +220,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatBox5" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+[node name="ENDStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
 
-[node name="StatBox6" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="0"]
+text = "END"
+
+[node name="DEXStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
 margin_top = 28.0
 margin_bottom = 49.0
 
-[node name="StatBox7" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="0"]
+margin_right = 25.0
+text = "DEX"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="1"]
+margin_left = 29.0
+
+[node name="INTStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
 margin_top = 56.0
 margin_bottom = 77.0
 
-[node name="StatBox8" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
-margin_top = 84.0
-margin_bottom = 105.0
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="0"]
+margin_right = 25.0
+text = "INT"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="1"]
+margin_left = 29.0
 
 [node name="PointsPanel" type="Panel" parent="VBoxContainer"]
-margin_top = 244.0
+margin_top = 220.0
 margin_right = 224.0
-margin_bottom = 304.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 60 )
 
 [node name="DoubleLabel" parent="VBoxContainer/PointsPanel" instance=ExtResource( 3 )]
@@ -222,19 +274,14 @@ margin_right = 208.0
 margin_bottom = 39.0
 text = "1"
 
-[node name="ProperitesPanel" type="Panel" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -192.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 432.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [editable path="VBoxContainer/StatsPanel/StatusVBox/LVDoubleLabel"]
-[editable path="VBoxContainer/StatsPanel/StatusVBox/ProgressBar/HPDoubleLabel"]
-[editable path="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/MPDoubleLabel"]
-[editable path="VBoxContainer/StatsPanel/StatusVBox/ProgressBar3/SPDoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/HPProgressBar/DoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/SPProgressBar/DoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatusVBox/MPProgressBar/DoubleLabel"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox"]
+[editable path="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox"]
 [editable path="VBoxContainer/PointsPanel/DoubleLabel"]

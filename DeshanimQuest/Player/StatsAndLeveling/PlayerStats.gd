@@ -3,13 +3,17 @@ extends Node
 signal class_changed(new_class)
 
 signal stats_changed(old_stats, new_stats)
+signal stat_points_changed
 
 signal health_changed
+signal max_health_changed
 signal no_health
 
 signal stamina_changed
+signal max_stamina_changed
 
 signal mana_changed
+signal max_mana_changed
 
 
 enum Classes { NOCLASS, RANGER, WARRIOR }
@@ -31,6 +35,8 @@ export var __stats: Dictionary = {
 	# INTELLIGENCE - Increased mana and damage with magic weapons
 	"INT": 0,
 } setget set_stats, get_stats
+
+var __stat_points = 10 setget set_stat_points, get_stat_points
 
 
 export var __base_max_health: int = 200.0
@@ -66,16 +72,18 @@ func _ready():
 	
 	set_stats(
 		{
-			"VIT": 5,
-			"END": 3,
-			"STR": 10,
-			"DEX": 20,
-			"RES": 5,
-			"INT": 10,
+			"VIT": 0,
+			"END": 0,
+			"STR": 0,
+			"DEX": 0,
+			"RES": 0,
+			"INT": 0,
 		}
 	)
 	
 	set_max_health(calc_max_health())
+	set_max_stamina(calc_max_stamina())
+	set_max_mana(calc_max_mana())
 
 
 func set_class(new_class):
@@ -96,6 +104,14 @@ func get_stats():
 	return __stats
 
 
+func set_stat_points(value):
+	__stat_points = value
+	emit_signal("stat_points_changed")
+
+func get_stat_points():
+	return __stat_points
+
+
 func set_health(value):
 	__health = value
 	
@@ -113,6 +129,7 @@ func subtract_health(value):
 
 func set_max_health(value):
 	__max_health = value
+	emit_signal("max_health_changed")
 
 func get_max_health():
 	return __max_health
@@ -139,6 +156,7 @@ func subtract_stamina(value):
 
 func set_max_stamina(value):
 	__max_stamina = value
+	emit_signal("max_stamina_changed")
 
 func get_max_stamina():
 	return __max_stamina
@@ -165,12 +183,13 @@ func subtract_mana(value):
 
 func set_max_mana(value):
 	__max_mana = value
+	emit_signal("max_mana_changed")
 
 func get_max_mana():
 	return __max_mana
 
 func calc_max_mana():
-	var multiplier = 1 + (int_mana_mult_amt * get_stats()["END"])
+	var multiplier = 1 + (int_mana_mult_amt * get_stats()["INT"])
 	return int(__base_max_mana * multiplier)
 
 
@@ -203,8 +222,20 @@ func _on_save_loaded(save_data, slot_idx):
 
 
 func _on_stats_changed(old_stats, new_stats):
-	set_health(calc_max_health())
+	if get_health() == get_max_health() or get_health() > calc_max_health():
+		set_max_health(calc_max_health())
+		set_health(get_max_health())
+	else:
+		set_max_health(calc_max_health())
 	
-	set_stamina(calc_max_stamina())
+	if get_stamina() == get_max_stamina() or get_stamina() > calc_max_stamina():
+		set_max_stamina(calc_max_stamina())
+		set_stamina(get_max_stamina())
+	else:
+		set_max_stamina(calc_max_stamina())
 	
-	set_mana(calc_max_mana())
+	if get_mana() == get_max_mana() or get_mana() > calc_max_mana():
+		set_max_mana(calc_max_mana())
+		set_mana(get_max_mana())
+	else:
+		set_max_mana(calc_max_mana())
