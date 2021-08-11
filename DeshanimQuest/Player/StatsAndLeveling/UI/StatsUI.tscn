@@ -32,6 +32,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+__portrait = NodePath("VBoxContainer/StatsPanel/Portrait")
 __health_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/HPProgressBar")
 __stamina_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/SPProgressBar")
 __mana_bar = NodePath("VBoxContainer/StatsPanel/StatusVBox/MPProgressBar")

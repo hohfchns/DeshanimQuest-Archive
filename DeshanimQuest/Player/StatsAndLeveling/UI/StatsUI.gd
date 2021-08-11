@@ -1,5 +1,7 @@
 extends Panel
 
+export(NodePath) onready var __portrait = get_node(__portrait) as TextureRect
+
 export(NodePath) onready var __health_bar = get_node(__health_bar) as ProgressBar
 export(NodePath) onready var __stamina_bar = get_node(__stamina_bar) as ProgressBar
 export(NodePath) onready var __mana_bar = get_node(__mana_bar) as ProgressBar
@@ -29,6 +31,7 @@ func _ready():
 	
 	__update_bars()
 	__update_stats(PlayerStats.get_stats())
+	__portrait.texture = load("res://Player/Portraits/%sPortrait.png" % PlayerStats.current_class_name)
 	
 	_on_stat_points_changed()
 
