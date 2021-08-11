@@ -15,11 +15,15 @@ func _on_ranger_panel_input(event):
 		if event.pressed:
 			PlayerStats.set_class(PlayerStats.Classes.RANGER)
 			
+			PlayerStats.set_stats(PlayerStats.start_stats["RANGER"])
+			
 			get_tree().call_deferred("change_scene_to", start_scene)
 
 func _on_warrior_panel_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			PlayerStats.set_class(PlayerStats.Classes.WARRIOR)
+			
+			PlayerStats.set_stats(PlayerStats.start_stats["WARRIOR"])
 			
 			get_tree().call_deferred("change_scene_to", start_scene)

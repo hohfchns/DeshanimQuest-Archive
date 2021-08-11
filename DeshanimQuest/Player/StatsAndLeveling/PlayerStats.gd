@@ -36,8 +36,27 @@ export var __stats: Dictionary = {
 	"INT": 0,
 } setget set_stats, get_stats
 
-var __stat_points = 10 setget set_stat_points, get_stat_points
+export var start_stats: Dictionary = {
+	"RANGER": {
+		"VIT": 3,
+		"END": 1,
+		"STR": 7,
+		"DEX": 10,
+		"RES": 2,
+		"INT": 5
+	},
+	"WARRIOR": {
+		"VIT": 15,
+		"END": 8,
+		"STR": 15,
+		"DEX": 3,
+		"RES": 10,
+		"INT": 3
+	},
+}
 
+var start_stat_points = 10
+var __stat_points = start_stat_points setget set_stat_points, get_stat_points
 
 export var __base_max_health: int = 200.0
 var __max_health: int = __base_max_health setget set_max_health, get_max_health
@@ -80,6 +99,8 @@ func _ready():
 			"INT": 0,
 		}
 	)
+	
+	set_stat_points(start_stat_points)
 	
 	set_max_health(calc_max_health())
 	set_max_stamina(calc_max_stamina())
@@ -207,11 +228,13 @@ func _on_save_loaded(save_data, slot_idx):
 	else:
 		set_class(Classes.RANGER)
 	
-	if "max_health" in save_data["player"]:
-		if save_data["save_version"] > 2:
-			set_max_health(save_data["player"]["max_health"])
-		else:
-			set_max_health(save_data["player"]["max_health"] * 20)
+	if "stats" in save_data["player"]:
+		set_stats(save_data["player"]["stats"])
+		set_stat_points(save_data["player"]["stat_points"])
+	else:
+		set_stats(start_stats[current_class_name])
+		set_stat_points(start_stat_points)
+	
 	if "health" in save_data["player"]:
 		if save_data["save_version"] > 2:
 			set_health(save_data["player"]["health"])

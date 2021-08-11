@@ -55,8 +55,8 @@ func __get_item_dicts():
 func generate_cur_save_data() -> Dictionary:
 	var save_data: Dictionary = {}
 	
-	save_data["game_version"] = "0.2"
-	save_data["save_version"] = 3
+	save_data["game_version"] = "0.3dev"
+	save_data["save_version"] = 4
 	
 	save_data["scene"] = {}
 	save_data["scene"]["scene_name"] = get_tree().get_current_scene().scene_name
@@ -65,6 +65,8 @@ func generate_cur_save_data() -> Dictionary:
 	save_data["player"] = {}
 	save_data["player"]["class"] = PlayerStats.player_class
 	save_data["player"]["class_name"] = PlayerStats.current_class_name
+	save_data["player"]["stats"] = PlayerStats.get_stats()
+	save_data["player"]["stat_points"] = PlayerStats.get_stat_points()
 	save_data["player"]["max_health"] = PlayerStats.get_max_health()
 	save_data["player"]["health"] = PlayerStats.get_health()
 	save_data["player"]["inventory_items"] = __get_item_dicts()
