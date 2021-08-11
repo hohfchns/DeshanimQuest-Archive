@@ -76,7 +76,7 @@ export var end_stamina_mult_amt: float = 0.05
 export var str_damage_mult_amt: float = 0.05
 export var dex_stamina_mult_amt: float = 0.02
 export var dex_damage_mult_amt: float = 0.04
-export var res_defense_mult_amt: float = 0.05
+export var res_defense_mult_amt: float = 0.0175
 export var int_mana_mult_amt: float = 0.03
 export var int_damage_mult_amt: float = 0.04
 

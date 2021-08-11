@@ -198,6 +198,7 @@ func _on_hurtbox_entered(area):
 	__hurtbox.start_invincibility(__invincibility_duration)
 	
 	var damage_to_take = area.damage / __hurtbox.get_overlapping_areas().size()
+	damage_to_take *= (1 - (PlayerStats.res_defense_mult_amt * PlayerStats.get_stats()["RES"]))
 	__stats.subtract_health(damage_to_take)
 
 func _on_hurtbox_invincibility_started():
