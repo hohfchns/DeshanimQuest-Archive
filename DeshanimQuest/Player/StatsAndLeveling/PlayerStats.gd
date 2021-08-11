@@ -21,7 +21,7 @@ enum Classes { NOCLASS, RANGER, WARRIOR }
 export(Classes) var player_class
 var current_class_name = Classes.keys()[player_class]
 
-export var __stats: Dictionary = {
+var __stats: Dictionary = {
 	# VITALITY - Increase health
 	"VIT": 0,
 	# ENDURANCE - Increase stamina
