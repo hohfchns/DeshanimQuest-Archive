@@ -12,6 +12,9 @@ signal selected_item_changed(item_instance, slot_index)
 
 func _ready():
 	__inventory.connect("inventory_changed", self, "_on_inventory_changed")
+	
+	set_selected_slot(GameManager.last_hotbar_slot)
+	
 	call_deferred("update_visuals")
 	call_deferred("update_selected_slot")
 
@@ -60,6 +63,7 @@ func update_selected_slot():
 func set_selected_slot(index):
 	__selected_slot_index = index
 	update_selected_slot()
+	GameManager.last_hotbar_slot = index
 
 
 func __scroll_down():

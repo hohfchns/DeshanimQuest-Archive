@@ -6,6 +6,7 @@ var is_mouse_on_button = false
 
 var menus_ll: LinkedList = LinkedList.new()
 
+var last_hotbar_slot: int = 0
 
 func _ready():
 	SaveLoad.connect("save_loaded", self, "_on_save_loaded")
@@ -26,3 +27,5 @@ func _on_save_loaded(save_data, slot_index):
 	while itr:
 		itr.data.stop()
 		itr = itr.prev
+	
+	last_hotbar_slot = 0
