@@ -1,5 +1,14 @@
 extends Panel
 
+export var __explanations: Dictionary = {
+	"VIT": "Vitality \nHow healthy you are. \nIncreases max health by 5% per point.",
+	"END": "Endurance \nHow long you can exert energy for. \nIncreases max stamina by 5% per point.",
+	"STR": "Strength \nHow physically strong you are. \nIncreases melee damage done to enemies by 5% per point",
+	"RES": "Resistance \nHow much you resist forces. \nDecreases damage done to you by 1.75% per point",
+	"DEX": "Dexterity \nHow quick and accurate you are. \nIncreases stamina by 2% per point \nIncreases ranged damage done to enemies by 4% per point",
+	"INT": "Intelligence \nHow strong your affinity for magic is. \nIncreases mana by 3% per point \nIncreases magic damage done to enemies by 4% per point"
+}
+
 export(NodePath) onready var __portrait = get_node(__portrait) as TextureRect
 
 export(NodePath) onready var __health_bar = get_node(__health_bar) as ProgressBar
@@ -14,6 +23,8 @@ export(NodePath) onready var __str = get_node(__str) as HBoxContainer
 export(NodePath) onready var __dex = get_node(__dex) as HBoxContainer
 export(NodePath) onready var __res = get_node(__res) as HBoxContainer
 export(NodePath) onready var __int = get_node(__int) as HBoxContainer
+
+export(NodePath) onready var __explanation_text = get_node(__explanation_text) as Label
 
 func _ready():
 	PlayerStats.connect("stats_changed", self, "_on_stats_changed")
@@ -39,16 +50,22 @@ func _ready():
 func __connect_buttons():
 	__vit.get_node("PlusButton").connect("pressed", self, "__add_stat", ["VIT"])
 	__vit.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["VIT"])
+	__vit.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["VIT"])
 	__end.get_node("PlusButton").connect("pressed", self, "__add_stat", ["END"])
 	__end.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["END"])
+	__end.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["END"])
 	__str.get_node("PlusButton").connect("pressed", self, "__add_stat", ["STR"])
 	__str.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["STR"])
+	__str.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["STR"])
 	__dex.get_node("PlusButton").connect("pressed", self, "__add_stat", ["DEX"])
 	__dex.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["DEX"])
+	__dex.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["DEX"])
 	__res.get_node("PlusButton").connect("pressed", self, "__add_stat", ["RES"])
 	__res.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["RES"])
+	__res.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["RES"])
 	__int.get_node("PlusButton").connect("pressed", self, "__add_stat", ["INT"])
 	__int.get_node("MinusButton").connect("pressed", self, "__subtract_stat", ["INT"])
+	__int.get_node("InfoButton").connect("pressed", self, "__explain_stat", ["INT"])
 
 
 func start():
@@ -107,6 +124,10 @@ func __subtract_stat(stat):
 	
 	PlayerStats.set_stats(stats)
 	PlayerStats.set_stat_points(PlayerStats.get_stat_points() + 1)
+
+
+func __explain_stat(stat):
+	__explanation_text.text = __explanations[stat]
 
 
 func _on_stats_changed(old_stats, new_stats):

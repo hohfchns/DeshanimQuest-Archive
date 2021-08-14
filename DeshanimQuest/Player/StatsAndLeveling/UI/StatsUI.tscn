@@ -24,9 +24,9 @@ pause_mode = 2
 anchor_top = 0.4
 anchor_bottom = 0.4
 margin_left = 64.0
-margin_top = -152.0
-margin_right = 320.0
-margin_bottom = 160.0
+margin_top = -160.0
+margin_right = 344.0
+margin_bottom = 304.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -43,19 +43,22 @@ __str = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox")
 __dex = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox")
 __res = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox")
 __int = NodePath("VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox")
+__explanation_text = NodePath("ExplanationPanel/ScrollContainer/ExplanationText")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 240.0
-margin_bottom = 296.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -132.0
+margin_top = 12.0
+margin_right = 132.0
+margin_bottom = 268.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StatsPanel" type="Panel" parent="VBoxContainer"]
-margin_right = 224.0
-margin_bottom = 216.0
+margin_right = 264.0
+margin_bottom = 222.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -169,9 +172,9 @@ text = "100"
 
 [node name="StatsHBox" type="HBoxContainer" parent="VBoxContainer/StatsPanel"]
 margin_left = 8.0
-margin_top = 127.0
-margin_right = 216.0
-margin_bottom = 232.0
+margin_top = 132.0
+margin_right = 258.0
+margin_bottom = 209.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 14
@@ -180,8 +183,8 @@ __meta__ = {
 }
 
 [node name="StatsVBox" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
-margin_right = 97.0
-margin_bottom = 105.0
+margin_right = 118.0
+margin_bottom = 77.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 __meta__ = {
@@ -189,32 +192,94 @@ __meta__ = {
 }
 
 [node name="VITStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
+margin_right = 118.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="0"]
-margin_right = 25.0
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="1"]
+margin_top = 3.0
+margin_right = 47.0
+margin_bottom = 18.0
 text = "VIT"
 
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="1"]
-margin_left = 29.0
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="2"]
+margin_left = 51.0
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+size_flags_vertical = 0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/VITStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
 
 [node name="STRStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
 margin_top = 28.0
+margin_right = 118.0
 margin_bottom = 49.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="0"]
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="1"]
+margin_top = 3.0
+margin_bottom = 18.0
 text = "STR"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="2"]
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/STRStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
 
 [node name="RESStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox" instance=ExtResource( 4 )]
 margin_top = 56.0
+margin_right = 118.0
 margin_bottom = 77.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="0"]
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="1"]
+margin_top = 3.0
+margin_bottom = 18.0
 text = "RES"
 
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="2"]
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox/RESStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
+
 [node name="StatsVBox2" type="VBoxContainer" parent="VBoxContainer/StatsPanel/StatsHBox"]
-margin_left = 111.0
-margin_right = 208.0
-margin_bottom = 105.0
+margin_left = 132.0
+margin_right = 250.0
+margin_bottom = 77.0
 size_flags_horizontal = 3
 custom_constants/separation = 7
 __meta__ = {
@@ -222,44 +287,103 @@ __meta__ = {
 }
 
 [node name="ENDStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
+margin_right = 118.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="0"]
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="1"]
+margin_top = 3.0
+margin_bottom = 18.0
 text = "END"
+
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="2"]
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/ENDStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
 
 [node name="DEXStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
 margin_top = 28.0
+margin_right = 118.0
 margin_bottom = 49.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="0"]
-margin_right = 25.0
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="1"]
+margin_top = 3.0
+margin_right = 47.0
+margin_bottom = 18.0
 text = "DEX"
 
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="1"]
-margin_left = 29.0
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="2"]
+margin_left = 51.0
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/DEXStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
 
 [node name="INTStatBox" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2" instance=ExtResource( 4 )]
 margin_top = 56.0
+margin_right = 118.0
 margin_bottom = 77.0
 
-[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="0"]
-margin_right = 25.0
+[node name="InfoButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="0"]
+margin_bottom = 21.0
+
+[node name="Label" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="1"]
+margin_top = 3.0
+margin_right = 47.0
+margin_bottom = 18.0
 text = "INT"
 
-[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="1"]
-margin_left = 29.0
+[node name="AmtLabel" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="2"]
+margin_left = 51.0
+margin_top = 3.0
+margin_right = 84.0
+margin_bottom = 17.0
+
+[node name="PlusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="3"]
+margin_left = 88.0
+margin_right = 101.0
+margin_bottom = 21.0
+
+[node name="MinusButton" parent="VBoxContainer/StatsPanel/StatsHBox/StatsVBox2/INTStatBox" index="4"]
+margin_left = 105.0
+margin_right = 118.0
+margin_bottom = 21.0
 
 [node name="PointsPanel" type="Panel" parent="VBoxContainer"]
-margin_top = 220.0
-margin_right = 224.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 0, 60 )
+margin_top = 226.0
+margin_right = 264.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 0, 30 )
 
 [node name="DoubleLabel" parent="VBoxContainer/PointsPanel" instance=ExtResource( 3 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 8.0
+margin_left = 16.0
 margin_top = -30.0
-margin_right = 216.0
+margin_right = 240.0
 margin_bottom = 30.0
 
 [node name="Label" parent="VBoxContainer/PointsPanel/DoubleLabel" index="0"]
@@ -271,9 +395,45 @@ text = "Available Points:"
 [node name="AmtLabel" parent="VBoxContainer/PointsPanel/DoubleLabel" index="1"]
 margin_left = 154.0
 margin_top = 20.0
-margin_right = 208.0
+margin_right = 224.0
 margin_bottom = 39.0
 text = "1"
+
+[node name="ExplanationPanel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -132.0
+margin_top = -192.0
+margin_right = 132.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ExplanationPanel"]
+anchor_left = 0.03
+anchor_top = 0.044
+anchor_right = 0.97
+anchor_bottom = 0.978
+margin_left = 0.0799999
+margin_top = 0.0799994
+margin_right = 2.91998
+margin_bottom = -0.0400085
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExplanationText" type="Label" parent="ExplanationPanel/ScrollContainer"]
+margin_right = 251.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+text = "Click on the question mark next to a stat to learn about what it does."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="VBoxContainer/StatsPanel/StatusVBox/LVDoubleLabel"]
 [editable path="VBoxContainer/StatsPanel/StatusVBox/HPProgressBar/DoubleLabel"]
