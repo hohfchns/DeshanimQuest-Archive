@@ -50,6 +50,9 @@ tile_data = PoolIntArray( 4456564, 0, 0, 4456565, 0, 0, 4456566, 0, 0, 4456567, 
 [node name="TargetDummy" parent="YSort/Entities" instance=ExtResource( 5 )]
 position = Vector2( 1206.51, 801.345 )
 
+[node name="TargetDummy3" parent="YSort/Entities" instance=ExtResource( 5 )]
+position = Vector2( 1022.43, 790.12 )
+
 [node name="TargetDummy2" parent="YSort/Entities" instance=ExtResource( 5 )]
 position = Vector2( 1470.34, 740.836 )
 
