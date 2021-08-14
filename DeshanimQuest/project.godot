@@ -287,6 +287,7 @@ toggle_pause_menu={
 2d_physics/layer_5="SoftCollision"
 2d_physics/layer_6="Interactable"
 2d_physics/layer_7="Enemy"
+2d_physics/layer_8="HitboxOcclusion"
 
 [physics]
 
