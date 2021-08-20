@@ -26,6 +26,8 @@ export(NodePath) onready var __int = get_node(__int) as HBoxContainer
 
 export(NodePath) onready var __explanation_text = get_node(__explanation_text) as Label
 
+var __drag_position = null
+
 func _ready():
 	PlayerStats.connect("stats_changed", self, "_on_stats_changed")
 	
@@ -39,6 +41,8 @@ func _ready():
 	PlayerStats.connect("max_mana_changed", self, "__update_bars")
 	
 	__connect_buttons()
+	
+	connect("gui_input", self, "_on_gui_input")
 	
 	__update_bars()
 	__update_stats(PlayerStats.get_stats())
@@ -150,3 +154,12 @@ func _input(event):
 		
 		self.visible = false
 		GameManager.menus_ll.call_deferred("pop_front")
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			__drag_position = get_global_mouse_position() - rect_global_position
+		else:
+			__drag_position = null
+	if event is InputEventMouseMotion and __drag_position:
+		rect_global_position = get_global_mouse_position() - __drag_position
