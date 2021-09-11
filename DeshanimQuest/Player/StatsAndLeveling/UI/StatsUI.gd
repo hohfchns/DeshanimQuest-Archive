@@ -73,6 +73,9 @@ func __connect_buttons():
 
 
 func start():
+	if GameManager.menus_ll.size:
+		return
+	
 	GameManager.menus_ll.push_front(self)
 	self.visible = true
 
