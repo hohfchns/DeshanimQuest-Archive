@@ -1,4 +1,4 @@
-# EDIT: This project is long abandoned. It might be remade from scratch at some point, but this version is dead.
+# This project is long abandoned. It might be remade from scratch at some point, but this version is dead.
 
 # **DeshanimQuest - An RPG by hohfchns/Hanzofactory, DSDusty, and LordanHax/sounD**
 
