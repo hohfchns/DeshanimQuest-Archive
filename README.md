@@ -1,3 +1,5 @@
+# EDIT: This project is long abandoned. It might be remade from scratch at some point, but this version is dead.
+
 # **DeshanimQuest - An RPG by hohfchns/Hanzofactory, DSDusty, and LordanHax/sounD**
 
 The roadmap for the game can be found here: https://trello.com/b/llTLmu8z/deshanimquest-roadmap
